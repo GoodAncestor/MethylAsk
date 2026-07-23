@@ -35,9 +35,23 @@ it queries, the epigenetic clocks, and the Illumina-array normalization.
 The provider registry, evidence tiering, and report renderer live in bio-core
 (`biocore.providers`, `biocore.report`) and are imported, not duplicated.
 
+## Install
+
+MethylAsk depends on the private `GoodAncestor/bio-core` repo, declared as a
+git-source dependency in `pyproject.toml`. A plain `pip install .` resolves it
+from GitHub, so the machine needs git access to the private repo (an SSH key or
+a token in the git credential helper). Two ways:
+
+    # A) let pip pull bio-core from GitHub (needs private-repo git access)
+    pip install .
+
+    # B) develop against a local bio-core checkout instead
+    git clone https://github.com/GoodAncestor/bio-core.git ../bio-core
+    pip install -e ../bio-core
+    pip install -e . --no-deps        # bio-core already satisfied locally
+
 ## Quick start
 
-    pip install -e .
     methylask status                     # provider health + cache ages
     methylask refresh --provider all     # build/refresh local caches
     methylask report sample.csv --pdf    # produce a report from a sample

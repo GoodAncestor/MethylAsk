@@ -3,7 +3,12 @@ name = "methylask"
 version = "0.0.1"
 description = "Methylation/epigenomic marker interpretation — clinical and popular-interest reporting"
 requires-python = ">=3.10"
-dependencies = ["biocore"]  # GoodAncestor/bio-core — shared provider/report/fetch mechanism
+dependencies = [
+    # GoodAncestor/bio-core — shared provider/report/fetch mechanism (private repo).
+    # git-source spec so a clean install resolves from GitHub, not a same-named PyPI package.
+    # Private-repo access uses the installer's git credentials; see README "Install".
+    "biocore @ git+https://github.com/GoodAncestor/bio-core.git",
+]
 
 [project.optional-dependencies]
 parse = ["pandas", "methylprep"]   # raw IDAT normalization, large-matrix handling

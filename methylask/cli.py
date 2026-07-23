@@ -68,7 +68,10 @@ def main(argv: list[str] | None = None) -> int:
         html_str = render_html(findings, rep.provider_status)
         with open(args.out, "w") as fh:
             fh.write(html_str)
-        print(f"{len(sample.markers)} markers -> {len(rep.all_findings())} findings -> {args.out}")
+        n_annotated = len(markers)
+        n_total = len(sample.markers)
+        capped = " (capped from %d by --max-markers)" % n_total if n_annotated < n_total else ""
+        print(f"{n_annotated} markers annotated{capped} -> {len(rep.all_findings())} findings -> {args.out}")
         if args.pdf:
             pdf_path = args.out.rsplit(".", 1)[0] + ".pdf"
             to_pdf(html_str, pdf_path)

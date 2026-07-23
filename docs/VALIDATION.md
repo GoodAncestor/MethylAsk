@@ -27,19 +27,19 @@
 
 ## Download sizes — where each source lives (GitHub vs NAS)
 
-Measured live from HTTP headers on 2026-07-23. **Storage capacity is not the constraint** — everything, including the 294 GB GDC corpus, fits on a normal NVMe drive on the hosting server. The only hard rule is GitHub's 100 MB per-file limit for what gets committed to the repo; everything else lives on the server's local disk. Rule of thumb: **≤~100 MB and static → commit to the GitHub repo; larger or frequently rebuilt → server disk**.
+Sizes measured live from HTTP `Content-Length` headers on 2026-07-23 (decimal MB, ÷1e6), except the OpenGWAS row, which is an order-of-magnitude estimate — its host was unreachable during validation (see the OpenGWAS row in the status table) so no header was obtained. **Storage capacity is not the constraint** — everything, including the 294 GB GDC corpus, fits on a normal NVMe drive on the hosting server. The only hard rule is GitHub's 100 MB per-file limit for what gets committed to the repo; everything else lives on the server's local disk. Rule of thumb: **≤~100 MB and static → commit to the GitHub repo; larger or frequently rebuilt → server disk**.
 
 | Source (flat file) | Compressed size | Home | Why |
 |---|---|---|---|
-| Zhou HM450 hg38 manifest | 22 MB | **GitHub** | Static reference, small |
-| Zhou EPIC (850K) hg38 manifest | 37 MB | **GitHub** | Static reference |
-| Zhou EPICv2 hg38 manifest | 39 MB | **GitHub** | Static reference |
+| Zhou HM450 hg38 manifest | 22.6 MB | **GitHub** | Static reference, small |
+| Zhou EPIC (850K) hg38 manifest | 38.5 MB | **GitHub** | Static reference |
+| Zhou EPICv2 hg38 manifest | 40.9 MB | **GitHub** | Static reference |
 | EWAS Catalog studies table | 0.27 MB | **GitHub** | Tiny metadata |
 | Epigenetic clock coefficients | <5 MB (est.) | **GitHub** | Small, static, ships with tool |
 | EWAS Catalog full results dump | 174 MB | **Server disk** | Over the git 100 MB limit; rebuilt on release |
 | ClinVar GRCh38 VCF.gz | 193 MB | **Server disk** | Over limit; updated weekly by NCBI |
 | GDC/TCGA methylation β corpus | **294 GB** (20,397 files, avg 14.4 MB) | **Server disk (full mirror)** | Too large for git; fits on NVMe and downloads in <1 h on 10 Gbit, so mirror the whole corpus rather than cache on demand |
-| OpenGWAS trait dumps | GB-scale per dataset | **Server disk** | Bulk flat files; the chosen path for OpenGWAS |
+| OpenGWAS trait dumps | GB-scale per dataset *(estimate — host unreachable at validation)* | **Server disk** | Bulk flat files; the chosen path for OpenGWAS |
 
 Practical guidance: GitHub rejects single files >100 MB (Git LFS needed beyond that). Everything tagged **GitHub** fits comfortably as normal committed files. Everything tagged **Server disk** either exceeds the 100 MB single-file limit or changes often enough that a synced cache on local disk is cleaner than versioning it in git. The 80 TB NAS is available for backup/mirroring but is not required for capacity.
 

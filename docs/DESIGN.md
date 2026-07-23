@@ -71,7 +71,7 @@ Providers come in three flavors, chosen per database based on how that database 
 |---|---|---|
 | **Bundled** | Data is static and small enough to ship | Loaded from a file that comes with the install. Example: Illumina + Zhou-lab manifests, epigenetic clock coefficients. |
 | **Synced cache** | Data is downloadable in bulk and updates periodically | A local copy (SQLite or Parquet) built by a refresh job, queried locally at runtime. Example: EWAS Catalog dump, ClinVar snapshot, a slice of TCGA. |
-| **Live-through cache** | Data is large, changes often, or is API-only | Queried from the remote API on a cache miss; the result is written to the local cache with a time-to-live, so the second lookup is local. Example: EWAS Atlas REST, GDC, ENCODE, OpenGWAS. |
+| **Live-through cache** | Data is large, changes often, or is API-only | Queried from the remote API on a cache miss; the result is written to the local cache with a time-to-live, so the second lookup is local. Example: EWAS Atlas REST, GDC, ENCODE. (OpenGWAS is *not* live-through — it is registered as a synced cache; see §3.4 and the OpenGWAS decision below.) |
 
 The live-through type is what reconciles "cache everything" with "keep up with changes." A marker is fetched from the API the first time anyone asks about it, then served from cache until its time-to-live expires. Popular markers cost one API call ever; the cache fills itself with the markers people actually look at.
 
@@ -147,7 +147,7 @@ A finding can hold more than one category. The report lets the reader move betwe
 
 #### 4.3.3 Error-tolerant providers
 
-A source that is unreachable or returns an error is **not dropped from the design or the report**. Each provider's `status()` records its state — `ok`, `stale`, or `unavailable: <reason>` — and the annotation engine proceeds with whatever providers are healthy. Where a provider is down, the affected section of the report shows a short note ("EWAS Atlas unavailable at generation time: upstream 502 — retry scheduled") instead of silently omitting it, and a scheduled retry brings it back automatically. This is why the two sources that were down during validation (EWAS Atlas, OpenGWAS) remain first-class providers in the registry.
+A source that is unreachable or returns an error is **not dropped from the design or the report**. Each provider's `status()` records its state — `ok`, `stale`, or `unavailable: <reason>` — and the annotation engine proceeds with whatever providers are healthy. Where a provider is down, the affected section of the report shows a short note ("EWAS Atlas unavailable at generation time: upstream 502 — retry scheduled") instead of silently omitting it, and a scheduled retry brings it back automatically. This is why EWAS Atlas — down (upstream 502) during validation — remains a first-class live-through provider in the registry, retried on schedule. OpenGWAS was also unreachable at validation (expired TLS cert), but its resolution differs: rather than stay a retry-needing live provider, it is registered as a download-backed synced cache (see §3.4 and the OpenGWAS decision), which removes the flapping endpoint from the runtime path entirely.
 
 ### 4.4 Report
 
@@ -261,7 +261,7 @@ These are defaults, not requirements; the architecture does not depend on them.
 
 ## 10. A staged build order
 
-1. **Data layer + two providers.** Build the provider interface and the cache, wired to one bundled source (Zhou-lab manifest) and one working live source (EWAS Catalog — validated returning real per-CpG associations). This de-risks the hardest part first. EWAS Atlas and OpenGWAS register alongside them as error-tolerant providers, so the retry path is exercised from day one.
+1. **Data layer + two providers.** Build the provider interface and the cache, wired to one bundled source (Zhou-lab manifest) and one working live source (EWAS Catalog — validated returning real per-CpG associations). This de-risks the hardest part first. EWAS Atlas registers alongside them as an error-tolerant live-through provider, so the retry path is exercised from day one. OpenGWAS registers as a synced cache (download-backed), not a live provider, so it does not exercise the retry path.
 2. **Ingest + normalize for β-value CSV.** Get one real file all the way to canonical markers.
 3. **Annotate + static report.** Produce a first PDF from a real sample end to end.
 4. **Epigenetic clocks.** A visible, self-contained feature that runs fully locally.
