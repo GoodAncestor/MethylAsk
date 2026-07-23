@@ -25,6 +25,9 @@ def main(argv: list[str] | None = None) -> int:
     rp.add_argument("sample")
     rp.add_argument("--out", default="report.html")
     rp.add_argument("--pdf", action="store_true")
+    rp.add_argument("--max-markers", type=int, default=200,
+                    help="cap on markers annotated via live API (guards against "
+                         "full-array hangs until the local mirror lands)")
     args = ap.parse_args(argv)
 
     reg = _default_registry()
@@ -40,8 +43,29 @@ def main(argv: list[str] | None = None) -> int:
         from .ingest.beta_matrix import read_beta_matrix
         from .report.render import render_html, to_pdf
         sample = read_beta_matrix(args.sample)
-        rep = reg.annotate(sample.markers)
-        html_str = render_html(rep.all_findings(), rep.provider_status)
+        # NOTE: the live-per-marker annotation path issues one API call per
+        # marker, which does not scale to a full array (935K probes = 935K
+        # requests). Until the mirror-backed local lookup lands, cap the number
+        # of markers annotated live so `report` on a full array cannot hang.
+        # Clocks below run on the FULL sample regardless (local computation).
+        markers = sample.markers[:args.max_markers]
+        rep = reg.annotate(markers)
+        findings = rep.all_findings()
+        # epigenetic clocks: local computation, keyed by base probe id
+        from . import clocks
+        from .normalize import base_probe
+        from .providers.base import Finding, Tier, Category
+        base_betas = {base_probe(k): v for k, v in sample.betas.items()}
+        for cr in clocks.run_all(base_betas):
+            if cr.age is None:
+                continue
+            findings.append(Finding(
+                marker=cr.clock, source="epigenetic_clock",
+                description=f"Estimated DNAm age ({cr.clock}): {cr.age:.1f} years",
+                tier=(Tier.SPECULATIVE if cr.low_coverage else Tier.ROBUST),
+                categories=[Category.AGING],
+                detail={"coverage": cr.note}))
+        html_str = render_html(findings, rep.provider_status)
         with open(args.out, "w") as fh:
             fh.write(html_str)
         print(f"{len(sample.markers)} markers -> {len(rep.all_findings())} findings -> {args.out}")
