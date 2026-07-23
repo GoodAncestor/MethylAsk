@@ -1,6 +1,6 @@
 # Scoping: genomic data, phenotypes, and how MethylAsk relates to the genomics work
 
-*Grounded in code and data that already exist — the "One Person, Six Genomes" project (Claude Science project `proj_66ffa9d0a3de`, committed to the personal `colbyt/genomics` GitHub repo) — not a hypothetical.*
+*Grounded in code and data that already exist — the "One Person, Six Genomes" work, committed to the personal `colbyt/genomics` GitHub repo — not a hypothetical.*
 
 ## The end state we want
 
