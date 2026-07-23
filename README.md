@@ -13,15 +13,27 @@ operator's control.
 Prototype scaffold. See `docs/DESIGN.md` for the full architecture and
 `docs/VALIDATION.md` for live data-source validation results.
 
-## Layout
+## Built on bio-core
+
+MethylAsk depends on [bio-core](https://github.com/GoodAncestor/bio-core) for
+all organism-agnostic mechanism — the provider interface and registry, evidence
+tiering, the HTML/PDF report renderer, and the resumable fetch helper. MethylAsk
+itself holds only the human-methylation **knowledge**: the methylation databases
+it queries, the epigenetic clocks, and the Illumina-array normalization.
 
     methylask/
-      providers/    data-layer: one provider per reference database
+      providers/    methylation-specific providers (EWAS Catalog, ClinVar, GDC)
+                    — each imports the shared Provider/Finding/Tier from biocore
       ingest/       file-format parsers (CSV/GEO, IDAT, bedMethyl, ...)
-      report/       report model + HTML/PDF rendering
+      normalize.py  probe/rsID → canonical genome coordinate (bundled manifests)
+      clocks.py     epigenetic-clock engine (Horvath, Hannum, PhenoAge, ...)
+      cli.py        `methylask status|refresh|report`
     data/reference/ small static reference files committed to the repo (<100 MB)
     scripts/        refresh + build CLIs
     docs/           design, validation, disclaimer
+
+The provider registry, evidence tiering, and report renderer live in bio-core
+(`biocore.providers`, `biocore.report`) and are imported, not duplicated.
 
 ## Quick start
 
