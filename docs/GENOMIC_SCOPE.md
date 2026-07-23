@@ -85,6 +85,51 @@ Then the "combined" experience is **not a fourth codebase** — it is a thin app
 
 All repos private until reviewed; public release is a later, gated step and a non-goal for now.
 
+## Where plants fit — split along knowledge, not organism
+
+The seagrass (plant) epigenomics work raises a fair question: is there credible overlap we'd waste by ignoring plants, or do they need separate plant-vs-animal sections? The resolution is to split along the right axis.
+
+**Two kinds of code live in all of this:**
+- **Mechanism** — how you read and move data: parse a modBAM, pile up a bedMethyl, normalize a VCF, intersect features, lift coordinates, render a report. **Organism-agnostic** — a human modBAM and an eelgrass modBAM are the same format read by the same code.
+- **Knowledge** — what a marker means: ClinVar pathogenicity, Horvath's clock CpGs, the RdDM pathway's CHH targets. **Deeply organism-specific**, transfers not at all.
+
+`bio-core` is **pure mechanism, and therefore has no species.** That is where the plant/human overlap actually lives. Organism *knowledge* stays in its own repo:
+
+```
+  goodancestor/bio-core     mechanism, organism-agnostic, CONTEXT-AWARE
+  goodancestor/methylask    human methylation knowledge (EWAS, clocks, Illumina arrays)
+  goodancestor/genomics     human variant knowledge (ClinVar, PRS, pharmacogenomics)
+  goodancestor/seagrass     plant epigenomics knowledge (RdDM, TE methylation, breeding)
+        ↑ all depend on bio-core; none duplicate the mechanism
+```
+
+No plant-vs-animal *sections* inside a package (that is sprawl inside a repo). Plant knowledge lives in `seagrass`, but `seagrass` **depends on bio-core** for the plumbing instead of carrying its own copy — the difference between "ignore plant people" (wasteful) and "share the plumbing, not the meaning" (right). Arrays and clinical DBs stay human because they have no plant analog — they correctly live in methylask/genomics, never in bio-core.
+
+### The one design choice that makes bio-core plant-ready — at zero cost
+
+The load-bearing plant/human divergence is **sequence context**. Human methylation is ~entirely CpG (arrays and clocks assume it). Plants use CpG + CHG + CHH, and CHH (RdDM-deposited) is the *central* signal in the seagrass work, not incidental. So bio-core's methylation data model must represent *"a cytosine, its context (CG/CHG/CHH), and its level"* — not *"a CpG and its beta."* This is strictly more correct even for humans (non-CpG methylation in brain/stem cells is real), and both bedMethyl and modBAM already carry the context code. Building bio-core context-aware is not a plant concession; it is the correct data model, and it keeps the plant door open for free.
+
+## Tooling audit — what the seagrass project actually exercised
+
+Audited the seagrass project's methods appendix and code artifacts for liftable mechanism. Finding: **no custom seagrass analysis code to pull** (the methylation landscape ran as a streaming awk pass; everything else is standard tools invoked directly), but a **validated specification** of exactly which mechanical primitives bio-core needs — a second independent project confirming they are organism-agnostic.
+
+| Mechanism seagrass used | Detail | To bio-core? |
+|---|---|---|
+| bedMethyl parsing | modkit 18-col, context in col4 (`m,CG,0`); weighted methylation = ΣN_mod / Σ(N_mod+N_canonical) at cov≥5× | **Yes — verbatim.** Most reusable piece; MethylAsk needs identical logic |
+| Sequence-context partition | per-context CG/CHG/CHH weighted methylation | **Yes** — empirically justifies the context-aware model above |
+| VCF merge + biallelic filter | `bcftools merge -0`, `view -m2 -M2 -v snps` | **Yes** — same bcftools wrappers genomics uses |
+| Feature intersection | `bedtools intersect -u -sorted` over genes/exons/introns/promoters/repeats | **Yes** — MethylAsk's probe→feature annotation is the same op |
+| Coordinate concordance QC | verify positions fall within contig bounds | **Yes** — belongs in bio-core normalization/QC |
+| Genetic distance / Mantel / PCA | scikit-allel IBS, Ward linkage, Mantel | Partly — population genetics; leans genomics, not core |
+| DIAMOND ortholog search | `diamond blastp --very-sensitive` | No — comparative genomics, stays in seagrass |
+| De novo TE annotation | RepeatModeler / RepeatMasker / EDTA | No — plant-specific, stays in seagrass |
+
+Two concrete design consequences:
+1. **bio-core's bedMethyl reader implements the modkit 18-column contract and the cov≥5×, ΣN_mod/Σ(N_mod+N_canonical) weighted-methylation formula verbatim** — both projects need exactly this.
+2. **The context-aware data model is empirically justified, not speculative** — seagrass's headline result (CHH/RdDM) cannot be represented in a CpG-only model.
+
+*Caveat:* only 2 frames and 7 code artifacts were reachable in the shared project from here; deeper seagrass sessions and any `GoodAncestor/seagrass` repo were not accessible with the current token, so this audit rests on the methods appendix rather than raw source. A token scoped to the seagrass repo would let us confirm whether any wrapper code there is worth lifting directly.
+
 ## Two open decisions (flagged, not blocking)
 
 1. **Is variant *calling* in scope, or interpretation only?** If citizens arrive with VCF/23andMe files, `genomics` stays light and calling can wait. If raw ONT read → variant calling is a launch feature, that pulls in the heavy stack and is the main scoping cost.
