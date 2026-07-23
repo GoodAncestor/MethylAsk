@@ -17,7 +17,7 @@ release inside refresh() — never on the request path.
 from __future__ import annotations
 import json, urllib.parse, urllib.request, urllib.error
 from pathlib import Path
-from .base import Provider, Finding, Tier, Category, ProviderStatus, Health
+from biocore.providers.base import Provider, Finding, Tier, Category, ProviderStatus, Health
 
 _API = "https://api.gdc.cancer.gov/"
 

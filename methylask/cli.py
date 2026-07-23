@@ -1,7 +1,7 @@
 """methylask CLI: status | refresh | report (docs/DESIGN.md §6)."""
 from __future__ import annotations
 import argparse, sys
-from .providers.registry import Registry
+from biocore.providers.registry import Registry
 from .providers.ewas_catalog import EwasCatalogProvider
 from .providers.clinvar import ClinVarProvider
 from .providers.gdc import GdcProvider
@@ -41,7 +41,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.cmd == "report":
         from .ingest.beta_matrix import read_beta_matrix
-        from .report.render import render_html, to_pdf
+        from biocore.report.render import render_html, to_pdf
         sample = read_beta_matrix(args.sample)
         # NOTE: the live-per-marker annotation path issues one API call per
         # marker, which does not scale to a full array (935K probes = 935K
@@ -54,7 +54,7 @@ def main(argv: list[str] | None = None) -> int:
         # epigenetic clocks: local computation, keyed by base probe id
         from . import clocks
         from .normalize import base_probe
-        from .providers.base import Finding, Tier, Category
+        from biocore.providers.base import Finding, Tier, Category
         base_betas = {base_probe(k): v for k, v in sample.betas.items()}
         for cr in clocks.run_all(base_betas):
             if cr.age is None:

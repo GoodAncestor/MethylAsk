@@ -10,7 +10,7 @@ API path here is used for prototyping and as a fallback before the mirror exists
 """
 from __future__ import annotations
 import json, ssl, urllib.request, urllib.error
-from .base import Provider, Finding, Tier, Category, ProviderStatus, Health
+from biocore.providers.base import Provider, Finding, Tier, Category, ProviderStatus, Health
 
 _API = "https://www.ewascatalog.org/api/?cpg="
 # Prototype only: some MRC-IEU hosts have intermittent cert issues. Public

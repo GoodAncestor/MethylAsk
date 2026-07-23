@@ -3,7 +3,7 @@ name = "methylask"
 version = "0.0.1"
 description = "Methylation/epigenomic marker interpretation — clinical and popular-interest reporting"
 requires-python = ">=3.10"
-dependencies = []          # stdlib-only core; parsers add methylprep/pandas as extras
+dependencies = ["biocore"]  # GoodAncestor/bio-core — shared provider/report/fetch mechanism
 
 [project.optional-dependencies]
 parse = ["pandas", "methylprep"]   # raw IDAT normalization, large-matrix handling
@@ -16,6 +16,9 @@ methylask = "methylask.cli:main"
 [build-system]
 requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["methylask*"]
 
 [tool.setuptools.package-data]
 "methylask" = ["data/reference/manifests/*.tsv.gz"]

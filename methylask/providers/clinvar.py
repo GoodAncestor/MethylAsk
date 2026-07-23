@@ -13,7 +13,7 @@ evidence tier — never restated as a diagnosis (see docs/DISCLAIMER.md).
 """
 from __future__ import annotations
 import json, urllib.parse, urllib.request, urllib.error
-from .base import Provider, Finding, Tier, Category, ProviderStatus, Health
+from biocore.providers.base import Provider, Finding, Tier, Category, ProviderStatus, Health
 
 _EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
 
