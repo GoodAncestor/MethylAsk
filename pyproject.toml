@@ -1,0 +1,18 @@
+[project]
+name = "methylask"
+version = "0.0.1"
+description = "Methylation/epigenomic marker interpretation — clinical and popular-interest reporting"
+requires-python = ">=3.10"
+dependencies = []          # stdlib-only core; parsers add methylprep/pandas as extras
+
+[project.optional-dependencies]
+parse = ["pandas", "methylprep"]   # raw IDAT normalization, large-matrix handling
+web = ["fastapi", "uvicorn"]
+report = ["jinja2", "weasyprint"]  # HTML -> PDF
+
+[project.scripts]
+methylask = "methylask.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"

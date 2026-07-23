@@ -1,0 +1,16 @@
+# Large caches live on server disk, never in git (docs/DESIGN.md §3.4)
+data/cache/
+data/mirror/
+*.vcf.gz
+*.txt.gz
+*.parquet
+*.sqlite
+# Never commit user methylation data (PHI-grade)
+samples/
+*.idat
+*.idat.gz
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
