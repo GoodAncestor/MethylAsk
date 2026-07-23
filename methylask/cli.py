@@ -3,10 +3,16 @@ from __future__ import annotations
 import argparse, sys
 from .providers.registry import Registry
 from .providers.ewas_catalog import EwasCatalogProvider
+from .providers.clinvar import ClinVarProvider
+from .providers.gdc import GdcProvider
 
 
 def _default_registry() -> Registry:
-    return Registry([EwasCatalogProvider()])
+    return Registry([
+        EwasCatalogProvider(),
+        ClinVarProvider(),
+        GdcProvider(),
+    ])
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -17,22 +23,32 @@ def main(argv: list[str] | None = None) -> int:
     pr.add_argument("--provider", default="all")
     rp = sub.add_parser("report", help="produce a report from a sample file")
     rp.add_argument("sample")
+    rp.add_argument("--out", default="report.html")
     rp.add_argument("--pdf", action="store_true")
     args = ap.parse_args(argv)
 
     reg = _default_registry()
     if args.cmd == "status":
         for s in reg.status():
-            print(f"{s.name:20s} {s.health.value:12s} {s.note or ''}")
+            v = f" (v{s.version})" if s.version else ""
+            print(f"{s.name:16s} {s.health.value:12s}{v} {s.note or ''}")
         return 0
     if args.cmd == "refresh":
         print("refresh: not yet implemented in scaffold")
         return 0
     if args.cmd == "report":
         from .ingest.beta_matrix import read_beta_matrix
+        from .report.render import render_html, to_pdf
         sample = read_beta_matrix(args.sample)
         rep = reg.annotate(sample.markers)
-        print(f"{len(sample.markers)} markers -> {len(rep.all_findings())} findings")
+        html_str = render_html(rep.all_findings(), rep.provider_status)
+        with open(args.out, "w") as fh:
+            fh.write(html_str)
+        print(f"{len(sample.markers)} markers -> {len(rep.all_findings())} findings -> {args.out}")
+        if args.pdf:
+            pdf_path = args.out.rsplit(".", 1)[0] + ".pdf"
+            to_pdf(html_str, pdf_path)
+            print(f"PDF: {pdf_path}")
         return 0
     return 1
 
