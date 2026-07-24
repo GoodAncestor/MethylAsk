@@ -4,7 +4,7 @@ Validated live 2026-07-23: api.gdc.cancer.gov returns 20,397 "Methylation Beta
 Value" files (SeSAMe level-3 beta, EPIC/450K) across ~33 cancer projects.
 
 Two-layer design (docs/DESIGN.md §8.2):
-  - refresh() mirrors the corpus locally (294 GB, ~1 h on 10 Gbit) and runs a
+  - refresh() mirrors the corpus locally (20,397 files, several hundred GB; ~1 h on 10 Gbit) and runs a
     ONE-TIME streaming pass to build a per-CpG summary: for each probe, the
     tumour-vs-normal beta distribution per cancer project. Output is a few
     hundred MB and serves fast lookups forever.
@@ -131,7 +131,7 @@ class GdcProvider(Provider):
     def refresh(self, max_files: int | None = None, workdir: str | None = None) -> ProviderStatus:
         """Build the per-CpG tumour/normal summary. Streams each beta file once,
         accumulating per (cpg, project, arm) running count+mean, into a SQLite at
-        self._summary_path. Heavy (full corpus ~294 GB / ~20k files) — runs on a
+        self._summary_path. Heavy (full corpus 20,397 files, several hundred GB) — runs on a
         worker via `worker.py refresh:gdc`. max_files caps it for validation."""
         if not self._summary_path:
             self._summary_path = Path(os.environ.get("GDC_SUMMARY_DB",
@@ -169,7 +169,7 @@ class GdcProvider(Provider):
                             s[2] += 1; s[3] += b
                         else:
                             s[0] += 1; s[1] += b
-                local.unlink(missing_ok=True)   # stream: don't keep the 294 GB
+                local.unlink(missing_ok=True)   # stream: don't keep the full corpus
                 n_files += 1
         except Exception as e:
             return ProviderStatus(self.name, Health.UNAVAILABLE,
