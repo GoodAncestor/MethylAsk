@@ -26,4 +26,6 @@ build-backend = "setuptools.build_meta"
 include = ["methylask*"]
 
 [tool.setuptools.package-data]
-"methylask" = ["data/reference/manifests/*.tsv.gz"]
+"methylask" = ["data/reference/manifests/*.tsv.gz",
+               "data/reference/clocks/*.csv",
+               "data/reference/*.json"]
