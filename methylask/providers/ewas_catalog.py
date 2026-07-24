@@ -9,9 +9,19 @@ to local disk by refresh(); per-CpG lookups then hit the local copy. The live
 API path here is used for prototyping and as a fallback before the mirror exists.
 """
 from __future__ import annotations
-import json, ssl, urllib.request, urllib.error
+import json, ssl, os, hashlib, time, urllib.request, urllib.error
+from pathlib import Path
 from biocore.providers.base import Provider, Finding, Tier, Category, ProviderStatus, Health
 from ..traits import classify_topic, humanize_trait
+
+# per-CpG response cache on disk. Live EWAS lookups are ~1 HTTP call per marker
+# (slow: 10-13s for a 40-marker report). The API response for a given CpG is
+# effectively static between catalog releases, so cache it. Dir is configurable
+# (DNAREPORT/METHYLASK_CACHE_DIR) and defaults to a temp path; TTL is generous.
+_CACHE_DIR = Path(os.environ.get("METHYLASK_CACHE_DIR")
+                  or os.environ.get("DNAREPORT_CACHE_DIR")
+                  or (Path(os.environ.get("TMPDIR", "/tmp")) / "methylask_ewas_cache"))
+_CACHE_TTL = int(os.environ.get("METHYLASK_CACHE_TTL", str(30 * 24 * 3600)))  # 30 days
 
 # map a fine-grained topic to the coarse Category used for report sections.
 # aging -> AGING; disease/biomarker topics -> CLINICAL; the rest -> TRAIT.
@@ -59,11 +69,29 @@ class EwasCatalogProvider(Provider):
         self._ctx = ssl._create_unverified_context() if insecure else None
         self._timeout = timeout
 
+    def _cache_file(self, cpg: str) -> Path:
+        h = hashlib.sha1(cpg.encode()).hexdigest()[:16]
+        return _CACHE_DIR / f"{h}.json"
+
     def _fetch(self, cpg: str) -> dict:
+        # disk cache: return a fresh cached response if present
+        cf = self._cache_file(cpg)
+        try:
+            if cf.exists() and (time.time() - cf.stat().st_mtime) < _CACHE_TTL:
+                return json.loads(cf.read_text())
+        except Exception:
+            pass  # corrupt/unreadable cache -> fall through to live fetch
         req = urllib.request.Request(_API + cpg,
             headers={"User-Agent": "methylask", "Accept": "application/json"})
         with urllib.request.urlopen(req, timeout=self._timeout, context=self._ctx) as r:
-            return json.loads(r.read().decode("utf-8", "replace"))
+            payload = json.loads(r.read().decode("utf-8", "replace"))
+        # write-through (best-effort; never fail a lookup on a cache write error)
+        try:
+            _CACHE_DIR.mkdir(parents=True, exist_ok=True)
+            cf.write_text(json.dumps(payload))
+        except Exception:
+            pass
+        return payload
 
     def get(self, marker: str) -> list[Finding]:
         try:
