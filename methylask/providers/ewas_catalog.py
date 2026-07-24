@@ -13,6 +13,7 @@ import json, ssl, os, hashlib, time, urllib.request, urllib.error
 from pathlib import Path
 from biocore.providers.base import Provider, Finding, Tier, Category, ProviderStatus, Health
 from ..traits import classify_topic, humanize_trait
+from .ewas_mirror import mirror_lookup, build_mirror
 
 # per-CpG response cache on disk. Live EWAS lookups are ~1 HTTP call per marker
 # (slow: 10-13s for a 40-marker report). The API response for a given CpG is
@@ -93,55 +94,60 @@ class EwasCatalogProvider(Provider):
             pass
         return payload
 
-    def get(self, marker: str) -> list[Finding]:
+    def _rows_for(self, marker: str) -> list[dict]:
+        """Per-association rows for a CpG, mirror-first: a built local mirror wins
+        (instant, offline); otherwise the cache/live API path. Both yield dicts
+        with the same keys (trait, gene, beta, se, p, n, tissue, ...)."""
+        rows = mirror_lookup(marker)
+        if rows is not None:
+            return rows  # mirror exists (may be empty list = no associations)
         try:
             payload = self._fetch(marker)
         except Exception:
             return []  # errors surface via status(), not as exceptions here
         fields = payload.get("fields") or []
-        rows = payload.get("results") or []
-        out: list[Finding] = []
-        for raw in rows:
-            row = dict(zip(fields, raw))
-            trait = row.get("trait", "unknown trait")
-            gene = (row.get("gene") or "").strip() or None
+        return [dict(zip(fields, raw)) for raw in (payload.get("results") or [])]
 
-            topic = classify_topic(trait)
-            label, kind, accession = humanize_trait(trait)
-            # a plain-language description; a protein-accession trait reads as a
-            # "protein level" measurement rather than a bare code
-            if kind == "protein":
-                desc = f"linked to blood level of protein {label}"
-            else:
-                desc = f"linked to {label}"
+    def _finding(self, marker: str, row: dict) -> Finding:
+        trait = row.get("trait", "unknown trait")
+        gene = (row.get("gene") or "").strip() or None
+        topic = classify_topic(trait)
+        label, kind, accession = humanize_trait(trait)
+        # a protein-accession trait reads as a "protein level" measurement
+        desc = (f"linked to blood level of protein {label}" if kind == "protein"
+                else f"linked to {label}")
+        cats = [_TOPIC_CATEGORY.get(topic, Category.TRAIT)]
+        detail = {k: row.get(k) for k in
+                  ("beta", "se", "p", "n", "tissue", "methylation_array", "chrpos")}
+        detail["topic"] = topic
+        detail["trait"] = label
+        if gene:
+            detail["gene"] = gene
+        if accession:
+            detail["protein"] = accession
+        if row.get("efo"):
+            detail["efo"] = row["efo"]     # EFO ontology id (mirror only)
+        return Finding(
+            marker=marker, source=self.name, description=desc,
+            tier=_tier_from(row), categories=cats, detail=detail,
+            link=f"https://www.ewascatalog.org/?query={marker}",
+            pmids=[str(row["pmid"])] if row.get("pmid") else [])
 
-            # coarse Category for section placement (renderer groups by these);
-            # the fine-grained `topic` drives the subject filter.
-            cats = [_TOPIC_CATEGORY.get(topic, Category.TRAIT)]
-
-            detail = {k: row.get(k) for k in
-                      ("beta", "se", "p", "n", "tissue", "methylation_array", "chrpos")}
-            detail["topic"] = topic
-            detail["trait"] = label
-            if gene:
-                detail["gene"] = gene
-            if accession:
-                detail["protein"] = accession
-
-            out.append(Finding(
-                marker=marker, source=self.name,
-                description=desc,
-                tier=_tier_from(row),
-                categories=cats,
-                detail=detail,
-                link=f"https://www.ewascatalog.org/?query={marker}",
-                pmids=[str(row["pmid"])] if row.get("pmid") else [],
-            ))
-        return out
+    def get(self, marker: str) -> list[Finding]:
+        return [self._finding(marker, row) for row in self._rows_for(marker)]
 
     def refresh(self) -> ProviderStatus:
-        # TODO: download ewascatalog-results.txt.gz (174 MB) -> local SQLite/Parquet
-        return self.status()
+        """Build the local mirror from the EWAS Catalog bulk downloads so lookups
+        are instant and offline. Heavy (174 MB download + SQLite build) — meant to
+        run on a worker/refresh box, not inline in a request."""
+        try:
+            summary = build_mirror()
+            return ProviderStatus(self.name, Health.OK,
+                note=f"mirror built: {summary['n_findings']} associations "
+                     f"across {summary['n_studies']} studies")
+        except Exception as e:
+            return ProviderStatus(self.name, Health.UNAVAILABLE,
+                                  note=f"mirror build failed: {e}")
 
     def status(self) -> ProviderStatus:
         try:
