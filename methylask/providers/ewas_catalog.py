@@ -114,8 +114,21 @@ class EwasCatalogProvider(Provider):
         topic = classify_topic(trait)
         label, kind, accession = humanize_trait(trait)
         # a protein-accession trait reads as a "protein level" measurement
-        desc = (f"linked to blood level of protein {label}" if kind == "protein"
-                else f"linked to {label}")
+        subject = (f"blood level of protein {label}" if kind == "protein" else label)
+        # The sign of the published effect IS the direction of the association, and
+        # "linked to age" without it tells the reader nothing about how. Phrased as
+        # methylation-relative-to-trait so it stays true whether the study measured a
+        # continuous trait or compared two groups. No effect size, no direction claimed.
+        beta = row.get("beta")
+        try:
+            beta = float(beta) if beta is not None and beta != "" else None
+        except (TypeError, ValueError):
+            beta = None
+        if beta:
+            way = "lower" if beta < 0 else "higher"
+            desc = f"{subject} — associated with {way} methylation at this site"
+        else:
+            desc = f"linked to {subject}"
         cats = [_TOPIC_CATEGORY.get(topic, Category.TRAIT)]
         detail = {k: row.get(k) for k in
                   ("beta", "se", "p", "n", "tissue", "methylation_array", "chrpos")}
