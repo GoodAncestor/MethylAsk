@@ -19,9 +19,12 @@ class ReplicationContext:
 
 # A marker studied in "whole blood" supports a blood sample; the mirror's tissue
 # strings are free text, so matching is on the containing word, not equality.
-def _tissue_match(sample: str, studied: list[str]) -> bool:
+def tissue_matches(sample: str, studied: list[str]) -> bool:
     s = sample.strip().lower()
     return any(s in t.lower() or t.lower() in s for t in studied)
+
+
+_tissue_match = tissue_matches   # internal alias, kept for readability below
 
 
 def summarize_replication(rows: list[dict],

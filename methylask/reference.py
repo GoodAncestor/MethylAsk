@@ -59,6 +59,49 @@ def reference_for(table: dict, marker: str) -> list[dict]:
     return list(table.get(marker, {}).get("references", []))
 
 
+@dataclass
+class MarkerPositions:
+    """Every published reference for one probe, positioned — or withheld."""
+    probe: str
+    sample_beta: float
+    positions: list[Position]
+    suppressed_reason: str | None = None
+
+
+def positions_for_sample(betas: dict[str, float], tissue: str | None = None,
+                         table: dict | None = None) -> list[MarkerPositions]:
+    """Position a whole sample against the curated table.
+
+    Local arithmetic — no network — so this runs on the full beta profile rather
+    than a capped subset, the same way the clocks do.
+
+    A reference measured in a tissue the sample is not is WITHHELD, not shown
+    with a caveat. The pediatric buccal demo is why: at cg05575921 it scores
+    0.56, whose nearest whole-blood neighbour is the current-smoker median, so a
+    child's cheek swab would read as a smoker. This mirrors clocks.py, where a
+    blood-trained clock on buccal is marked not-valid rather than displayed.
+    """
+    from .evidence import tissue_matches
+    table = load_reference_table() if table is None else table
+    out: list[MarkerPositions] = []
+    for probe, beta in betas.items():
+        refs = reference_for(table, probe)
+        if not refs:
+            continue
+        ref_tissues = sorted({r.get("tissue", "") for r in refs if r.get("tissue")})
+        if tissue and ref_tissues and not tissue_matches(tissue, ref_tissues):
+            out.append(MarkerPositions(
+                probe, beta, [],
+                suppressed_reason=(
+                    f"this sample is {tissue}; the only published reference values "
+                    f"for {probe} are {', '.join(ref_tissues)}, and methylation "
+                    f"levels are not comparable across tissues")))
+            continue
+        out.append(MarkerPositions(
+            probe, beta, [describe_position(beta, r) for r in refs]))
+    return out
+
+
 def describe_position(sample_beta: float, ref: dict) -> Position:
     """Position a sample against one reference value.
 

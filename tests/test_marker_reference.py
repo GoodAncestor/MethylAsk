@@ -8,7 +8,8 @@ with no published reference must say so rather than be silently dropped.
 """
 import json
 import pytest
-from methylask.reference import load_reference_table, reference_for, describe_position
+from methylask.reference import (load_reference_table, reference_for,
+                                 describe_position, positions_for_sample)
 
 
 @pytest.fixture
@@ -82,3 +83,35 @@ def test_position_without_a_published_sd_has_no_sigma(table):
     ref.pop("sd")
     pos = describe_position(sample_beta=0.71, ref=ref)
     assert pos.sigma is None
+
+
+# --- whole-sample positioning, incl. the tissue gate -------------------------
+
+def test_blood_sample_gets_positions_against_blood_references(table):
+    out = positions_for_sample({"cg05575921": 0.93}, tissue="blood", table=table)
+    assert len(out) == 1
+    assert out[0].probe == "cg05575921"
+    assert out[0].suppressed_reason is None
+    assert len(out[0].positions) == 1
+
+
+def test_buccal_sample_suppresses_blood_only_references(table):
+    # a pediatric buccal 0.56 sits nearest the whole-blood CURRENT-SMOKER median.
+    # Showing that comparison would read a child's cheek swab as a smoker, so a
+    # tissue-mismatched reference is withheld, matching clocks.py's precedent.
+    out = positions_for_sample({"cg05575921": 0.56}, tissue="buccal", table=table)
+    assert len(out) == 1
+    assert out[0].positions == []
+    assert "buccal" in out[0].suppressed_reason
+    assert "whole blood" in out[0].suppressed_reason
+
+
+def test_probes_with_no_curated_reference_are_skipped(table):
+    out = positions_for_sample({"cg99999999": 0.5}, tissue="blood", table=table)
+    assert out == []
+
+
+def test_unknown_sample_tissue_does_not_suppress(table):
+    # omitting tissue must not silently withhold everything
+    out = positions_for_sample({"cg05575921": 0.93}, tissue=None, table=table)
+    assert out[0].positions and out[0].suppressed_reason is None
