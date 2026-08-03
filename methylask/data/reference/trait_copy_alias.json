@@ -1,0 +1,76 @@
+{
+ "age": [
+  "Age"
+ ],
+ "bmi": [
+  "BMI (Body mass index)"
+ ],
+ "hdl_cholesterol": [
+  "HDL cholesterol"
+ ],
+ "body_fat": [
+  "Body fat"
+ ],
+ "crp": [
+  "C-reactive protein (CRP)"
+ ],
+ "sex": [
+  "Sex"
+ ],
+ "waist_hip_ratio": [
+  "Waist-hip ratio"
+ ],
+ "hiv_infection": [
+  "HIV infection"
+ ],
+ "gestational_age": [
+  "Gestational age"
+ ],
+ "copd": [
+  "Incident COPD",
+  "Prevalent COPD (Self-report)",
+  "Chronic obstructive pulmonary disease"
+ ],
+ "rheumatoid_arthritis": [
+  "Rheumatoid arthritis",
+  "Incident Rheumatoid Arthritis",
+  "Prevalent Rheumatoid Arthritis (Self-report)"
+ ],
+ "smoking": [
+  "Smoking (Tobacco smoking)"
+ ],
+ "clear_cell_renal_cell_carcinoma": [
+  "Clear cell renal carcinoma"
+ ],
+ "type_2_diabetes": [
+  "Incident Type 2 Diabetes",
+  "Prevalent Type 2 Diabetes (Self-report)",
+  "Type II diabetes mellitus"
+ ],
+ "eosinophilia": [
+  "Eosinophilia"
+ ],
+ "total_cholesterol": [
+  "Total cholesterol"
+ ],
+ "alcohol_consumption": [
+  "Alcohol consumption",
+  "Alcohol consumption per day"
+ ],
+ "atopy": [
+  "Atopy"
+ ],
+ "primary_sjogrens_syndrome": [
+  "Primary Sjogren's syndrome"
+ ],
+ "pancreatic_ductal_adenocarcinoma": [
+  "Pancreatic ductal adenocarcinoma"
+ ],
+ "schizophrenia": [
+  "Schizophrenia"
+ ],
+ "chronic_pain": [
+  "Prevalent Chronic Pain (Self-report)",
+  "Incident Chronic Pain"
+ ]
+}

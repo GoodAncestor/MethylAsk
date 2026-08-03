@@ -1,0 +1,287 @@
+{
+  "age": {
+    "label": "Age (Epigenetic Age / DNA Methylation Age)",
+    "what_it_is": "Age here refers to how many years a person has been alive (chronological age). Researchers also calculate a separate estimate called \"epigenetic age\" or \"DNA methylation age\" from methylation levels measured at a defined set of DNA sites.",
+    "what_an_association_means": "Studies pooling blood and other tissue samples from thousands of people across many independent cohorts, using cross-sectional comparisons of methylation at a single time point, have found that methylation levels at specific DNA sites track closely with chronological age. Formulas built from these sites, called \"epigenetic clocks,\" can estimate a person's age from a tissue sample alone.",
+    "what_it_is_not": "A single methylation reading does not diagnose any disease and does not predict how long a person will live. A site linked to an older- or younger-looking methylation pattern does not mean a person has, or will develop, any particular age-related condition.",
+    "typical_evidence": "Age is among the most extensively replicated methylation associations in the field, reproduced across dozens of independent cohorts, tissue types, and populations worldwide.",
+    "pmids": [
+      "29643443",
+      "33684551",
+      "37621446",
+      "31892350"
+    ]
+  },
+  "bmi": {
+    "label": "BMI (Body Mass Index)",
+    "what_it_is": "Body mass index (BMI) is a number calculated from a person's height and weight, used in population research as a simple proxy for overall body size.",
+    "what_an_association_means": "Large studies comparing blood DNA methylation across thousands of people with a range of body sizes have found that methylation levels at specific genome locations differ, on average, with BMI. Most of these studies compare methylation and BMI measured in the same people at the same point in time; one large genetic analysis further estimated that these methylation differences are more likely to be a downstream consequence of body size than a cause of it.",
+    "what_it_is_not": "This is not a measurement of the reader's own body size, a diagnosis, or a prediction of future weight change. It reflects a statistical pattern seen when comparing groups of unrelated people in research cohorts, not information about any single individual.",
+    "typical_evidence": "BMI is among the more heavily replicated methylation associations in this field, with overlapping findings confirmed across multiple independent cohorts, ancestries, and a dedicated meta-analysis pooling nine cohorts (n=17,034).",
+    "pmids": [
+      "28002404",
+      "36649705",
+      "34278703",
+      "39706196"
+    ]
+  },
+  "hdl_cholesterol": {
+    "label": "HDL Cholesterol",
+    "what_it_is": "HDL cholesterol is one component measured in a standard blood lipid panel — a type of cholesterol carried through the bloodstream by high-density lipoprotein particles.",
+    "what_an_association_means": "Cohort studies that measured blood methylation and blood HDL cholesterol levels at the same time (cross-sectional design) have identified specific genome locations where average methylation differs alongside HDL concentration, including work in a multi-ethnic sample of over 16,000 people and smaller European cohorts.",
+    "what_it_is_not": "This is not a cholesterol test result, not a measure of cardiovascular status, and not information about the reader's diet, exercise habits, or future lab values. The underlying studies compare group averages across cohorts, not individuals.",
+    "typical_evidence": "HDL-associated methylation sites have been replicated across ethnically diverse cohorts in a large multi-ethnic analysis, though the CpGs identified typically explain only a small fraction of the variation in HDL levels seen in a population.",
+    "pmids": [
+      "34183656",
+      "28173150",
+      "28194238"
+    ]
+  },
+  "body_fat": {
+    "label": "Body Fat Percentage",
+    "what_it_is": "Body fat percentage is the proportion of total body weight made up of fat tissue, usually estimated with tools like bioelectrical impedance scales or DEXA scans, distinct from BMI, which only uses height and weight.",
+    "what_an_association_means": "A large cohort study of over 17,000 volunteers and a smaller study comparing identical twins with different body fat levels have each examined methylation alongside measured body fat percentage at a single time point. The twin study's design, which controls for shared genetics and upbringing, reported evidence compatible with influences running in both directions between methylation and body composition.",
+    "what_it_is_not": "This is not a measurement or estimate of the reader's own body composition, and it does not indicate anything about muscle mass, fitness, or metabolic status specifically. The findings come from comparisons across research participants, not an assessment of any one person.",
+    "typical_evidence": "Methylation research on body fat percentage specifically is thinner than for BMI, resting mainly on one large single-cohort study (Generation Scotland) plus a smaller twin study, with less cross-cohort replication than BMI has.",
+    "pmids": [
+      "39706196",
+      "37392072"
+    ]
+  },
+  "crp": {
+    "label": "C-reactive protein (CRP) levels",
+    "what_it_is": "CRP is a protein made by the liver whose level in blood rises during inflammation, whether from infection, injury, or ongoing low-grade inflammatory processes in the body.",
+    "what_an_association_means": "Researchers measured CRP levels alongside DNA methylation across the genome in large population samples (over 8,800 people in the discovery group, with replication in another 4,100) and identified sites where average methylation differs according to a person's CRP level at the time of measurement. This is a cross-sectional design, meaning methylation and CRP were measured at the same time point, so the data cannot establish which changed first.",
+    "what_it_is_not": "This is not a measurement of a person's current or future CRP level, and it does not diagnose any infection or inflammatory condition. It cannot say whether a person's inflammation is caused by, or is a cause of, the methylation pattern observed at this site.",
+    "typical_evidence": "CRP methylation associations rest on a large multi-cohort meta-analysis with independent replication in a second ancestry group, placing this among the better-replicated inflammation-related EWAS findings.",
+    "pmids": [
+      "27955697"
+    ]
+  },
+  "sex": {
+    "label": "Sex (Biological Sex)",
+    "what_it_is": "Sex here means whether a person's cells carry an XY (typically male) or XX (typically female) chromosome pattern, as recorded for the sample being studied.",
+    "what_an_association_means": "Meta-analyses combining epigenome-wide methylation data from many independent cohorts of newborns, children, and adults, comparing methylation between the sexes at a single time point, have found consistent differences at thousands of DNA sites. These differences appear both on the sex chromosomes, where gene activity is regulated differently between XX and XY cells, and on the other, non-sex chromosomes.",
+    "what_it_is_not": "A methylation difference linked to sex simply reflects the sex already recorded for the samples being compared. It is not a measurement of hormone levels, fertility, gender identity, or any health condition, and it is not a way of determining a person's sex.",
+    "typical_evidence": "Sex differences in DNA methylation are among the most consistently replicated findings in the field, reported across many independent newborn, child, and adult cohorts and across multiple tissue types.",
+    "pmids": [
+      "35690418",
+      "33276343",
+      "38131901",
+      "31892350"
+    ]
+  },
+  "waist_hip_ratio": {
+    "label": "Waist-Hip Ratio",
+    "what_it_is": "Waist-hip ratio (WHR) is waist circumference divided by hip circumference, a measurement used in research to describe how body fat is distributed rather than how much fat is present overall.",
+    "what_an_association_means": "Several cross-sectional cohort studies — including a large Scottish volunteer cohort, a Korean adult cohort, a Chinese twin study, and a meta-analysis across four European cohorts — have compared blood methylation levels with WHR measured at the same visit, identifying specific genome sites where methylation level tracks with WHR in these study samples.",
+    "what_it_is_not": "This is not a measurement of the reader's own body shape or fat distribution, and it does not describe any specific health status. The associations were derived from group comparisons in research cohorts, not from an assessment of any individual.",
+    "typical_evidence": "WHR has fewer independent replications than BMI; several of the available studies are single-population analyses (Korean, Chinese twin) rather than large multi-cohort consortia, so replication across diverse populations is more limited.",
+    "pmids": [
+      "39706196",
+      "29713043",
+      "35882828",
+      "40770034"
+    ]
+  },
+  "hiv_infection": {
+    "label": "HIV infection",
+    "what_it_is": "HIV (human immunodeficiency virus) is a virus that infects and gradually depletes certain immune cells; without treatment it can progress to AIDS, though modern antiretroviral therapy (ART) allows long-term management of the infection.",
+    "what_an_association_means": "Studies comparing whole-blood DNA methylation between people living with HIV and HIV-negative comparison groups, and in some cases tracking the same individuals before and after starting antiretroviral therapy, have found differences in methylation at specific sites. This work spans both cross-sectional case-control comparisons and prospective designs (e.g., pre- versus post-treatment sampling in clinical trial cohorts), and current findings suggest at least part of the methylation signal reflects a consequence of the infection and immune response rather than a pre-existing susceptibility marker, though this is not settled for every site.",
+    "what_it_is_not": "A methylation pattern at these sites does not reveal a person's HIV status, does not diagnose infection, and cannot be used to determine whether someone has or will acquire HIV. It also does not describe how a treated infection is currently progressing for that individual.",
+    "typical_evidence": "HIV-related methylation differences have been reported across multiple independent cohorts and by more than one research group, but sample sizes remain modest by EWAS standards and many specific CpG findings await independent replication.",
+    "pmids": [
+      "34925380",
+      "27105112",
+      "36640455"
+    ]
+  },
+  "gestational_age": {
+    "label": "Gestational Age at Birth",
+    "what_it_is": "Gestational age is the number of weeks a pregnancy had progressed when a baby was born, usually estimated from the date of the mother's last menstrual period or an early pregnancy ultrasound.",
+    "what_an_association_means": "Studies of cord blood and placental samples from birth cohorts, including cross-cohort comparisons of newborns from different countries and ancestries, have found that methylation levels at a defined set of DNA sites track closely with gestational age at birth. Formulas built from these sites can estimate, from a newborn blood sample taken at one point in time, how many weeks a pregnancy lasted.",
+    "what_it_is_not": "A methylation-based estimate of gestational age is a research measurement taken at birth. It does not diagnose any newborn health condition, does not predict a child's future development, and it is not a measure of how a pregnancy or baby is doing.",
+    "typical_evidence": "Gestational age methylation predictors have been validated across several independent cord blood cohorts spanning different populations, but this body of literature is smaller and newer than the adult epigenetic age clock literature.",
+    "pmids": [
+      "33875015",
+      "37443060",
+      "38840168",
+      "39164769"
+    ]
+  },
+  "copd": {
+    "label": "COPD (chronic obstructive pulmonary disease), incident",
+    "what_it_is": "COPD is a long-term lung condition involving obstructed airflow, most often associated with a history of smoking or other chronic exposure to airway irritants, that causes breathing difficulty which typically worsens over time.",
+    "what_an_association_means": "A systematic review of published methylation studies found that blood and airway-tissue methylation differs between people with and without COPD at a number of sites, though study designs vary and most such studies are cross-sectional. Separately, a prospective cohort study followed people over roughly seven years and found that faster \"epigenetic aging\" (a methylation-based estimate of biological age) measured at the start of the study was associated with a higher chance of a COPD diagnosis being recorded later, which is a design that can speak to temporal order in a way cross-sectional studies cannot.",
+    "what_it_is_not": "This is not a lung function test and does not diagnose COPD or predict whether a specific person will develop it. A methylation-based aging estimate is not the same as a clinical diagnosis and does not describe current lung capacity or symptoms.",
+    "typical_evidence": "A 2024 systematic review found substantial heterogeneity in study design across published COPD methylation studies, preventing a formal meta-analysis, and noted that only a small fraction of findings replicated across independent studies — indicating this trait's methylation literature, while sizeable, has significant inconsistency between cohorts.",
+    "pmids": [
+      "38422471",
+      "35536696",
+      "32747609"
+    ]
+  },
+  "rheumatoid_arthritis": {
+    "label": "Rheumatoid arthritis",
+    "what_it_is": "Rheumatoid arthritis is an autoimmune condition in which the immune system attacks the lining of joints, which over time can cause joint pain, swelling, and damage.",
+    "what_an_association_means": "Case-control studies comparing DNA methylation in blood or immune cell subsets (such as B cells or T cells) between people with rheumatoid arthritis and people without it have identified sites where average methylation levels differ between the two groups, with some results replicated across multiple independent patient cohorts. These are cross-sectional comparisons made after diagnosis, so they cannot establish whether the methylation difference existed before disease onset or arose as a consequence of the disease and its inflammation.",
+    "what_it_is_not": "A difference at one of these sites is not a diagnosis of rheumatoid arthritis and cannot be used to say whether a person will develop joint disease. These studies compared groups of already-diagnosed patients to unaffected people; they do not describe what an individual's own future joint health will be.",
+    "typical_evidence": "Rheumatoid arthritis methylation findings include a large case-control study with a validated MHC-region signal and a separate B-cell-specific study replicated across three independent cohorts, giving this trait moderate replication, concentrated mainly in specific immune cell types rather than confirmed uniformly across all tissue types.",
+    "pmids": [
+      "23334450",
+      "28475762",
+      "39846569"
+    ]
+  },
+  "smoking": {
+    "label": "Smoking / Tobacco Smoking",
+    "what_it_is": "Tobacco cigarette smoking is a behavioral and chemical exposure in which combustion products, including nicotine and thousands of other compounds, are inhaled into the lungs and absorbed into the bloodstream.",
+    "what_an_association_means": "Large meta-analyses combining tens of thousands of blood samples across many cohorts have compared current, former, and never smokers and found consistent differences in methylation at specific DNA sites (for example, in and around the AHRR gene). Because smoking status was recorded before methylation was measured and because these methylation changes have been shown to change again after people quit, most researchers in this field interpret these differences as a downstream consequence of tobacco exposure rather than a pre-existing trait that predisposes someone to smoke.",
+    "what_it_is_not": "A methylation pattern at a smoking-associated site does not identify whether a person currently smokes, has ever smoked, or has any smoking-related disease; it is not a measurement of lung damage, cancer risk, or any other individual health outcome, and by itself cannot substitute for someone's own history of tobacco use.",
+    "typical_evidence": "Smoking is among the most extensively replicated exposures in methylation research: the association at sites like AHRR cg05575921 has been reproduced across dozens of independent cohorts, ancestries, and both blood and saliva samples.",
+    "pmids": [
+      "27651444",
+      "32963246",
+      "31456352",
+      "34570667"
+    ]
+  },
+  "clear_cell_renal_cell_carcinoma": {
+    "label": "Clear Cell Renal Cell Carcinoma",
+    "what_it_is": "Clear cell renal cell carcinoma is the most common form of kidney cancer, named for how the cancer cells appear pale and clear under a microscope. It starts in the small tubes inside the kidney that filter blood.",
+    "what_an_association_means": "Most of what is known about methylation in this cancer comes from studies comparing already-removed tumor tissue to nearby normal kidney tissue from the same patients, including a large multi-platform project profiling over 400 tumors. These are tissue-level, after-the-fact comparisons, not blood tests examining people before any diagnosis.",
+    "what_it_is_not": "A methylation site linked to this cancer in tumor-tissue studies is not a screening or diagnostic test, and does not mean a person has, or will develop, kidney cancer. The findings come from comparing tumor samples already removed from patients during treatment, not from testing blood in people without cancer.",
+    "typical_evidence": "Large-scale tumor methylation profiling of clear cell renal cell carcinoma has been done through consortium projects, but systematic reviews of proposed diagnostic and prognostic methylation markers conclude that none have yet been adopted into routine clinical use.",
+    "pmids": [
+      "23792563",
+      "31402218",
+      "28803494",
+      "29777398"
+    ]
+  },
+  "type_2_diabetes": {
+    "label": "Type 2 diabetes",
+    "what_it_is": "Type 2 diabetes is a metabolic condition in which the body does not use insulin effectively, leading to elevated blood sugar levels over time.",
+    "what_an_association_means": "A meta-analysis following participants across five separate cohorts measured blood methylation years before some participants went on to develop type 2 diabetes, allowing the researchers to test methylation differences that preceded diagnosis, as well as separate meta-analyses comparing methylation in people already diagnosed against those without diabetes. Follow-up work using a genetic-based causal-inference method (Mendelian randomization) on the resulting CpG sites found evidence at one site that the methylation difference likely preceded and contributed to later blood sugar dysregulation rather than only reflecting it, though for most of the other sites tested the direction of causation could not be established either way.",
+    "what_it_is_not": "This is not a blood sugar test, a diabetes diagnosis, or a personal risk prediction. Even the prospective (before-diagnosis) findings describe population-level statistical patterns across large cohorts and cannot be used to say whether a given individual will or will not develop type 2 diabetes.",
+    "typical_evidence": "Type 2 diabetes methylation findings are among the better-replicated metabolic-trait associations in the field, resting on multi-cohort meta-analyses of both prospective (pre-diagnosis) and cross-sectional designs, with follow-up causal-inference analysis of the same signals.",
+    "pmids": [
+      "35169870",
+      "33622391",
+      "37202507"
+    ]
+  },
+  "eosinophilia": {
+    "label": "Eosinophilia (Elevated Eosinophil Count)",
+    "what_it_is": "Eosinophils are a type of white blood cell involved in the immune system's response to parasites and in allergic-type inflammation; eosinophilia refers to a higher-than-typical count of these cells in the blood.",
+    "what_an_association_means": "Because eosinophils have their own distinctive methylation pattern compared with other blood cell types, whole-blood methylation data partly reflects the mixture of cell types present in a sample, including how many eosinophils it contains. In one family-based cohort study, a statistical component of blood methylation data that tracked with eosinophil counts and immunoglobulin levels was linked to hundreds of specific DNA sites, measured at a single point in time (and again roughly ten years later in the same people) rather than through a before/after experiment.",
+    "what_it_is_not": "This is not a blood cell count or a substitute for one, does not indicate whether a person has an elevated eosinophil count, and does not identify or predict any allergic, parasitic, or inflammatory condition; methylation differences that track with cell composition reflect what is present in the blood sample, not a forecast of a reader's immune status.",
+    "typical_evidence": "The literature specifically framing eosinophil count as the trait of interest is thin: most of what is known comes from work on blood-cell-composition confounding in methylation studies and from a single family-cohort analysis of asthma-related clinical markers, rather than a dedicated large-scale meta-analysis of eosinophil count itself.",
+    "pmids": [
+      "22848472",
+      "39488688",
+      "27884066"
+    ]
+  },
+  "total_cholesterol": {
+    "label": "Total Cholesterol",
+    "what_it_is": "Total cholesterol is the combined amount of cholesterol carried in the blood across all lipoprotein particle types, one of the values reported in a standard lipid panel.",
+    "what_an_association_means": "Several cohort studies (including the Rotterdam Study, the REGICOR study, the RODAM study in West Africans, and the Generation Scotland cohort) have compared blood methylation with total cholesterol measured at the same time point, and some — though not all — identified specific genome locations, such as one near the SREBF2 gene, where methylation levels differed alongside total cholesterol.",
+    "what_it_is_not": "This is not a cholesterol test result, not an indication of cardiovascular status, and not a measure specific to the reader. Findings for total cholesterol have been less consistent across studies than for some other lipid measures.",
+    "typical_evidence": "Evidence for total cholesterol is comparatively mixed: a systematic review found no consistent global methylation-lipid relationship, and at least one well-powered cohort study found no significant total-cholesterol-associated sites after statistical correction, while others reported specific replicated loci — making this one of the more heterogeneous lipid traits in the methylation literature.",
+    "pmids": [
+      "27746199",
+      "28194238",
+      "36791658",
+      "28173150"
+    ]
+  },
+  "alcohol_consumption": {
+    "label": "Alcohol Consumption",
+    "what_it_is": "Alcohol consumption refers to the amount and frequency of alcoholic beverages a person drinks, ranging from occasional light drinking to patterns that meet criteria for alcohol use disorder.",
+    "what_an_association_means": "A multi-cohort epigenome-wide association study of over 13,000 people compared self-reported alcohol intake (a continuous measure, not a case-control diagnosis) against blood methylation and identified specific CpG sites that track with reported drinking levels at the time of sampling. As with most methylation-trait findings, this is a cross-sectional comparison, so the data cannot establish whether the methylation change came before, during, or as a result of the drinking pattern.",
+    "what_it_is_not": "A methylation result at these sites does not tell a reader how much alcohol they drink, whether they have alcohol use disorder, or anything about their liver, heart, or nervous system health; it is not a lie-detector for self-reported drinking and cannot be used on its own to characterize an individual's drinking history.",
+    "typical_evidence": "Alcohol-methylation associations are moderately well replicated — a large multi-cohort biomarker study (13,000+ participants) has been followed by supporting work on alcohol use disorder, but the field is smaller and less uniformly replicated than smoking, with much of the disease-specific literature still resting on individual cohorts.",
+    "pmids": [
+      "27843151",
+      "33538087",
+      "37373281"
+    ]
+  },
+  "atopy": {
+    "label": "Atopy / Allergic Sensitization",
+    "what_it_is": "Atopy is a tendency toward allergic-type immune responses, most often identified by a positive skin-prick test or elevated allergen-specific antibody (IgE) levels to common substances such as pollen, dust mites, or foods.",
+    "what_an_association_means": "Studies comparing people classified as sensitized (positive allergy testing) versus not sensitized have looked for differences in blood DNA methylation at the same time point the testing was done; one replicated two-cohort study in adolescents identified a set of methylation sites that differed by allergic-sensitization status in both cohorts. These are cross-sectional, case-control-style comparisons, so they cannot establish whether the methylation difference preceded the sensitization, resulted from it, or reflects a shared underlying cause such as immune cell composition.",
+    "what_it_is_not": "This is not an allergy test, does not indicate whether a person is sensitized to any specific allergen, and cannot substitute for skin-prick or IgE blood testing; a methylation result at these sites does not mean a reader has, or will develop, allergies or any allergic disease.",
+    "typical_evidence": "Atopy/allergic-sensitization methylation findings rest on a modest number of independent cohorts (with some cross-cohort replication, e.g. Isle of Wight and BAMSE), which is fewer and smaller than the smoking literature but broader than a single-cohort-only finding.",
+    "pmids": [
+      "30762239",
+      "28322575",
+      "37295475"
+    ]
+  },
+  "primary_sjogrens_syndrome": {
+    "label": "Primary Sjögren's Syndrome",
+    "what_it_is": "Primary Sjögren's syndrome is a chronic autoimmune condition in which the immune system affects moisture-producing glands, most often causing dry eyes and dry mouth, and can also involve other organs.",
+    "what_an_association_means": "Research comparing people diagnosed with primary Sjögren's syndrome to people without the condition has found differences in DNA methylation in immune cells and in salivary gland tissue, most consistently in genes tied to interferon signaling (a part of the immune system). These are case-control comparisons made after diagnosis, so they describe methylation differences that accompany established disease rather than showing what happens before diagnosis.",
+    "what_it_is_not": "A methylation finding here does not diagnose Sjögren's syndrome, does not indicate whether a person has or will develop the condition, and is not a substitute for the clinical criteria (symptoms, blood antibody tests, and gland biopsy) used to diagnose it.",
+    "typical_evidence": "Sjögren's-specific methylation literature is modest in size — largely narrative reviews plus a number of smaller case-control studies of blood, monocytes, or salivary gland tissue — and is much less extensively replicated across independent cohorts than the smoking literature.",
+    "pmids": [
+      "32445100",
+      "30770922",
+      "34112769",
+      "26966136"
+    ]
+  },
+  "pancreatic_ductal_adenocarcinoma": {
+    "label": "Pancreatic Ductal Adenocarcinoma",
+    "what_it_is": "Pancreatic ductal adenocarcinoma is the most common form of pancreatic cancer, arising from the cells lining the ducts of the pancreas, an organ that produces digestive enzymes and insulin.",
+    "what_an_association_means": "Much of the methylation literature here comes from comparing already-diagnosed tumor tissue to nearby normal pancreatic tissue. A smaller number of studies have measured methylation in blood samples collected years before diagnosis within existing long-running cohorts, comparing people later diagnosed with pancreatic cancer to matched people who were not.",
+    "what_it_is_not": "A methylation difference at one of these sites is not a diagnostic or screening test, and blood- or tissue-based methylation markers for this cancer are not established for clinical use. It does not mean a person has, or will develop, pancreatic cancer.",
+    "typical_evidence": "The tumor-tissue methylation literature for this cancer is fairly developed, but prospective blood-based studies measured before diagnosis are few, so this trait's evidence rests on a comparatively small number of cohort studies.",
+    "pmids": [
+      "39584964",
+      "33134824",
+      "36647796"
+    ]
+  },
+  "schizophrenia": {
+    "label": "Schizophrenia",
+    "what_it_is": "Schizophrenia is a psychiatric condition that can involve disruptions in thinking, perception (such as hallucinations or delusions), motivation, and everyday functioning.",
+    "what_an_association_means": "Most methylation studies compare blood samples from people already diagnosed with schizophrenia to samples from people without the diagnosis (a case-control design), rather than following people over time before diagnosis. A meta-analysis pooling blood methylation data from thousands of participants across seven independent cohorts found many methylation differences between people with and without psychosis, though it also found that some of these differences track with blood cell composition, smoking exposure, and treatment-resistant status rather than the diagnosis alone.",
+    "what_it_is_not": "Methylation differences observed in these group comparisons are not a diagnostic test and do not show whether an individual has, or will develop, schizophrenia. Many reported differences overlap with those seen for smoking, medication use, or immune cell composition, so a single site cannot be read as specific to the condition.",
+    "typical_evidence": "This is among the more heavily studied psychiatric conditions in the methylation field, with meta-analyses pooling multiple independent blood cohorts, though the findings are consistently intertwined with confounding from smoking, antipsychotic medication, and blood cell-type composition.",
+    "pmids": [
+      "33646943",
+      "26809779",
+      "39271751",
+      "28523549"
+    ]
+  },
+  "chronic_pain": {
+    "label": "Chronic Pain",
+    "what_it_is": "Chronic pain refers to pain lasting longer than the typical healing period, generally more than three months. It includes conditions such as chronic widespread musculoskeletal pain (associated with fibromyalgia) and chronic low back pain.",
+    "what_an_association_means": "Much of the methylation research on chronic pain comes from twin studies, comparing blood methylation between identical twins where one twin reports chronic widespread pain and the other does not, plus smaller case-control comparisons for conditions like chronic low back pain. These are cross-sectional snapshots comparing people at a single point in time, not studies that followed pain-free people forward to see who later developed pain.",
+    "what_it_is_not": "A methylation difference reported for chronic pain is not a diagnostic test and does not show whether a person has, or will develop, a chronic pain condition. Because pain, medication use, inflammation, and reduced activity can all influence methylation at the same time it is measured, these findings cannot establish which came first.",
+    "typical_evidence": "This trait rests on a comparatively small number of cohorts, chiefly the TwinsUK registry for chronic widespread pain, plus a handful of smaller studies for chronic low back pain and fibromyalgia; overall replication across independent cohorts remains limited.",
+    "pmids": [
+      "28221285",
+      "27832094",
+      "35346352",
+      "30486733"
+    ]
+  },
+  "_protein_level": {
+    "label": "Blood level of a protein",
+    "what_it_is": "This entry covers traits that are simply the measured amount of a specific protein circulating in blood plasma or serum, as quantified by large multiplexed proteomic panels (such as SomaScan or Olink), rather than a disease, symptom, or trait. In the underlying data these appear as a protein identifier (a UniProt accession like P02748, or a panel-specific code such as \"SeqId 4148-49\") rather than a named condition; each one refers to one specific protein's level, not a diagnosis.",
+    "what_an_association_means": "These associations come from studies that measured DNA methylation across the genome and the levels of hundreds to thousands of individual plasma proteins in the same blood sample from participants in a population cohort, then tested each CpG site against each protein's level for a statistical correlation — an approach sometimes called protein quantitative trait methylation (pQTM) analysis. This design is cross-sectional: methylation and protein level are measured at the same time in the same sample, so the data cannot say whether one changed before the other, or whether a third factor (including inherited DNA sequence variants that independently affect both methylation and protein level) accounts for the correlation.",
+    "what_it_is_not": "A methylation-protein association is not a measurement of the reader's own protein level, and it is not a statement that their level is unusually high, low, or abnormal in any way — no protein level has been measured for the reader at all. Because a protein's level in blood is not itself a disease, this is not a diagnosis or a marker of illness, and it does not describe a health outcome, current health status, or future health status of the reader. It is also not evidence that the CpG site controls or is controlled by the protein level: a large share of these correlations trace back to inherited genetic variants (protein quantitative trait loci) that separately influence both, rather than one causing the other.",
+    "typical_evidence": "The overall research strategy — measuring genome-wide methylation alongside large panels of thousands of circulating proteins in the same cohort — is now well established, appearing in several independent population studies of hundreds to thousands of participants. For any single protein-CpG pairing, though, replication varies widely: some associations have been confirmed across two or more independent cohorts, but many of the several thousand individual protein-methylation pairs identified from any one large panel study rest on that single cohort and have not yet been specifically retested elsewhere.",
+    "pmids": [
+      "31900413",
+      "35945220",
+      "35023833",
+      "35592546"
+    ]
+  }
+}

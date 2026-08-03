@@ -130,3 +130,64 @@ def trait_class(trait: str) -> str | None:
     show; it only means nobody has classified it yet.
     """
     return _class_by_variant().get((trait or "").strip().lower())
+
+
+_COPY = Path(__file__).parent / "data" / "reference" / "trait_copy.json"
+_COPY_ALIAS = Path(__file__).parent / "data" / "reference" / "trait_copy_alias.json"
+
+
+@functools.lru_cache(maxsize=1)
+def _copy_table() -> dict:
+    try:
+        with open(_COPY) as fh:
+            return json.load(fh)
+    except (OSError, ValueError):
+        return {}
+
+
+@functools.lru_cache(maxsize=1)
+def _canonical_label_by_variant() -> dict:
+    """raw trait string (lowercased) -> canonical_label."""
+    try:
+        with open(_CANONICAL) as fh:
+            table = json.load(fh)
+    except (OSError, ValueError):
+        return {}
+    return {str(v).strip().lower(): c["canonical_label"]
+            for c in table for v in c.get("variants", [])}
+
+
+@functools.lru_cache(maxsize=1)
+def _copy_key_by_label() -> dict:
+    """canonical_label -> copy key, via the curated alias map.
+
+    Explicit rather than fuzzy: normalising labels to keys silently failed on 8 of
+    22 concepts — including BMI, CRP, smoking, COPD and type 2 diabetes, i.e. most
+    of the volume. A near-miss here attaches the wrong explanation to a trait, so
+    the mapping is curated and asserted, never guessed.
+    """
+    try:
+        with open(_COPY_ALIAS) as fh:
+            alias = json.load(fh)
+    except (OSError, ValueError):
+        return {}
+    return {label: key for key, labels in alias.items() for label in labels}
+
+
+def trait_copy(trait: str) -> dict:
+    """Plain-language copy for a trait, or {} when none is curated.
+
+    Protein-level traits (bare accession or the "<GENE> protein levels (SeqId=...)"
+    form) all share one class-wide entry — they are 68.7% of the catalog and the
+    explanation is the same for every one of them.
+    """
+    t = (trait or "").strip()
+    if not t:
+        return {}
+    table = _copy_table()
+    if is_uniprot(t) or re.search(r"protein levels?\s*\(SeqId", t, re.I):
+        return table.get("_protein_level", {})
+    label = _canonical_label_by_variant().get(t.lower())
+    if not label:
+        return {}
+    return table.get(_copy_key_by_label().get(label, ""), {})
