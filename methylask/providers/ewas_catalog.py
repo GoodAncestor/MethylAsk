@@ -12,7 +12,7 @@ from __future__ import annotations
 import json, ssl, os, hashlib, time, urllib.request, urllib.error
 from pathlib import Path
 from biocore.providers.base import Provider, Finding, Tier, Category, ProviderStatus, Health
-from ..traits import classify_topic, humanize_trait, trait_class
+from ..traits import classify_topic, humanize_trait, trait_class, trait_copy_key
 from .ewas_mirror import mirror_lookup, build_mirror
 
 # per-CpG response cache on disk. Live EWAS lookups are ~1 HTTP call per marker
@@ -140,6 +140,12 @@ class EwasCatalogProvider(Provider):
         tclass = trait_class(trait)
         if tclass:
             detail["trait_class"] = tclass
+        # Resolved from the RAW trait: detail["trait"] below holds the humanized
+        # name ("Alpha-2-macroglobulin"), which resolves to no copy at all, so a
+        # renderer keying off it would lose every protein trait.
+        ckey = trait_copy_key(trait)
+        if ckey:
+            detail["copy_key"] = ckey
         if gene:
             detail["gene"] = gene
         if accession:

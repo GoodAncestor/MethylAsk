@@ -35,3 +35,44 @@ def test_every_copy_entry_carries_pmids():
     from methylask.traits import _copy_table
     for k, v in _copy_table().items():
         assert v.get("pmids"), f"{k} has no pmids"
+
+
+# --- the copy key must survive humanization --------------------------------
+
+def test_protein_finding_keeps_a_usable_copy_key():
+    """humanize_trait rewrites 'P01023' to 'Alpha-2-macroglobulin' before it is
+    stored, so a renderer looking up copy from detail['trait'] finds nothing for
+    any protein — 68.7% of the catalog. The key is resolved from the RAW trait
+    at provider time and carried on the finding."""
+    from methylask.providers.ewas_catalog import EwasCatalogProvider
+    from methylask.traits import trait_copy_key, _copy_table
+    f = EwasCatalogProvider()._finding("cg1", {
+        "trait": "P01023", "beta": -0.01, "n": 2000, "p": 1e-20, "se": 0.001,
+        "tissue": "Whole blood", "methylation_array": "450k", "chrpos": "1:1",
+        "pmid": "1", "gene": "A2M"})
+    assert f.detail["trait"] == "Alpha-2-macroglobulin"      # display name kept
+    assert f.detail["copy_key"] == "_protein_level"          # copy still reachable
+    assert _copy_table()[f.detail["copy_key"]]["label"] == "Blood level of a protein"
+
+
+def test_named_trait_finding_carries_its_copy_key():
+    from methylask.providers.ewas_catalog import EwasCatalogProvider
+    f = EwasCatalogProvider()._finding("cg1", {
+        "trait": "BMI", "beta": 0.01, "n": 2000, "p": 1e-20, "se": 0.001,
+        "tissue": "Whole blood", "methylation_array": "450k", "chrpos": "1:1",
+        "pmid": "1", "gene": "X"})
+    assert f.detail["copy_key"] == "bmi"
+
+
+def test_uncurated_trait_carries_no_copy_key():
+    from methylask.providers.ewas_catalog import EwasCatalogProvider
+    f = EwasCatalogProvider()._finding("cg1", {
+        "trait": "Fractional exhaled nitric oxide (FeNO)", "beta": 0.01, "n": 20,
+        "p": 0.01, "se": 0.001, "tissue": "Whole blood", "methylation_array": "450k",
+        "chrpos": "1:1", "pmid": "1", "gene": "X"})
+    assert "copy_key" not in f.detail
+
+
+def test_trait_copy_key_is_none_for_unknown():
+    from methylask.traits import trait_copy_key
+    assert trait_copy_key("nothing at all") is None

@@ -174,20 +174,26 @@ def _copy_key_by_label() -> dict:
     return {label: key for key, labels in alias.items() for label in labels}
 
 
-def trait_copy(trait: str) -> dict:
-    """Plain-language copy for a trait, or {} when none is curated.
+def trait_copy_key(trait: str) -> str | None:
+    """Copy-table key for a RAW catalog trait string, or None.
 
-    Protein-level traits (bare accession or the "<GENE> protein levels (SeqId=...)"
-    form) all share one class-wide entry — they are 68.7% of the catalog and the
-    explanation is the same for every one of them.
+    Must be resolved from the raw string: humanize_trait rewrites "P01023" to
+    "Alpha-2-macroglobulin" before the trait is stored on a finding, and the
+    rewritten name resolves to nothing — which would silently strip copy from
+    every protein trait, i.e. 68.7% of the catalog.
     """
     t = (trait or "").strip()
     if not t:
-        return {}
-    table = _copy_table()
+        return None
     if is_uniprot(t) or re.search(r"protein levels?\s*\(SeqId", t, re.I):
-        return table.get("_protein_level", {})
+        return "_protein_level" if "_protein_level" in _copy_table() else None
     label = _canonical_label_by_variant().get(t.lower())
     if not label:
-        return {}
-    return table.get(_copy_key_by_label().get(label, ""), {})
+        return None
+    key = _copy_key_by_label().get(label)
+    return key if key in _copy_table() else None
+
+
+def trait_copy(trait: str) -> dict:
+    """Plain-language copy for a raw trait string, or {} when none is curated."""
+    return _copy_table().get(trait_copy_key(trait) or "", {})
