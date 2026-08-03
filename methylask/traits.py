@@ -97,3 +97,36 @@ def humanize_trait(trait: str) -> tuple[str, str, str | None]:
         return (name or t, "protein", t)
     # light tidy: collapse whitespace, keep the study's wording otherwise
     return (re.sub(r"\s+", " ", t), "trait", None)
+
+
+_CANONICAL = Path(__file__).parent / "data" / "reference" / "trait_canonical.json"
+
+
+@functools.lru_cache(maxsize=1)
+def _class_by_variant() -> dict:
+    """raw trait string (lowercased) -> class, from the curated vocabulary.
+
+    Keyed by VARIANT, not canonical label: the catalog's rows carry the raw
+    spelling ("age*sex"), while the table names concepts ("Age x Sex interaction
+    term"). Looking up by label would silently match nothing.
+    """
+    try:
+        with open(_CANONICAL) as fh:
+            table = json.load(fh)
+    except (OSError, ValueError):
+        return {}
+    out = {}
+    for c in table:
+        for v in c.get("variants", []):
+            out[str(v).strip().lower()] = c.get("class")
+    return out
+
+
+def trait_class(trait: str) -> str | None:
+    """'health_trait' | 'covariate' | 'protein_level' | 'other', or None.
+
+    None means the trait is not in the curated top-400 — the great majority of
+    the 6,515 distinct strings. Absence is not evidence that a trait is safe to
+    show; it only means nobody has classified it yet.
+    """
+    return _class_by_variant().get((trait or "").strip().lower())

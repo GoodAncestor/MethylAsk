@@ -12,7 +12,7 @@ from __future__ import annotations
 import json, ssl, os, hashlib, time, urllib.request, urllib.error
 from pathlib import Path
 from biocore.providers.base import Provider, Finding, Tier, Category, ProviderStatus, Health
-from ..traits import classify_topic, humanize_trait
+from ..traits import classify_topic, humanize_trait, trait_class
 from .ewas_mirror import mirror_lookup, build_mirror
 
 # per-CpG response cache on disk. Live EWAS lookups are ~1 HTTP call per marker
@@ -134,6 +134,12 @@ class EwasCatalogProvider(Provider):
                   ("beta", "se", "p", "n", "tissue", "methylation_array", "chrpos")}
         detail["topic"] = topic
         detail["trait"] = label
+        # Study-design variables ("Tissue") describe the sample, not the person.
+        # Tagged rather than dropped: the association is a real catalog fact, so
+        # it stays in the data and the report decides whether to show it.
+        tclass = trait_class(trait)
+        if tclass:
+            detail["trait_class"] = tclass
         if gene:
             detail["gene"] = gene
         if accession:
