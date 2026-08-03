@@ -22,13 +22,26 @@ from biocore.providers.base import Provider, Finding, Tier, Category, ProviderSt
 _API = "https://api.gdc.cancer.gov/"
 # sample_type strings GDC uses; anything containing "Normal" is the normal arm.
 _NORMAL_HINT = "normal"
+# Conventional in-container path for the summary volume, used only when neither a
+# constructor argument nor GDC_SUMMARY_DB says otherwise.
+_DEFAULT_SUMMARY_PATH = "/data/gdc_summary/gdc_summary.db"
 
 
 class GdcProvider(Provider):
     name = "gdc"
 
+    # Where the prebuilt summary lives when no path is passed. A container mounts
+    # the summary volume and sets this; refresh() has always honoured it, so the
+    # READ path must resolve it identically or the two disagree.
+    _SUMMARY_ENV = "GDC_SUMMARY_DB"
+
     def __init__(self, summary_path: str | None = None, timeout: int = 60):
-        self._summary_path = Path(summary_path) if summary_path else None
+        # Fall back to the environment. Every production call site constructs a
+        # bare GdcProvider() (dnareport/orchestrate.py, methylask/cli.py), so
+        # while only refresh() read GDC_SUMMARY_DB, get() returned [] no matter
+        # how complete the summary on disk was — a built mirror was unreachable.
+        resolved = summary_path or os.environ.get(self._SUMMARY_ENV)
+        self._summary_path = Path(resolved) if resolved else None
         self._timeout = timeout
 
     def _api(self, endpoint: str, params: dict) -> dict:
@@ -133,9 +146,11 @@ class GdcProvider(Provider):
         accumulating per (cpg, project, arm) running count+mean, into a SQLite at
         self._summary_path. Heavy (full corpus 20,397 files, several hundred GB) — runs on a
         worker via `worker.py refresh:gdc`. max_files caps it for validation."""
+        # __init__ already resolved an argument or GDC_SUMMARY_DB; reaching here
+        # means neither was given. Don't re-read the env — that is how the read and
+        # write paths drifted apart in the first place.
         if not self._summary_path:
-            self._summary_path = Path(os.environ.get("GDC_SUMMARY_DB",
-                                      "/data/gdc_summary/gdc_summary.db"))
+            self._summary_path = Path(_DEFAULT_SUMMARY_PATH)
         wd = Path(workdir or tempfile.mkdtemp(prefix="gdc-"))
         wd.mkdir(parents=True, exist_ok=True)
         # accumulator: {(cpg, project): [n_t, sum_t, n_n, sum_n]}

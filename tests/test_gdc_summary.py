@@ -47,3 +47,20 @@ def test_missing_arm_skipped(tmp_path):
 def test_absent_marker_empty(tmp_path):
     p = GdcProvider(summary_path=str(_mini_summary(tmp_path)))
     assert p.get("cg999") == []
+
+
+def test_summary_path_resolved_from_env(tmp_path, monkeypatch):
+    """A provider built with NO argument must still find the summary via
+    GDC_SUMMARY_DB. Every production call site does a bare `GdcProvider()`
+    (orchestrate.py, cli.py), so when only refresh() read that variable the read
+    path returned nothing no matter how complete the summary on disk was — and
+    every test above passing summary_path= explicitly is what hid it."""
+    monkeypatch.setenv("GDC_SUMMARY_DB", str(_mini_summary(tmp_path)))
+    assert GdcProvider().get("cg111")[0].tier.value == "robust"
+
+
+def test_no_summary_configured_is_empty(monkeypatch):
+    """With neither an argument nor the env var, get() stays empty rather than
+    raising — status() is what explains the missing summary."""
+    monkeypatch.delenv("GDC_SUMMARY_DB", raising=False)
+    assert GdcProvider().get("cg111") == []
