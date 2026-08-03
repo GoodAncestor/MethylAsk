@@ -146,6 +146,9 @@ class EwasCatalogProvider(Provider):
         ckey = trait_copy_key(trait)
         if ckey:
             detail["copy_key"] = ckey
+            # the exact phrase the sentence opens with, so the renderer can link
+            # it in place instead of searching the prose for a trait name
+            detail["subject"] = subject
         if gene:
             detail["gene"] = gene
         if accession:
