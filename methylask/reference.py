@@ -54,6 +54,21 @@ def load_reference_table(path: Path | None = None) -> dict:
     return table
 
 
+_MEANING_FIELDS = ("label", "what_was_read", "what_it_is_not")
+
+
+def marker_meaning(table: dict, marker: str) -> dict:
+    """Plain-language copy for a marker: what it is, and what it is not.
+
+    A probe id and a beta value mean nothing to the person reading the report.
+    Each curated marker carries a human label plus the pair of statements that
+    make a finding usable — what the measurement is, and the limits of what it
+    can support. Empty dict when the marker is not curated.
+    """
+    entry = table.get(marker, {})
+    return {k: entry[k] for k in _MEANING_FIELDS if entry.get(k)}
+
+
 def reference_for(table: dict, marker: str) -> list[dict]:
     """Published reference values for a marker; [] when none is curated."""
     return list(table.get(marker, {}).get("references", []))

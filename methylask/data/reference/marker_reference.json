@@ -29,7 +29,10 @@
         "n": 262,
         "pmid": "23691101"
       }
-    ]
+    ],
+    "label": "Tobacco smoke exposure",
+    "what_was_read": "Methylation at this site in the AHRR gene is the most consistently replicated marker of tobacco smoke exposure in the epigenetics literature. Levels drop with current smoking and recover slowly over years after stopping.",
+    "what_it_is_not": "This is not a test for whether someone smokes. Second-hand smoke and some combustion exposures move the same site, and because recovery after quitting is gradual, a reading between groups cannot date an exposure or separate a former smoker from someone with regular second-hand exposure."
   },
   "cg21566642": {
     "gene": "2q37.1 (intergenic; near ALPPL2/ALPP)",
@@ -61,7 +64,10 @@
         "n": 262,
         "pmid": "23691101"
       }
-    ]
+    ],
+    "label": "Tobacco smoke exposure (second site)",
+    "what_was_read": "A second smoking-associated site, reported in the same cohort as the AHRR marker above. It sits in a non-coding stretch of chromosome 2, near ALPPL2.",
+    "what_it_is_not": "Because the site is intergenic, it is not evidence about any particular gene's activity. Where this site and the AHRR site point in different directions, the disagreement is the result \u2014 neither reading is confirmed by the other."
   },
   "cg06690548": {
     "gene": "SLC7A11",
@@ -84,7 +90,10 @@
         "n": 243,
         "pmid": "34857913"
       }
-    ]
+    ],
+    "label": "Alcohol exposure",
+    "what_was_read": "Methylation at this site in SLC7A11 differed between people with a clinical diagnosis of alcohol use disorder and healthy controls in a hospital cohort.",
+    "what_it_is_not": "The published comparison is a clinical diagnosis against controls \u2014 not how much someone drinks. No published values exist for light or moderate drinking, so this reading cannot place anyone on a scale of intake."
   },
   "cg17860381": {
     "gene": "NR3C1",
@@ -98,7 +107,10 @@
         "n": 16,
         "pmid": "28300138"
       }
-    ]
+    ],
+    "label": "Glucocorticoid receptor signalling",
+    "what_was_read": "A site in NR3C1, the gene for the receptor that cortisol acts through. The only published reference value comes from the healthy control arm of a study of Cushing's syndrome \u2014 sixteen people.",
+    "what_it_is_not": "Sixteen people is not a population. This reference says little about where a general-population reading should fall, and nothing about anyone's cortisol levels, stress, or mental health."
   },
   "cg03546163": {
     "gene": "FKBP5",
@@ -113,6 +125,9 @@
         "n": 298,
         "pmid": "28401840"
       }
-    ]
+    ],
+    "label": "FKBP5 stress-response gene",
+    "what_was_read": "A site in FKBP5, which regulates the body's cortisol feedback loop. The published reference comes from a birth cohort and was measured in cord blood at delivery.",
+    "what_it_is_not": "A newborn cord-blood reference is not a benchmark for an adult sample. Methylation at this site is not a measure of stress, and no comparison is shown here unless the sample is the same tissue."
   }
 }

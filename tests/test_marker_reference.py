@@ -115,3 +115,31 @@ def test_unknown_sample_tissue_does_not_suppress(table):
     # omitting tissue must not silently withhold everything
     out = positions_for_sample({"cg05575921": 0.93}, tissue=None, table=table)
     assert out[0].positions and out[0].suppressed_reason is None
+
+
+# --- human-readable meaning --------------------------------------------------
+
+def test_marker_meaning_exposes_label_and_the_two_caveat_fields():
+    from methylask.reference import marker_meaning
+    t = load_reference_table()            # the shipped, curated table
+    m = marker_meaning(t, "cg05575921")
+    assert m["label"] == "Tobacco smoke exposure"
+    assert "AHRR" in m["what_was_read"]
+    assert m["what_it_is_not"]
+
+
+def test_marker_meaning_is_empty_for_an_uncurated_marker():
+    from methylask.reference import marker_meaning
+    assert marker_meaning({}, "cg99999999") == {}
+
+
+def test_every_curated_marker_has_human_copy():
+    # a marker with a reference value but no plain-language label would render
+    # as a bare probe id and a bare number, which is what we are fixing
+    from methylask.reference import marker_meaning
+    t = load_reference_table()
+    for probe in t:
+        m = marker_meaning(t, probe)
+        assert m.get("label"), f"{probe} has no label"
+        assert m.get("what_was_read"), f"{probe} has no what_was_read"
+        assert m.get("what_it_is_not"), f"{probe} has no what_it_is_not"
