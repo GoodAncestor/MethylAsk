@@ -8,9 +8,9 @@ mirror stores effect sizes — the difference a trait makes to methylation — n
 absolute levels in a named reference group. Every entry here is a number read
 out of a paper by a person, with the paper recorded.
 
-The table ships empty. An unpopulated marker is not a failure: `reference_for()`
-returns `[]` and the card reports that no published reference value exists for
-this marker, which is a truer statement than a number without a source.
+An unpopulated marker is not a failure: `reference_for()` returns `[]` and the
+card reports that no published reference value exists for this marker, which is
+a truer statement than a number without a source.
 
 ## Schema
 
@@ -41,21 +41,51 @@ people making health decisions.
 Several reference values may exist per marker (e.g. never-smoker, former smoker,
 current smoker). List them all; the card can position the sample against each.
 
-## Wanted
+## State — first curation pass, 2026-08-03
 
-Markers surfaced by the Cellscript prototype, each needing a sourced reference
-value before its card can quote one. Morgan's prototype already displays numbers
-for the starred ones, so her sources are the fastest path.
+Populated: 10 rows across 5 probes.
 
-| Marker | Gene / signature | Value needed | Prototype shows |
+| Probe | Gene | Groups | Source |
 |---|---|---|---|
-| cg05575921 ★ | AHRR — tobacco smoke | never-smoker mean; current-smoker mean | never-smoker ≈ 0.85 |
-| cg21566642 | tobacco smoke (secondary) | never-smoker mean | — |
-| cg06690548 ★ | SLC7A11 — alcohol intake | means by intake band | light-moderate ≈ 0.86 |
-| cg17860381, cg20241083, cg03546163 | NR3C1 / FKBP5 — glucocorticoid signalling | cohort mean + SD | +2.4σ vs cohort |
-| cg09649689, cg16232979, cg11761638 | CLOCK / PER2 / ARNTL — circadian | cohort mean + SD | +1.1σ vs cohort |
-| 19-site composite | long-term residential PM2.5 | composite score distribution | +0.7σ vs cohort |
-| 7-site composite | early-life adversity | composite score distribution | −0.2σ vs cohort |
+| cg05575921 | AHRR | never / former / current smoker | Zeilinger 2013, PMID 23691101 |
+| cg21566642 | 2q37.1 intergenic | never / former / current smoker | Zeilinger 2013, PMID 23691101 |
+| cg06690548 | SLC7A11 | AUD cases / healthy controls | Lohoff 2022, PMID 34857913 |
+| cg17860381 | NR3C1 | healthy control women | Glad 2017, PMID 28300138 |
+| cg03546163 | FKBP5 | birth-cohort infants | Mulder 2017, PMID 28401840 |
 
-Composite scores need the site list and the weighting as published, not just a
-distribution — record those alongside the reference values.
+Carry these caveats into any copy that quotes them:
+
+- **The smoking values are medians, not means** (`stat: "median"`; the paper
+  prints only median + IQR). Do not call them averages and do not derive a sigma.
+- **cg17860381 is n=16**, a clinical study's control arm — not a population.
+- **cg03546163 is cord blood**, i.e. neonatal. Comparing an adult sample to it
+  requires saying so.
+- **cg06690548 is alcohol-use-disorder cases vs controls**, a heavy-vs-low proxy.
+  No paper publishes per-intake-band means, so a claim like "vs light drinkers"
+  is not supported.
+- Only one row (cg03546163) has a published SD. Assume `sd` is absent.
+
+## Probe IDs that do not exist
+
+Checked against the bundled Zhou-lab manifests via `normalize.Manifest` — these
+are on **no** array generation (27k/450k/EPIC/EPICv2) and are not curatable:
+
+    cg20241083    cg09649689    cg11761638
+
+They came in with the Cellscript prototype's marker list. `cg16232979` *is* a
+real probe but maps to **chr19:16076820**, which is not CLOCK (chr4), PER2
+(chr2) or ARNTL (chr11) — so its attribution to a circadian gene is also wrong.
+Validate any new marker against the manifests before commissioning research on it.
+
+## Composites — do not exist as specified
+
+Neither the "19-site PM2.5" nor the "7-site early-life adversity" composite
+exists in the literature as described. The only 19-CpG air-pollution set is a
+7 + 12 split that is **NO2**-associated, never summed into a published score.
+The well-known "7-CpG" signature is the Vidal-Bralo/BASE-II **chronological-age
+clock** — a name collision, unrelated to adversity. Real adversity composites
+have 3, 4, 9 or 14 CpGs and none publishes a score mean + SD.
+
+Adopting a composite is a product decision, not a research gap. Any composite we
+adopt needs its published probe list **and weights**, not just a distribution —
+a distribution for a score computed differently is meaningless.
