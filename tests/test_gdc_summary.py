@@ -111,3 +111,17 @@ def test_no_summary_configured_is_empty(monkeypatch):
     raising — status() is what explains the missing summary."""
     monkeypatch.delenv("GDC_SUMMARY_DB", raising=False)
     assert GdcProvider().get("cg111") == []
+
+
+def test_unwritable_summary_path_fails_before_downloading(tmp_path, monkeypatch):
+    """The writability check must run BEFORE any download. A build dir created by
+    docker as root under a container running as the service account used to
+    surface as `unable to open database file` only at the very end — after the
+    whole corpus had been streamed."""
+    called = []
+    p = GdcProvider(summary_path=str(tmp_path / "ro" / "gdc.db"))
+    (tmp_path / "ro").mkdir(mode=0o500)
+    monkeypatch.setattr(p, "_list_files", lambda *a, **k: called.append(1) or iter([]))
+    st = p.refresh(per_arm=1)
+    assert st.health.value == "unavailable" and "not writable" in st.note
+    assert not called       # nothing was listed, so nothing was downloaded

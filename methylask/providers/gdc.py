@@ -218,6 +218,19 @@ class GdcProvider(Provider):
         # write paths drifted apart in the first place.
         if not self._summary_path:
             self._summary_path = Path(_DEFAULT_SUMMARY_PATH)
+        # Prove the output is writable BEFORE downloading tens of GB. The build
+        # only touched this path at the very end, so a plain permissions problem —
+        # a build dir docker created as root under a container running as the
+        # service account — surfaced as `unable to open database file` after the
+        # whole corpus had been streamed and accumulated. Same shape as the
+        # archiving bug that discarded finished mirrors: cheap check, late.
+        try:
+            self._summary_path.parent.mkdir(parents=True, exist_ok=True)
+            probe = self._summary_path.parent / f".{self._summary_path.name}.probe"
+            probe.touch(); probe.unlink()
+        except OSError as e:
+            return ProviderStatus(self.name, Health.UNAVAILABLE,
+                                  note=f"summary path not writable ({self._summary_path}): {e}")
         wd = Path(workdir or tempfile.mkdtemp(prefix="gdc-"))
         wd.mkdir(parents=True, exist_ok=True)
         if per_arm:
