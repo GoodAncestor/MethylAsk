@@ -33,9 +33,16 @@ A sampled build records what it did in `summary_meta` and every Finding it produ
 carries a `sampling` key, so a thin summary can't be mistaken for a full one.
 """
 from __future__ import annotations
-import os, json, math, sqlite3, tempfile, time, urllib.parse, urllib.request, urllib.error
+import os, sys, json, math, sqlite3, tempfile, time, urllib.parse, urllib.request, urllib.error
 from pathlib import Path
 from biocore.providers.base import Provider, Finding, Tier, Category, ProviderStatus, Health
+
+
+def _log(msg: str) -> None:
+    """Build progress, on stderr so it never mixes with a caller's stdout. Only
+    refresh() calls this; the read path stays silent."""
+    print(f"{time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())} gdc: {msg}",
+          file=sys.stderr, flush=True)
 
 _API = "https://api.gdc.cancer.gov/"
 # sample_type strings GDC uses; anything containing "Normal" is the normal arm.
@@ -216,6 +223,8 @@ class GdcProvider(Provider):
         if per_arm:
             plan = self._plan_stratified(per_arm)
             sampling = f"stratified: up to {per_arm} files per arm per project"
+            _log(f"stratified plan: {len(plan)} files across "
+                 f"{len({f['project'] for f in plan})} projects")
         elif max_files:
             plan = self._list_files(max_files)
             sampling = f"first {max_files} files in API page order (biased — validation only)"
@@ -247,7 +256,12 @@ class GdcProvider(Provider):
                             continue
                         if math.isnan(b):
                             continue
-                        key = (cpg, f["project"])
+                        # intern the probe id. Each parsed line makes a fresh str,
+                        # and the tuple key keeps a reference to whichever one
+                        # created the cell — so without this the accumulator
+                        # retains one string per (cpg, project) cell, tens of
+                        # millions of them, instead of one per distinct probe.
+                        key = (sys.intern(cpg), f["project"])
                         s = acc.setdefault(key, [0, 0.0, 0, 0.0])
                         if arm_n:
                             s[2] += 1; s[3] += b
@@ -255,6 +269,12 @@ class GdcProvider(Provider):
                             s[0] += 1; s[1] += b
                 local.unlink(missing_ok=True)   # stream: don't keep the full corpus
                 n_files += 1
+                # A stratified build is thousands of files and hours long. Silence
+                # for that stretch is indistinguishable from a hang, and the run is
+                # too expensive to restart on a guess.
+                if n_files % 50 == 0:
+                    _log(f"{n_files}/{len(plan) if isinstance(plan, list) else '?'} files, "
+                         f"{len(acc):,} cells")
         except Exception as e:
             return ProviderStatus(self.name, Health.UNAVAILABLE,
                                   note=f"refresh failed after {n_files} files: {e}")
