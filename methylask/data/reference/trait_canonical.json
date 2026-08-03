@@ -1,0 +1,3069 @@
+[
+  {
+    "canonical_label": "Age",
+    "variants": [
+      "age",
+      "Age"
+    ],
+    "total_associations": 717205,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "BMI (Body mass index)",
+    "variants": [
+      "BMI",
+      "Body mass index",
+      "body mass index"
+    ],
+    "total_associations": 162811,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "HDL cholesterol",
+    "variants": [
+      "HDL cholesterol",
+      "Serum high-density lipoprotein cholesterol"
+    ],
+    "total_associations": 134823,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "C-reactive protein (CRP)",
+    "variants": [
+      "C-reactive protein (CRP) levels",
+      "C-reactive protein"
+    ],
+    "total_associations": 95904,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Sex",
+    "variants": [
+      "sex",
+      "Sex"
+    ],
+    "total_associations": 135987,
+    "class": "other"
+  },
+  {
+    "canonical_label": "Gestational age",
+    "variants": [
+      "Gestational age",
+      "gestational age"
+    ],
+    "total_associations": 86259,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Total cholesterol",
+    "variants": [
+      "Total cholesterol",
+      "Serum total cholesterol"
+    ],
+    "total_associations": 19621,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Alcohol consumption",
+    "variants": [
+      "Alcohol consumption",
+      "Alcohol Consumption"
+    ],
+    "total_associations": 14557,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Schizophrenia",
+    "variants": [
+      "Schizophrenia",
+      "schizophrenia"
+    ],
+    "total_associations": 12269,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Maternal smoking in pregnancy",
+    "variants": [
+      "Maternal smoking in pregnancy",
+      "Maternal smoking during pregnancy"
+    ],
+    "total_associations": 8484,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "ADHD (Attention deficit hyperactivity disorder)",
+    "variants": [
+      "Attention deficit hyperactivity disorder",
+      "ADHD"
+    ],
+    "total_associations": 3639,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Alzheimer's disease Braak stage",
+    "variants": [
+      "alzheimers disease braak stage",
+      "Alzheimers disease Braak stage"
+    ],
+    "total_associations": 2641,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Birthweight",
+    "variants": [
+      "birthweight",
+      "birth weight"
+    ],
+    "total_associations": 1440,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Gestational diabetes mellitus",
+    "variants": [
+      "gestational diabetes milletus",
+      "Gestational diabetes mellitus"
+    ],
+    "total_associations": 1291,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Lung cancer",
+    "variants": [
+      "lung cancer",
+      "Lung cancer"
+    ],
+    "total_associations": 1013,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Waist circumference",
+    "variants": [
+      "Waist circumference",
+      "Waist Circumference"
+    ],
+    "total_associations": 714,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Triglycerides",
+    "variants": [
+      "Triglycerides",
+      "Serum triglycerides"
+    ],
+    "total_associations": 436,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Smoking (Tobacco smoking)",
+    "variants": [
+      "Smoking",
+      "Tobacco smoking"
+    ],
+    "total_associations": 41186,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Body fat",
+    "variants": [
+      "Body fat"
+    ],
+    "total_associations": 105353,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Waist-hip ratio",
+    "variants": [
+      "Waist-hip ratio"
+    ],
+    "total_associations": 78737,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "HIV infection",
+    "variants": [
+      "HIV infection"
+    ],
+    "total_associations": 67506,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident COPD",
+    "variants": [
+      "Incident COPD"
+    ],
+    "total_associations": 55873,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Rheumatoid arthritis",
+    "variants": [
+      "Rheumatoid arthritis"
+    ],
+    "total_associations": 52367,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Clear cell renal carcinoma",
+    "variants": [
+      "Clear cell renal carcinoma"
+    ],
+    "total_associations": 35550,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident Type 2 Diabetes",
+    "variants": [
+      "Incident Type 2 Diabetes"
+    ],
+    "total_associations": 32922,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Fetal vs adult liver",
+    "variants": [
+      "Fetal vs adult liver"
+    ],
+    "total_associations": 28901,
+    "class": "other"
+  },
+  {
+    "canonical_label": "Eosinophilia",
+    "variants": [
+      "eosinophilia"
+    ],
+    "total_associations": 24114,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Age 4 vs age 0",
+    "variants": [
+      "Age 4 vs age 0"
+    ],
+    "total_associations": 14150,
+    "class": "other"
+  },
+  {
+    "canonical_label": "Atopy",
+    "variants": [
+      "atopy"
+    ],
+    "total_associations": 13556,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Primary Sjogren's syndrome",
+    "variants": [
+      "Primary Sjogrens syndrome"
+    ],
+    "total_associations": 12238,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Pancreatic ductal adenocarcinoma",
+    "variants": [
+      "Pancreatic ductal adenocarcinoma"
+    ],
+    "total_associations": 11634,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Prevalent Type 2 Diabetes (Self-report)",
+    "variants": [
+      "Prevalent Type 2 Diabetes (Self-report)"
+    ],
+    "total_associations": 8892,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Prevalent COPD (Self-report)",
+    "variants": [
+      "Prevalent COPD (Self-report)"
+    ],
+    "total_associations": 8657,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Prevalent Chronic Pain (Self-report)",
+    "variants": [
+      "Prevalent Chronic Pain (Self-report)"
+    ],
+    "total_associations": 8651,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Infant sex",
+    "variants": [
+      "Infant sex"
+    ],
+    "total_associations": 7805,
+    "class": "other"
+  },
+  {
+    "canonical_label": "Age x Sex interaction term",
+    "variants": [
+      "age*sex"
+    ],
+    "total_associations": 6014,
+    "class": "covariate"
+  },
+  {
+    "canonical_label": "Crohn's disease",
+    "variants": [
+      "Crohn's disease"
+    ],
+    "total_associations": 5414,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Fractional exhaled nitric oxide (FeNO)",
+    "variants": [
+      "fractional exhaled nitric oxide (FeNO)"
+    ],
+    "total_associations": 4888,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident Lung Cancer",
+    "variants": [
+      "Incident Lung Cancer"
+    ],
+    "total_associations": 4144,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Alcohol consumption per day",
+    "variants": [
+      "Alcohol consumption per day"
+    ],
+    "total_associations": 4134,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Inflammatory bowel disease",
+    "variants": [
+      "Inflammatory bowel disease"
+    ],
+    "total_associations": 3646,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Ulcerative colitis",
+    "variants": [
+      "Ulcerative colitis"
+    ],
+    "total_associations": 3406,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Prenatal smoke exposure",
+    "variants": [
+      "Prenatal smoke exposure"
+    ],
+    "total_associations": 3096,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Hypertensive disorders of pregnancy",
+    "variants": [
+      "Hypertensive disorders of pregnancy"
+    ],
+    "total_associations": 3071,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Child abuse",
+    "variants": [
+      "Child abuse"
+    ],
+    "total_associations": 2856,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Idiopathic/heritable pulmonary arterial hypertension",
+    "variants": [
+      "Idiopathic/heritable pulmonary arterial hypertension"
+    ],
+    "total_associations": 2821,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident Ischemic Heart Disease",
+    "variants": [
+      "Incident Ischemic Heart Disease"
+    ],
+    "total_associations": 2761,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Prevalent Ischemic Heart Disease (Self-report)",
+    "variants": [
+      "Prevalent Ischemic Heart Disease (Self-report)"
+    ],
+    "total_associations": 2645,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Down syndrome",
+    "variants": [
+      "Downs Syndrome"
+    ],
+    "total_associations": 2633,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Preeclampsia",
+    "variants": [
+      "Preeclampsia"
+    ],
+    "total_associations": 2581,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Maternal education at time of pregnancy",
+    "variants": [
+      "Maternal education at the time of pregnancy"
+    ],
+    "total_associations": 2390,
+    "class": "covariate"
+  },
+  {
+    "canonical_label": "Alcohol withdrawal recovery",
+    "variants": [
+      "alcohol withdrawal recovery"
+    ],
+    "total_associations": 2338,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Monozygotic twinning",
+    "variants": [
+      "monozygotic twinning"
+    ],
+    "total_associations": 2229,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident Liver Cirrhosis",
+    "variants": [
+      "Incident Liver Cirrhosis"
+    ],
+    "total_associations": 1960,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Physical activity and low-energy diet during pregnancy",
+    "variants": [
+      "Physical activity and low-energy diet during pregnancy"
+    ],
+    "total_associations": 1857,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Prevalent Chronic Kidney Disease (Estimated)",
+    "variants": [
+      "Prevalent Chronic Kidney Disease (Estimated)"
+    ],
+    "total_associations": 1697,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Maternal pre-pregnancy body mass index",
+    "variants": [
+      "maternal pre-pregnancy body mass index"
+    ],
+    "total_associations": 1660,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "1-hour glucose",
+    "variants": [
+      "1-hour glucose"
+    ],
+    "total_associations": 1646,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Prevalent Colorectal Cancer (Self-report)",
+    "variants": [
+      "Prevalent Colorectal Cancer (Self-report)"
+    ],
+    "total_associations": 1537,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Maternal underweight",
+    "variants": [
+      "Maternal underweight"
+    ],
+    "total_associations": 1355,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Moderate physical activity",
+    "variants": [
+      "Moderate physical activity"
+    ],
+    "total_associations": 1325,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Prevalent Breast Cancer (Self-report)",
+    "variants": [
+      "Prevalent Breast Cancer (Self-report)"
+    ],
+    "total_associations": 1317,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Prevalent Rheumatoid Arthritis (Self-report)",
+    "variants": [
+      "Prevalent Rheumatoid Arthritis (Self-report)"
+    ],
+    "total_associations": 1307,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Allergic asthma",
+    "variants": [
+      "allergic asthma"
+    ],
+    "total_associations": 1235,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident Osteoarthritis",
+    "variants": [
+      "Incident Osteoarthritis"
+    ],
+    "total_associations": 1214,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Air pollution exposure",
+    "variants": [
+      "Air pollution exposure"
+    ],
+    "total_associations": 1122,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Prenatal phthalate exposure",
+    "variants": [
+      "Prenatal phthalate exposure"
+    ],
+    "total_associations": 1114,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Cleft palate vs cleft lip",
+    "variants": [
+      "Cleft palate vs cleft lip"
+    ],
+    "total_associations": 1056,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Alzheimer's disease",
+    "variants": [
+      "Alzheimer's disease"
+    ],
+    "total_associations": 1054,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident Stroke",
+    "variants": [
+      "Incident Stroke"
+    ],
+    "total_associations": 978,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Maternal body mass index",
+    "variants": [
+      "Maternal body mass index"
+    ],
+    "total_associations": 954,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Lung function decline",
+    "variants": [
+      "Lung function decline"
+    ],
+    "total_associations": 887,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident Chronic Kidney Disease",
+    "variants": [
+      "Incident Chronic Kidney Disease"
+    ],
+    "total_associations": 873,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Fasting glucose",
+    "variants": [
+      "fasting glucose"
+    ],
+    "total_associations": 859,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Very early preterm birth (<28 weeks)",
+    "variants": [
+      "very early preterm birth (<28 weeks)"
+    ],
+    "total_associations": 808,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Metabolite level: tryptophan (Metabolon ID M00054)",
+    "variants": [
+      "M00054_tryptophan"
+    ],
+    "total_associations": 764,
+    "class": "other"
+  },
+  {
+    "canonical_label": "COVID-19 severity (hospitalisation)",
+    "variants": [
+      "COVID-19 Severity (Hospitalisation)"
+    ],
+    "total_associations": 752,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Pregnancy exposure to triclosan",
+    "variants": [
+      "Pregnancy exposure to Triclosan"
+    ],
+    "total_associations": 748,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident Chronic Pain",
+    "variants": [
+      "Incident Chronic Pain"
+    ],
+    "total_associations": 713,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Maternal plasma folate",
+    "variants": [
+      "Maternal plasma folate"
+    ],
+    "total_associations": 688,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Metabolite level: dodecanedioate (Metabolon ID M32388)",
+    "variants": [
+      "M32388_dodecanedioate"
+    ],
+    "total_associations": 683,
+    "class": "other"
+  },
+  {
+    "canonical_label": "Braak stage",
+    "variants": [
+      "Braak stage"
+    ],
+    "total_associations": 677,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Infant cry acoustics factor 1",
+    "variants": [
+      "cry acoustics factor 1"
+    ],
+    "total_associations": 651,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Arsenic exposure",
+    "variants": [
+      "Arsenic exposure"
+    ],
+    "total_associations": 605,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Breast cancer",
+    "variants": [
+      "breast cancer"
+    ],
+    "total_associations": 600,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Fetal alcohol spectrum disorder",
+    "variants": [
+      "Fetal alcohol spectrum disorder"
+    ],
+    "total_associations": 597,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Progressive supranuclear palsy",
+    "variants": [
+      "Progressive supranuclear palsy"
+    ],
+    "total_associations": 590,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "HOMA-IR",
+    "variants": [
+      "HOMA-IR"
+    ],
+    "total_associations": 584,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Non-syndromic cleft lip and palate",
+    "variants": [
+      "Non-syndromic cleft lip and palate"
+    ],
+    "total_associations": 579,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "In-utero arsenic exposure",
+    "variants": [
+      "Utero arsenic exposure"
+    ],
+    "total_associations": 579,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Chronic kidney disease",
+    "variants": [
+      "Chronic kidney disease"
+    ],
+    "total_associations": 568,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Total serum IgE",
+    "variants": [
+      "Total serum IgE"
+    ],
+    "total_associations": 559,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Fasting insulin",
+    "variants": [
+      "fasting insulin"
+    ],
+    "total_associations": 549,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Educational attainment",
+    "variants": [
+      "Educational attainment"
+    ],
+    "total_associations": 545,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Prevalent Stroke (Self-report)",
+    "variants": [
+      "Prevalent Stroke (Self-report)"
+    ],
+    "total_associations": 515,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Diet Quality (Alternative Healthy Eating Index 2010, AHEI-2010)",
+    "variants": [
+      "Diet Quality Alternative Healthy Eating Index 2010 (AHEI-2010)"
+    ],
+    "total_associations": 509,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Paternal body mass index",
+    "variants": [
+      "Paternal body mass index"
+    ],
+    "total_associations": 500,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Estimated glomerular filtration rate (eGFR)",
+    "variants": [
+      "estimated glomerular filtration rate (eGFR)"
+    ],
+    "total_associations": 498,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Prevalent Prostate Cancer (Self-report)",
+    "variants": [
+      "Prevalent Prostate Cancer (Self-report)"
+    ],
+    "total_associations": 468,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Pubertal timing",
+    "variants": [
+      "Pubertal timing"
+    ],
+    "total_associations": 457,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Serum folate",
+    "variants": [
+      "Serum folate"
+    ],
+    "total_associations": 449,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Prevalent Osteoarthritis (Self-report)",
+    "variants": [
+      "Prevalent Osteoarthritis (Self-report)"
+    ],
+    "total_associations": 416,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Lewy body dementia",
+    "variants": [
+      "Lewy body dementia"
+    ],
+    "total_associations": 412,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident Ovarian Cancer",
+    "variants": [
+      "Incident Ovarian Cancer"
+    ],
+    "total_associations": 407,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Smoking pack-years",
+    "variants": [
+      "Smoking pack-years"
+    ],
+    "total_associations": 404,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Aggressive behaviour",
+    "variants": [
+      "Aggressive behaviour"
+    ],
+    "total_associations": 379,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Breastfeeding",
+    "variants": [
+      "Breastfeeding"
+    ],
+    "total_associations": 374,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident Prostate Cancer",
+    "variants": [
+      "Incident Prostate Cancer"
+    ],
+    "total_associations": 362,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Fetal intolerance of labor",
+    "variants": [
+      "Fetal intolerance of labor"
+    ],
+    "total_associations": 357,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Sedentary behaviour",
+    "variants": [
+      "Sedentary behaviour"
+    ],
+    "total_associations": 341,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Oral or pharyngeal squamous cell carcinoma",
+    "variants": [
+      "Oral or pharyngeal squamous cell carcinoma"
+    ],
+    "total_associations": 323,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident Parkinson's Disease",
+    "variants": [
+      "Incident Parkinson's Disease"
+    ],
+    "total_associations": 317,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Chronic Spontaneous Urticaria",
+    "variants": [
+      "Chronic Spontaneous Urticaria"
+    ],
+    "total_associations": 304,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Cancer treatment: chest radiotherapy",
+    "variants": [
+      "Cancer treatment: chest-RT"
+    ],
+    "total_associations": 303,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Graves' disease",
+    "variants": [
+      "Graves' disease"
+    ],
+    "total_associations": 294,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Right vs left colon adenomas",
+    "variants": [
+      "Right vs left colon adenomas"
+    ],
+    "total_associations": 286,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Current asthma",
+    "variants": [
+      "current asthma"
+    ],
+    "total_associations": 285,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Breastfeeding duration",
+    "variants": [
+      "Breastfeeding duration"
+    ],
+    "total_associations": 278,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Cancer treatment: alkylating agents, classic",
+    "variants": [
+      "Cancer treatment: alkylating agents, classic"
+    ],
+    "total_associations": 277,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Early preterm birth (<28 weeks)",
+    "variants": [
+      "early preterm birth (<28 weeks)"
+    ],
+    "total_associations": 273,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Atypical NICU Network Neurobehavioural Scale Profile",
+    "variants": [
+      "Atypical NICU Network Neurobehavioural Scale Profile"
+    ],
+    "total_associations": 270,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "All cause mortality",
+    "variants": [
+      "All cause mortality"
+    ],
+    "total_associations": 266,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "2,4-Dichlorophenoxyacetic acid (2,4-D) exposure",
+    "variants": [
+      "2,4-Dichlorophenoxyacetic acid (2,4-D)"
+    ],
+    "total_associations": 263,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Maternal glucose",
+    "variants": [
+      "maternal glucose"
+    ],
+    "total_associations": 260,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Trajectories of social communication deficits",
+    "variants": [
+      "Trajectories of social communication deficits"
+    ],
+    "total_associations": 260,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident Rheumatoid Arthritis",
+    "variants": [
+      "Incident Rheumatoid Arthritis"
+    ],
+    "total_associations": 249,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Cancer treatment: pelvis radiotherapy",
+    "variants": [
+      "Cancer treatment: pelvis-RT"
+    ],
+    "total_associations": 248,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Prevalent Lung Cancer (Self-report)",
+    "variants": [
+      "Prevalent Lung Cancer (Self-report)"
+    ],
+    "total_associations": 247,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Prevalent Parkinson's Disease (Self-report)",
+    "variants": [
+      "Prevalent Parkinson's Disease (Self-report)"
+    ],
+    "total_associations": 247,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Cervicovaginal microbiome status",
+    "variants": [
+      "cervicovaginal microbiome status"
+    ],
+    "total_associations": 240,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Frontotemporal dementia",
+    "variants": [
+      "Frontotemporal dementia"
+    ],
+    "total_associations": 238,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Autoantibody production in systemic lupus erythematosus",
+    "variants": [
+      "Autoantibody production in systemic lupus erythematosus"
+    ],
+    "total_associations": 232,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Metolachlor exposure",
+    "variants": [
+      "metolachlor"
+    ],
+    "total_associations": 222,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Infant cry acoustics factor 2",
+    "variants": [
+      "cry acoustics factor 2"
+    ],
+    "total_associations": 220,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Chronic obstructive pulmonary disease",
+    "variants": [
+      "Chronic obstructive pulmonary disease"
+    ],
+    "total_associations": 219,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Prevalent Alzheimer's Disease (Self-report)",
+    "variants": [
+      "Prevalent Alzheimer's Disease (Self-report)"
+    ],
+    "total_associations": 219,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident Breast Cancer",
+    "variants": [
+      "Incident Breast Cancer"
+    ],
+    "total_associations": 219,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Total body naevus count",
+    "variants": [
+      "Total body naevus count"
+    ],
+    "total_associations": 217,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Migration in Italy",
+    "variants": [
+      "Migration in Italy"
+    ],
+    "total_associations": 217,
+    "class": "other"
+  },
+  {
+    "canonical_label": "E-cigarette use",
+    "variants": [
+      "E-cigarette use"
+    ],
+    "total_associations": 208,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Metabolite level: tyrosine (Metabolon ID M01299)",
+    "variants": [
+      "M01299_tyrosine"
+    ],
+    "total_associations": 205,
+    "class": "other"
+  },
+  {
+    "canonical_label": "RSV immunoprophylaxis in infancy",
+    "variants": [
+      "RSV immunoprophylaxis in infancy"
+    ],
+    "total_associations": 202,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "IgA nephropathy",
+    "variants": [
+      "IgA nephropathy"
+    ],
+    "total_associations": 199,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Metabolite level: dihomo-linolenate 20:3n3 or n6 (Metabolon ID M35718)",
+    "variants": [
+      "M35718_dihomo-linolenate_20:3n3_or_n6"
+    ],
+    "total_associations": 193,
+    "class": "other"
+  },
+  {
+    "canonical_label": "Multiple sclerosis",
+    "variants": [
+      "Multiple sclerosis"
+    ],
+    "total_associations": 185,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Intravenous illicit drug use and hepatitis C infection",
+    "variants": [
+      "Intravenous illicit drug use and hepatitis C infection"
+    ],
+    "total_associations": 182,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident Inflammatory Bowel Disease",
+    "variants": [
+      "Incident Inflammatory Bowel Disease"
+    ],
+    "total_associations": 182,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident Colorectal Cancer",
+    "variants": [
+      "Incident Colorectal Cancer"
+    ],
+    "total_associations": 181,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Coronary heart disease",
+    "variants": [
+      "coronary heart disease"
+    ],
+    "total_associations": 180,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Type II diabetes mellitus",
+    "variants": [
+      "Type II diabetes mellitus"
+    ],
+    "total_associations": 177,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Acute myocardial infarction",
+    "variants": [
+      "Acute myocardial infarction"
+    ],
+    "total_associations": 175,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Soluble tumor necrosis factor receptor 2",
+    "variants": [
+      "Soluble tumor necrosis factor receptor 2"
+    ],
+    "total_associations": 168,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "Post-traumatic stress disorder",
+    "variants": [
+      "post-traumatic stress disorder"
+    ],
+    "total_associations": 166,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Cancer treatment: asparaginase enzymes",
+    "variants": [
+      "Cancer treatment: asparaginase enzymes"
+    ],
+    "total_associations": 164,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Liver fat",
+    "variants": [
+      "Liver fat"
+    ],
+    "total_associations": 156,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Oral glucose tolerance test",
+    "variants": [
+      "oral glucose tolerance test"
+    ],
+    "total_associations": 155,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Incident Alzheimer's Disease",
+    "variants": [
+      "Incident Alzheimer's Disease"
+    ],
+    "total_associations": 155,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Rapid weight gain in first 12 months of life",
+    "variants": [
+      "rapid weight gain in first 12 months of life"
+    ],
+    "total_associations": 146,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Systolic blood pressure",
+    "variants": [
+      "Systolic Blood Pressure"
+    ],
+    "total_associations": 144,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Lifetime cannabis use",
+    "variants": [
+      "lifetime cannabis use"
+    ],
+    "total_associations": 143,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Burden of neuritic amyloid plaques",
+    "variants": [
+      "Burden of neuritic amyloid plaques"
+    ],
+    "total_associations": 142,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Neighborhood disadvantage",
+    "variants": [
+      "Neighhorhood Disadvantage"
+    ],
+    "total_associations": 140,
+    "class": "other"
+  },
+  {
+    "canonical_label": "Response to antidepressants",
+    "variants": [
+      "Response to antidepressants"
+    ],
+    "total_associations": 139,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Tissue",
+    "variants": [
+      "Tissue"
+    ],
+    "total_associations": 328363,
+    "class": "covariate"
+  },
+  {
+    "canonical_label": "Ageing",
+    "variants": [
+      "Ageing"
+    ],
+    "total_associations": 8540,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Glucose",
+    "variants": [
+      "Glucose"
+    ],
+    "total_associations": 6733,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Heptachlor exposure",
+    "variants": [
+      "heptachlor"
+    ],
+    "total_associations": 546,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Mesotrione exposure",
+    "variants": [
+      "mesotrione"
+    ],
+    "total_associations": 431,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Ethnicity",
+    "variants": [
+      "Ethnicity"
+    ],
+    "total_associations": 427,
+    "class": "covariate"
+  },
+  {
+    "canonical_label": "Melanoma",
+    "variants": [
+      "Melanoma"
+    ],
+    "total_associations": 418,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Psoriasis",
+    "variants": [
+      "Psoriasis"
+    ],
+    "total_associations": 384,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Picloram exposure",
+    "variants": [
+      "picloram"
+    ],
+    "total_associations": 340,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Asthma",
+    "variants": [
+      "Asthma"
+    ],
+    "total_associations": 309,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Acetochlor exposure",
+    "variants": [
+      "acetochlor"
+    ],
+    "total_associations": 293,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Malathion exposure",
+    "variants": [
+      "malathion"
+    ],
+    "total_associations": 268,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Dicamba exposure",
+    "variants": [
+      "dicamba"
+    ],
+    "total_associations": 205,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Psychosis",
+    "variants": [
+      "psychosis"
+    ],
+    "total_associations": 190,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Toxaphene exposure",
+    "variants": [
+      "toxaphene"
+    ],
+    "total_associations": 149,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "Glyphosate exposure",
+    "variants": [
+      "glyphosate"
+    ],
+    "total_associations": 148,
+    "class": "health_trait"
+  },
+  {
+    "canonical_label": "GZMK protein levels (SeqId = 9545-156)",
+    "variants": [
+      "GZMK protein levels (SeqId = 9545-156)"
+    ],
+    "total_associations": 5757,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PRG3 protein levels (SeqId = 9015-1)",
+    "variants": [
+      "PRG3 protein levels (SeqId = 9015-1)"
+    ],
+    "total_associations": 4876,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PAPPA protein levels (SeqId = 4148-49)",
+    "variants": [
+      "PAPPA protein levels (SeqId = 4148-49)"
+    ],
+    "total_associations": 4785,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "GZMA protein levels (SeqId = 3440-7)",
+    "variants": [
+      "GZMA protein levels (SeqId = 3440-7)"
+    ],
+    "total_associations": 4521,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "IL2RB protein levels (SeqId = 9343-16)",
+    "variants": [
+      "IL2RB protein levels (SeqId = 9343-16)"
+    ],
+    "total_associations": 3021,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "QPCT protein levels (SeqId = 7849-3)",
+    "variants": [
+      "QPCT protein levels (SeqId = 7849-3)"
+    ],
+    "total_associations": 2088,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "IGHM protein levels (SeqId = 3069-52)",
+    "variants": [
+      "IGHM protein levels (SeqId = 3069-52)"
+    ],
+    "total_associations": 1303,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "FCER2 protein levels (SeqId = 3291-30)",
+    "variants": [
+      "FCER2 protein levels (SeqId = 3291-30)"
+    ],
+    "total_associations": 1284,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "LTA protein levels (SeqId = 3505-6)",
+    "variants": [
+      "LTA protein levels (SeqId = 3505-6)"
+    ],
+    "total_associations": 1236,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "IL5RA protein levels (SeqId = 13686-2)",
+    "variants": [
+      "IL5RA protein levels (SeqId = 13686-2)"
+    ],
+    "total_associations": 1109,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "LY9 protein levels (SeqId = 3324-51)",
+    "variants": [
+      "LY9 protein levels (SeqId = 3324-51)"
+    ],
+    "total_associations": 963,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "TNFRSF17 protein levels (SeqId = 2665-26)",
+    "variants": [
+      "TNFRSF17 protein levels (SeqId = 2665-26)"
+    ],
+    "total_associations": 909,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "HNF4A protein levels (SeqId = 10041-3)",
+    "variants": [
+      "HNF4A protein levels (SeqId = 10041-3)"
+    ],
+    "total_associations": 793,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CRISP2 protein levels (SeqId = 9282-12)",
+    "variants": [
+      "CRISP2 protein levels (SeqId = 9282-12)"
+    ],
+    "total_associations": 786,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "DPEP1 protein levels (SeqId = 8794-13)",
+    "variants": [
+      "DPEP1 protein levels (SeqId = 8794-13)"
+    ],
+    "total_associations": 763,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "FTH1 protein levels (SeqId = 5934-1)",
+    "variants": [
+      "FTH1 protein levels (SeqId = 5934-1)"
+    ],
+    "total_associations": 741,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "FTL protein levels (SeqId = 15324-58)",
+    "variants": [
+      "FTL protein levels (SeqId = 15324-58)"
+    ],
+    "total_associations": 727,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PRG2 protein levels (SeqId = 7258-5)",
+    "variants": [
+      "PRG2 protein levels (SeqId = 7258-5)"
+    ],
+    "total_associations": 721,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "TCL1A protein levels (SeqId = 17210-2)",
+    "variants": [
+      "TCL1A protein levels (SeqId = 17210-2)"
+    ],
+    "total_associations": 696,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CTRB1 protein levels (SeqId = 5671-1)",
+    "variants": [
+      "CTRB1 protein levels (SeqId = 5671-1)"
+    ],
+    "total_associations": 695,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "FCRL1 protein levels (SeqId = 5728-60)",
+    "variants": [
+      "FCRL1 protein levels (SeqId = 5728-60)"
+    ],
+    "total_associations": 675,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "FCGR2A protein levels (SeqId = 3309-2)",
+    "variants": [
+      "FCGR2A protein levels (SeqId = 3309-2)"
+    ],
+    "total_associations": 540,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "KLKB1 protein levels (SeqId = 4152-58)",
+    "variants": [
+      "KLKB1 protein levels (SeqId = 4152-58)"
+    ],
+    "total_associations": 497,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "C4A protein levels (SeqId = 4481-34)",
+    "variants": [
+      "C4A protein levels (SeqId = 4481-34)"
+    ],
+    "total_associations": 488,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "GP1BA protein levels (SeqId = 4990-87)",
+    "variants": [
+      "GP1BA protein levels (SeqId = 4990-87)"
+    ],
+    "total_associations": 469,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PRSS57 protein levels (SeqId = 8351-17)",
+    "variants": [
+      "PRSS57 protein levels (SeqId = 8351-17)"
+    ],
+    "total_associations": 450,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "POR protein levels (SeqId = 2731-29)",
+    "variants": [
+      "POR protein levels (SeqId = 2731-29)"
+    ],
+    "total_associations": 450,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PGK1 protein levels (SeqId = 5020-50)",
+    "variants": [
+      "PGK1 protein levels (SeqId = 5020-50)"
+    ],
+    "total_associations": 448,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "HAMP protein levels (SeqId = 3504-58)",
+    "variants": [
+      "HAMP protein levels (SeqId = 3504-58)"
+    ],
+    "total_associations": 400,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "SERPINA1 protein levels (SeqId = 3580-25)",
+    "variants": [
+      "SERPINA1 protein levels (SeqId = 3580-25)"
+    ],
+    "total_associations": 377,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "SLAMF7 protein levels (SeqId = 5487-7)",
+    "variants": [
+      "SLAMF7 protein levels (SeqId = 5487-7)"
+    ],
+    "total_associations": 372,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "TFRC protein levels (SeqId = 8795-48)",
+    "variants": [
+      "TFRC protein levels (SeqId = 8795-48)"
+    ],
+    "total_associations": 365,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "NOG protein levels (SeqId = 8778-3)",
+    "variants": [
+      "NOG protein levels (SeqId = 8778-3)"
+    ],
+    "total_associations": 362,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CXCL11 protein levels (SeqId = 3038-9)",
+    "variants": [
+      "CXCL11 protein levels (SeqId = 3038-9)"
+    ],
+    "total_associations": 349,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PACAP protein levels (SeqId = 16322-10)",
+    "variants": [
+      "PACAP protein levels (SeqId = 16322-10)"
+    ],
+    "total_associations": 348,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "KIT protein levels (SeqId = 2475-1)",
+    "variants": [
+      "KIT protein levels (SeqId = 2475-1)"
+    ],
+    "total_associations": 345,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "IGLL1 protein levels (SeqId = 6485-59)",
+    "variants": [
+      "IGLL1 protein levels (SeqId = 6485-59)"
+    ],
+    "total_associations": 335,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "F8 protein levels (SeqId = 13499-30)",
+    "variants": [
+      "F8 protein levels (SeqId = 13499-30)"
+    ],
+    "total_associations": 324,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "MMP10 protein levels (SeqId = 8479-4)",
+    "variants": [
+      "MMP10 protein levels (SeqId = 8479-4)"
+    ],
+    "total_associations": 315,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "TMEM190 protein levels (SeqId = 10442-1)",
+    "variants": [
+      "TMEM190 protein levels (SeqId = 10442-1)"
+    ],
+    "total_associations": 315,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "DUSP15 protein levels (SeqId = 12838-28)",
+    "variants": [
+      "DUSP15 protein levels (SeqId = 12838-28)"
+    ],
+    "total_associations": 313,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "MMP1 protein levels (SeqId = 4924-32)",
+    "variants": [
+      "MMP1 protein levels (SeqId = 4924-32)"
+    ],
+    "total_associations": 312,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "SELL protein levels (SeqId = 4831-4)",
+    "variants": [
+      "SELL protein levels (SeqId = 4831-4)"
+    ],
+    "total_associations": 302,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "MPL protein levels (SeqId = 3473-78)",
+    "variants": [
+      "MPL protein levels (SeqId = 3473-78)"
+    ],
+    "total_associations": 299,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CCL21 protein levels (SeqId = 2516-57)",
+    "variants": [
+      "CCL21 protein levels (SeqId = 2516-57)"
+    ],
+    "total_associations": 298,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PDGFRA protein levels (SeqId = 10366-11)",
+    "variants": [
+      "PDGFRA protein levels (SeqId = 10366-11)"
+    ],
+    "total_associations": 295,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "RGMA protein levels (SeqId = 5483-1)",
+    "variants": [
+      "RGMA protein levels (SeqId = 5483-1)"
+    ],
+    "total_associations": 283,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CELA2A protein levels (SeqId = 7140-1)",
+    "variants": [
+      "CELA2A protein levels (SeqId = 7140-1)"
+    ],
+    "total_associations": 275,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CRTAM protein levels (SeqId = 7968-15)",
+    "variants": [
+      "CRTAM protein levels (SeqId = 7968-15)"
+    ],
+    "total_associations": 270,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CAMP protein levels (SeqId = 9384-17)",
+    "variants": [
+      "CAMP protein levels (SeqId = 9384-17)"
+    ],
+    "total_associations": 269,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CAMP protein levels (SeqId = 15481-45)",
+    "variants": [
+      "CAMP protein levels (SeqId = 15481-45)"
+    ],
+    "total_associations": 265,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "GATM protein levels (SeqId = 18188-12)",
+    "variants": [
+      "GATM protein levels (SeqId = 18188-12)"
+    ],
+    "total_associations": 262,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "AKR7A3 protein levels (SeqId = 18173-11)",
+    "variants": [
+      "AKR7A3 protein levels (SeqId = 18173-11)"
+    ],
+    "total_associations": 259,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CD48 protein levels (SeqId = 3292-75)",
+    "variants": [
+      "CD48 protein levels (SeqId = 3292-75)"
+    ],
+    "total_associations": 258,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "VAV3 protein levels (SeqId = 9830-109)",
+    "variants": [
+      "VAV3 protein levels (SeqId = 9830-109)"
+    ],
+    "total_associations": 254,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "EBAG9 protein levels (SeqId = 19323-1)",
+    "variants": [
+      "EBAG9 protein levels (SeqId = 19323-1)"
+    ],
+    "total_associations": 246,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "GRID2 protein levels (SeqId = 12758-47)",
+    "variants": [
+      "GRID2 protein levels (SeqId = 12758-47)"
+    ],
+    "total_associations": 245,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "RNF114 protein levels (SeqId = 9957-9)",
+    "variants": [
+      "RNF114 protein levels (SeqId = 9957-9)"
+    ],
+    "total_associations": 245,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CKB protein levels (SeqId = 3714-49)",
+    "variants": [
+      "CKB protein levels (SeqId = 3714-49)"
+    ],
+    "total_associations": 243,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "STK17B protein levels (SeqId = 5249-31)",
+    "variants": [
+      "STK17B protein levels (SeqId = 5249-31)"
+    ],
+    "total_associations": 241,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "FBLN5 protein levels (SeqId = 15585-304)",
+    "variants": [
+      "FBLN5 protein levels (SeqId = 15585-304)"
+    ],
+    "total_associations": 240,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "F11 protein levels (SeqId = 2190-55)",
+    "variants": [
+      "F11 protein levels (SeqId = 2190-55)"
+    ],
+    "total_associations": 240,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "ITCH protein levels (SeqId = 12551-3)",
+    "variants": [
+      "ITCH protein levels (SeqId = 12551-3)"
+    ],
+    "total_associations": 235,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "NNMT protein levels (SeqId = 19376-74)",
+    "variants": [
+      "NNMT protein levels (SeqId = 19376-74)"
+    ],
+    "total_associations": 232,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PSMD7 protein levels (SeqId = 3898-5)",
+    "variants": [
+      "PSMD7 protein levels (SeqId = 3898-5)"
+    ],
+    "total_associations": 231,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "SEMA4A protein levels (SeqId = 16915-153)",
+    "variants": [
+      "SEMA4A protein levels (SeqId = 16915-153)"
+    ],
+    "total_associations": 229,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "ART3 protein levels (SeqId = 7970-315)",
+    "variants": [
+      "ART3 protein levels (SeqId = 7970-315)"
+    ],
+    "total_associations": 228,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "AMY2A protein levels (SeqId = 18917-53)",
+    "variants": [
+      "AMY2A protein levels (SeqId = 18917-53)"
+    ],
+    "total_associations": 227,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "VAPA protein levels (SeqId = 7167-102)",
+    "variants": [
+      "VAPA protein levels (SeqId = 7167-102)"
+    ],
+    "total_associations": 226,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "C12orf10 protein levels (SeqId = 8303-102)",
+    "variants": [
+      "C12orf10 protein levels (SeqId = 8303-102)"
+    ],
+    "total_associations": 225,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "ITIH3 protein levels (SeqId = 7145-1)",
+    "variants": [
+      "ITIH3 protein levels (SeqId = 7145-1)"
+    ],
+    "total_associations": 223,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "C1QTNF5 protein levels (SeqId = 7810-20)",
+    "variants": [
+      "C1QTNF5 protein levels (SeqId = 7810-20)"
+    ],
+    "total_associations": 222,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CLEC11A protein levels (SeqId = 2966-65)",
+    "variants": [
+      "CLEC11A protein levels (SeqId = 2966-65)"
+    ],
+    "total_associations": 221,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CSF2RB protein levels (SeqId = 11137-43)",
+    "variants": [
+      "CSF2RB protein levels (SeqId = 11137-43)"
+    ],
+    "total_associations": 221,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CAST protein levels (SeqId = 3026-5)",
+    "variants": [
+      "CAST protein levels (SeqId = 3026-5)"
+    ],
+    "total_associations": 220,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "UBE2G2 protein levels (SeqId = 9199-6)",
+    "variants": [
+      "UBE2G2 protein levels (SeqId = 9199-6)"
+    ],
+    "total_associations": 220,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CPB1 protein levels (SeqId = 15375-49)",
+    "variants": [
+      "CPB1 protein levels (SeqId = 15375-49)"
+    ],
+    "total_associations": 219,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "AMIGO1 protein levels (SeqId = 9979-13)",
+    "variants": [
+      "AMIGO1 protein levels (SeqId = 9979-13)"
+    ],
+    "total_associations": 218,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PRDX1 protein levels (SeqId = 3855-56)",
+    "variants": [
+      "PRDX1 protein levels (SeqId = 3855-56)"
+    ],
+    "total_associations": 217,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "TREML2 protein levels (SeqId = 5736-1)",
+    "variants": [
+      "TREML2 protein levels (SeqId = 5736-1)"
+    ],
+    "total_associations": 216,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "LEFTY2 protein levels (SeqId = 15503-20)",
+    "variants": [
+      "LEFTY2 protein levels (SeqId = 15503-20)"
+    ],
+    "total_associations": 214,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CLEC11A protein levels (SeqId = 4500-50)",
+    "variants": [
+      "CLEC11A protein levels (SeqId = 4500-50)"
+    ],
+    "total_associations": 209,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "MX1 protein levels (SeqId = 17460-51)",
+    "variants": [
+      "MX1 protein levels (SeqId = 17460-51)"
+    ],
+    "total_associations": 208,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "FAM162A protein levels (SeqId = 6531-29)",
+    "variants": [
+      "FAM162A protein levels (SeqId = 6531-29)"
+    ],
+    "total_associations": 206,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CDH7 protein levels (SeqId = 7959-34)",
+    "variants": [
+      "CDH7 protein levels (SeqId = 7959-34)"
+    ],
+    "total_associations": 206,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "MSTN protein levels (SeqId = 14583-49)",
+    "variants": [
+      "MSTN protein levels (SeqId = 14583-49)"
+    ],
+    "total_associations": 205,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "ISG15 protein levels (SeqId = 14151-4)",
+    "variants": [
+      "ISG15 protein levels (SeqId = 14151-4)"
+    ],
+    "total_associations": 204,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "ICOSLG protein levels (SeqId = 5061-27)",
+    "variants": [
+      "ICOSLG protein levels (SeqId = 5061-27)"
+    ],
+    "total_associations": 204,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "COL3A1 protein levels (SeqId = 18880-81)",
+    "variants": [
+      "COL3A1 protein levels (SeqId = 18880-81)"
+    ],
+    "total_associations": 202,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "WISP1 protein levels (SeqId = 13692-154)",
+    "variants": [
+      "WISP1 protein levels (SeqId = 13692-154)"
+    ],
+    "total_associations": 202,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "METAP1 protein levels (SeqId = 3210-1)",
+    "variants": [
+      "METAP1 protein levels (SeqId = 3210-1)"
+    ],
+    "total_associations": 202,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PDGFD protein levels (SeqId = 17140-57)",
+    "variants": [
+      "PDGFD protein levels (SeqId = 17140-57)"
+    ],
+    "total_associations": 199,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PCDH10 protein levels (SeqId = 8780-2)",
+    "variants": [
+      "PCDH10 protein levels (SeqId = 8780-2)"
+    ],
+    "total_associations": 198,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "GBP1 protein levels (SeqId = 15326-64)",
+    "variants": [
+      "GBP1 protein levels (SeqId = 15326-64)"
+    ],
+    "total_associations": 198,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PGLYRP2 protein levels (SeqId = 5601-2)",
+    "variants": [
+      "PGLYRP2 protein levels (SeqId = 5601-2)"
+    ],
+    "total_associations": 196,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "TOR1AIP1 protein levels (SeqId = 9039-47)",
+    "variants": [
+      "TOR1AIP1 protein levels (SeqId = 9039-47)"
+    ],
+    "total_associations": 194,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "RPS6KB1 protein levels (SeqId = 15608-5)",
+    "variants": [
+      "RPS6KB1 protein levels (SeqId = 15608-5)"
+    ],
+    "total_associations": 193,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "RBM19 protein levels (SeqId = 11468-15)",
+    "variants": [
+      "RBM19 protein levels (SeqId = 11468-15)"
+    ],
+    "total_associations": 192,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "MLN protein levels (SeqId = 5631-83)",
+    "variants": [
+      "MLN protein levels (SeqId = 5631-83)"
+    ],
+    "total_associations": 188,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "COCH protein levels (SeqId = 7227-75)",
+    "variants": [
+      "COCH protein levels (SeqId = 7227-75)"
+    ],
+    "total_associations": 186,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CLIC5 protein levels (SeqId = 12475-48)",
+    "variants": [
+      "CLIC5 protein levels (SeqId = 12475-48)"
+    ],
+    "total_associations": 185,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "GLIPR2 protein levels (SeqId = 15522-2)",
+    "variants": [
+      "GLIPR2 protein levels (SeqId = 15522-2)"
+    ],
+    "total_associations": 185,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "IL36A protein levels (SeqId = 14150-7)",
+    "variants": [
+      "IL36A protein levels (SeqId = 14150-7)"
+    ],
+    "total_associations": 182,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "ANGPT2 protein levels (SeqId = 2602-2)",
+    "variants": [
+      "ANGPT2 protein levels (SeqId = 2602-2)"
+    ],
+    "total_associations": 181,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "IL22RA2 protein levels (SeqId = 5087-5)",
+    "variants": [
+      "IL22RA2 protein levels (SeqId = 5087-5)"
+    ],
+    "total_associations": 181,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "LYZ protein levels (SeqId = 4920-10)",
+    "variants": [
+      "LYZ protein levels (SeqId = 4920-10)"
+    ],
+    "total_associations": 181,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CNTN2 protein levels (SeqId = 3296-92)",
+    "variants": [
+      "CNTN2 protein levels (SeqId = 3296-92)"
+    ],
+    "total_associations": 181,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "TNFRSF11B protein levels (SeqId = 8304-50)",
+    "variants": [
+      "TNFRSF11B protein levels (SeqId = 8304-50)"
+    ],
+    "total_associations": 180,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CHGB protein levels (SeqId = 8235-48)",
+    "variants": [
+      "CHGB protein levels (SeqId = 8235-48)"
+    ],
+    "total_associations": 178,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PPIG protein levels (SeqId = 18449-33)",
+    "variants": [
+      "PPIG protein levels (SeqId = 18449-33)"
+    ],
+    "total_associations": 178,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "LTB4R protein levels (SeqId = 13477-65)",
+    "variants": [
+      "LTB4R protein levels (SeqId = 13477-65)"
+    ],
+    "total_associations": 177,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "ALDOB protein levels (SeqId = 18185-118)",
+    "variants": [
+      "ALDOB protein levels (SeqId = 18185-118)"
+    ],
+    "total_associations": 177,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "S100A6 protein levels (SeqId = 13090-17)",
+    "variants": [
+      "S100A6 protein levels (SeqId = 13090-17)"
+    ],
+    "total_associations": 176,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "NCR1 protein levels (SeqId = 8360-169)",
+    "variants": [
+      "NCR1 protein levels (SeqId = 8360-169)"
+    ],
+    "total_associations": 174,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "AGR3 protein levels (SeqId = 17342-13)",
+    "variants": [
+      "AGR3 protein levels (SeqId = 17342-13)"
+    ],
+    "total_associations": 172,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "OMG protein levels (SeqId = 16908-5)",
+    "variants": [
+      "OMG protein levels (SeqId = 16908-5)"
+    ],
+    "total_associations": 172,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PRDX6 protein levels (SeqId = 5018-68)",
+    "variants": [
+      "PRDX6 protein levels (SeqId = 5018-68)"
+    ],
+    "total_associations": 168,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "TMOD2 protein levels (SeqId = 12853-112)",
+    "variants": [
+      "TMOD2 protein levels (SeqId = 12853-112)"
+    ],
+    "total_associations": 168,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "SUMF1 protein levels (SeqId = 6941-11)",
+    "variants": [
+      "SUMF1 protein levels (SeqId = 6941-11)"
+    ],
+    "total_associations": 166,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PPIF protein levels (SeqId = 5248-68)",
+    "variants": [
+      "PPIF protein levels (SeqId = 5248-68)"
+    ],
+    "total_associations": 165,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CST2 protein levels (SeqId = 4324-33)",
+    "variants": [
+      "CST2 protein levels (SeqId = 4324-33)"
+    ],
+    "total_associations": 164,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "MARCKSL1 protein levels (SeqId = 19175-18)",
+    "variants": [
+      "MARCKSL1 protein levels (SeqId = 19175-18)"
+    ],
+    "total_associations": 163,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "HMBS protein levels (SeqId = 11530-37)",
+    "variants": [
+      "HMBS protein levels (SeqId = 11530-37)"
+    ],
+    "total_associations": 163,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "C9 protein levels (SeqId = 3060-43)",
+    "variants": [
+      "C9 protein levels (SeqId = 3060-43)"
+    ],
+    "total_associations": 161,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "NMI protein levels (SeqId = 17512-2)",
+    "variants": [
+      "NMI protein levels (SeqId = 17512-2)"
+    ],
+    "total_associations": 160,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "F3 protein levels (SeqId = 4931-59)",
+    "variants": [
+      "F3 protein levels (SeqId = 4931-59)"
+    ],
+    "total_associations": 160,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "IGFBP6 protein levels (SeqId = 14088-38)",
+    "variants": [
+      "IGFBP6 protein levels (SeqId = 14088-38)"
+    ],
+    "total_associations": 160,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PNLIP protein levels (SeqId = 15613-16)",
+    "variants": [
+      "PNLIP protein levels (SeqId = 15613-16)"
+    ],
+    "total_associations": 159,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "BDNF protein levels (SeqId = 14047-78)",
+    "variants": [
+      "BDNF protein levels (SeqId = 14047-78)"
+    ],
+    "total_associations": 159,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "LTA protein levels (SeqId = 3506-49)",
+    "variants": [
+      "LTA protein levels (SeqId = 3506-49)"
+    ],
+    "total_associations": 158,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "NAALAD2 protein levels (SeqId = 7986-98)",
+    "variants": [
+      "NAALAD2 protein levels (SeqId = 7986-98)"
+    ],
+    "total_associations": 158,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "LEMD1 protein levels (SeqId = 8040-9)",
+    "variants": [
+      "LEMD1 protein levels (SeqId = 8040-9)"
+    ],
+    "total_associations": 158,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "SFTA2 protein levels (SeqId = 10580-14)",
+    "variants": [
+      "SFTA2 protein levels (SeqId = 10580-14)"
+    ],
+    "total_associations": 158,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "SOD3 protein levels (SeqId = 5660-51)",
+    "variants": [
+      "SOD3 protein levels (SeqId = 5660-51)"
+    ],
+    "total_associations": 157,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "DKK4 protein levels (SeqId = 3365-7)",
+    "variants": [
+      "DKK4 protein levels (SeqId = 3365-7)"
+    ],
+    "total_associations": 156,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CYB5R3 protein levels (SeqId = 7215-18)",
+    "variants": [
+      "CYB5R3 protein levels (SeqId = 7215-18)"
+    ],
+    "total_associations": 156,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "HMOX1 protein levels (SeqId = 17398-55)",
+    "variants": [
+      "HMOX1 protein levels (SeqId = 17398-55)"
+    ],
+    "total_associations": 155,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CTSB protein levels (SeqId = 8007-19)",
+    "variants": [
+      "CTSB protein levels (SeqId = 8007-19)"
+    ],
+    "total_associations": 154,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "DDX58 protein levels (SeqId = 12382-2)",
+    "variants": [
+      "DDX58 protein levels (SeqId = 12382-2)"
+    ],
+    "total_associations": 154,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "LAG3 protein levels (SeqId = 9950-229)",
+    "variants": [
+      "LAG3 protein levels (SeqId = 9950-229)"
+    ],
+    "total_associations": 153,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "EPHB6 protein levels (SeqId = 5078-82)",
+    "variants": [
+      "EPHB6 protein levels (SeqId = 5078-82)"
+    ],
+    "total_associations": 153,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "DKK2 protein levels (SeqId = 15678-71)",
+    "variants": [
+      "DKK2 protein levels (SeqId = 15678-71)"
+    ],
+    "total_associations": 153,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "ARG1 protein levels (SeqId = 5867-60)",
+    "variants": [
+      "ARG1 protein levels (SeqId = 5867-60)"
+    ],
+    "total_associations": 153,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "ACP1 protein levels (SeqId = 3858-5)",
+    "variants": [
+      "ACP1 protein levels (SeqId = 3858-5)"
+    ],
+    "total_associations": 153,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "COX5A protein levels (SeqId = 18226-148)",
+    "variants": [
+      "COX5A protein levels (SeqId = 18226-148)"
+    ],
+    "total_associations": 152,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "NEGR1 protein levels (SeqId = 7050-5)",
+    "variants": [
+      "NEGR1 protein levels (SeqId = 7050-5)"
+    ],
+    "total_associations": 152,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "RAB5A protein levels (SeqId = 17205-21)",
+    "variants": [
+      "RAB5A protein levels (SeqId = 17205-21)"
+    ],
+    "total_associations": 151,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "GMPR2 protein levels (SeqId = 19446-1)",
+    "variants": [
+      "GMPR2 protein levels (SeqId = 19446-1)"
+    ],
+    "total_associations": 150,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "DTX3L protein levels (SeqId = 11643-73)",
+    "variants": [
+      "DTX3L protein levels (SeqId = 11643-73)"
+    ],
+    "total_associations": 149,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PMEL protein levels (SeqId = 6472-40)",
+    "variants": [
+      "PMEL protein levels (SeqId = 6472-40)"
+    ],
+    "total_associations": 149,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "ACOT13 protein levels (SeqId = 17675-17)",
+    "variants": [
+      "ACOT13 protein levels (SeqId = 17675-17)"
+    ],
+    "total_associations": 149,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "TOR1AIP1 protein levels (SeqId = 10606-34)",
+    "variants": [
+      "TOR1AIP1 protein levels (SeqId = 10606-34)"
+    ],
+    "total_associations": 149,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "SHMT1 protein levels (SeqId = 12334-25)",
+    "variants": [
+      "SHMT1 protein levels (SeqId = 12334-25)"
+    ],
+    "total_associations": 149,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "FSTL1 protein levels (SeqId = 13112-179)",
+    "variants": [
+      "FSTL1 protein levels (SeqId = 13112-179)"
+    ],
+    "total_associations": 148,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "C8A protein levels (SeqId = 2429-27)",
+    "variants": [
+      "C8A protein levels (SeqId = 2429-27)"
+    ],
+    "total_associations": 148,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "ACADVL protein levels (SeqId = 19262-219)",
+    "variants": [
+      "ACADVL protein levels (SeqId = 19262-219)"
+    ],
+    "total_associations": 148,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "MTHFS protein levels (SeqId = 14107-1)",
+    "variants": [
+      "MTHFS protein levels (SeqId = 14107-1)"
+    ],
+    "total_associations": 147,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "ASNA1 protein levels (SeqId = 13620-10)",
+    "variants": [
+      "ASNA1 protein levels (SeqId = 13620-10)"
+    ],
+    "total_associations": 147,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "BPNT1 protein levels (SeqId = 17814-8)",
+    "variants": [
+      "BPNT1 protein levels (SeqId = 17814-8)"
+    ],
+    "total_associations": 147,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "IL34 protein levels (SeqId = 4556-10)",
+    "variants": [
+      "IL34 protein levels (SeqId = 4556-10)"
+    ],
+    "total_associations": 147,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PRSS27 protein levels (SeqId = 15535-3)",
+    "variants": [
+      "PRSS27 protein levels (SeqId = 15535-3)"
+    ],
+    "total_associations": 147,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "TCTN2 protein levels (SeqId = 11433-11)",
+    "variants": [
+      "TCTN2 protein levels (SeqId = 11433-11)"
+    ],
+    "total_associations": 146,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "SH3GL3 protein levels (SeqId = 18318-98)",
+    "variants": [
+      "SH3GL3 protein levels (SeqId = 18318-98)"
+    ],
+    "total_associations": 146,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CCL11 protein levels (SeqId = 5301-7)",
+    "variants": [
+      "CCL11 protein levels (SeqId = 5301-7)"
+    ],
+    "total_associations": 146,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "THPO protein levels (SeqId = 5947-90)",
+    "variants": [
+      "THPO protein levels (SeqId = 5947-90)"
+    ],
+    "total_associations": 145,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "LDLRAP1 protein levels (SeqId = 18183-3)",
+    "variants": [
+      "LDLRAP1 protein levels (SeqId = 18183-3)"
+    ],
+    "total_associations": 145,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "STAT3 protein levels (SeqId = 10346-5)",
+    "variants": [
+      "STAT3 protein levels (SeqId = 10346-5)"
+    ],
+    "total_associations": 144,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "IGF1R protein levels (SeqId = 4232-19)",
+    "variants": [
+      "IGF1R protein levels (SeqId = 4232-19)"
+    ],
+    "total_associations": 143,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PDGFD protein levels (SeqId = 9341-1)",
+    "variants": [
+      "PDGFD protein levels (SeqId = 9341-1)"
+    ],
+    "total_associations": 143,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "IDI1 protein levels (SeqId = 17712-7)",
+    "variants": [
+      "IDI1 protein levels (SeqId = 17712-7)"
+    ],
+    "total_associations": 143,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "SORD protein levels (SeqId = 15447-45)",
+    "variants": [
+      "SORD protein levels (SeqId = 15447-45)"
+    ],
+    "total_associations": 143,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "TMOD3 protein levels (SeqId = 12861-13)",
+    "variants": [
+      "TMOD3 protein levels (SeqId = 12861-13)"
+    ],
+    "total_associations": 143,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CREBBP protein levels (SeqId = 13614-6)",
+    "variants": [
+      "CREBBP protein levels (SeqId = 13614-6)"
+    ],
+    "total_associations": 142,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "ACSF2 protein levels (SeqId = 17466-72)",
+    "variants": [
+      "ACSF2 protein levels (SeqId = 17466-72)"
+    ],
+    "total_associations": 142,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CD68 protein levels (SeqId = 18922-27)",
+    "variants": [
+      "CD68 protein levels (SeqId = 18922-27)"
+    ],
+    "total_associations": 141,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "DNAJC17 protein levels (SeqId = 14655-1)",
+    "variants": [
+      "DNAJC17 protein levels (SeqId = 14655-1)"
+    ],
+    "total_associations": 141,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "SERPINF2 protein levels (SeqId = 3024-18)",
+    "variants": [
+      "SERPINF2 protein levels (SeqId = 3024-18)"
+    ],
+    "total_associations": 141,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "LILRA5 protein levels (SeqId = 7787-25)",
+    "variants": [
+      "LILRA5 protein levels (SeqId = 7787-25)"
+    ],
+    "total_associations": 140,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "DARS protein levels (SeqId = 12675-14)",
+    "variants": [
+      "DARS protein levels (SeqId = 12675-14)"
+    ],
+    "total_associations": 140,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "HS3ST4 protein levels (SeqId = 19370-30)",
+    "variants": [
+      "HS3ST4 protein levels (SeqId = 19370-30)"
+    ],
+    "total_associations": 140,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PRKCB protein levels (SeqId = 5475-10)",
+    "variants": [
+      "PRKCB protein levels (SeqId = 5475-10)"
+    ],
+    "total_associations": 139,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "SERPING1 protein levels (SeqId = 4479-14)",
+    "variants": [
+      "SERPING1 protein levels (SeqId = 4479-14)"
+    ],
+    "total_associations": 139,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "DKK1 protein levels (SeqId = 3535-84)",
+    "variants": [
+      "DKK1 protein levels (SeqId = 3535-84)"
+    ],
+    "total_associations": 139,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PMVK protein levels (SeqId = 12450-42)",
+    "variants": [
+      "PMVK protein levels (SeqId = 12450-42)"
+    ],
+    "total_associations": 139,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "UBE2I protein levels (SeqId = 2877-3)",
+    "variants": [
+      "UBE2I protein levels (SeqId = 2877-3)"
+    ],
+    "total_associations": 139,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "IL1R2 protein levels (SeqId = 14133-93)",
+    "variants": [
+      "IL1R2 protein levels (SeqId = 14133-93)"
+    ],
+    "total_associations": 139,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "KPNB1 protein levels (SeqId = 3887-90)",
+    "variants": [
+      "KPNB1 protein levels (SeqId = 3887-90)"
+    ],
+    "total_associations": 139,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "ATP1B4 protein levels (SeqId = 9933-49)",
+    "variants": [
+      "ATP1B4 protein levels (SeqId = 9933-49)"
+    ],
+    "total_associations": 139,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "LAMC2 protein levels (SeqId = 9580-5)",
+    "variants": [
+      "LAMC2 protein levels (SeqId = 9580-5)"
+    ],
+    "total_associations": 139,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "TCF4 protein levels (SeqId = 19144-9)",
+    "variants": [
+      "TCF4 protein levels (SeqId = 19144-9)"
+    ],
+    "total_associations": 138,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "ANXA7 protein levels (SeqId = 14203-3)",
+    "variants": [
+      "ANXA7 protein levels (SeqId = 14203-3)"
+    ],
+    "total_associations": 138,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "GNLY protein levels (SeqId = 3195-50)",
+    "variants": [
+      "GNLY protein levels (SeqId = 3195-50)"
+    ],
+    "total_associations": 138,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CTRB2 protein levels (SeqId = 5648-28)",
+    "variants": [
+      "CTRB2 protein levels (SeqId = 5648-28)"
+    ],
+    "total_associations": 138,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PLEK protein levels (SeqId = 7875-86)",
+    "variants": [
+      "PLEK protein levels (SeqId = 7875-86)"
+    ],
+    "total_associations": 137,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "GDF11 protein levels (SeqId = 14587-16)",
+    "variants": [
+      "GDF11 protein levels (SeqId = 14587-16)"
+    ],
+    "total_associations": 137,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CS protein levels (SeqId = 18309-18)",
+    "variants": [
+      "CS protein levels (SeqId = 18309-18)"
+    ],
+    "total_associations": 137,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "HADH protein levels (SeqId = 17739-1)",
+    "variants": [
+      "HADH protein levels (SeqId = 17739-1)"
+    ],
+    "total_associations": 137,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "ITGA2B protein levels (SeqId = 19574-5)",
+    "variants": [
+      "ITGA2B protein levels (SeqId = 19574-5)"
+    ],
+    "total_associations": 137,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "CCL22 protein levels (SeqId = 3508-78)",
+    "variants": [
+      "CCL22 protein levels (SeqId = 3508-78)"
+    ],
+    "total_associations": 137,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "HSPE1 protein levels (SeqId = 17150-8)",
+    "variants": [
+      "HSPE1 protein levels (SeqId = 17150-8)"
+    ],
+    "total_associations": 136,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "GSTK1 protein levels (SeqId = 13474-40)",
+    "variants": [
+      "GSTK1 protein levels (SeqId = 13474-40)"
+    ],
+    "total_associations": 136,
+    "class": "protein_level"
+  },
+  {
+    "canonical_label": "PPP3CA protein levels (SeqId = 4903-72)",
+    "variants": [
+      "PPP3CA protein levels (SeqId = 4903-72)"
+    ],
+    "total_associations": 136,
+    "class": "protein_level"
+  }
+]
