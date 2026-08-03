@@ -1,1 +1,118 @@
-{}
+{
+  "cg05575921": {
+    "gene": "AHRR",
+    "references": [
+      {
+        "group": "never-smoker",
+        "beta": 0.8841,
+        "stat": "median",
+        "tissue": "whole blood",
+        "array": "450k",
+        "n": 749,
+        "pmid": "23691101"
+      },
+      {
+        "group": "former smoker",
+        "beta": 0.851,
+        "stat": "median",
+        "tissue": "whole blood",
+        "array": "450k",
+        "n": 782,
+        "pmid": "23691101"
+      },
+      {
+        "group": "current smoker",
+        "beta": 0.6401,
+        "stat": "median",
+        "tissue": "whole blood",
+        "array": "450k",
+        "n": 262,
+        "pmid": "23691101"
+      }
+    ]
+  },
+  "cg21566642": {
+    "gene": "2q37.1 (intergenic; near ALPPL2/ALPP)",
+    "references": [
+      {
+        "group": "never-smoker",
+        "beta": 0.5658,
+        "stat": "median",
+        "tissue": "whole blood",
+        "array": "450k",
+        "n": 749,
+        "pmid": "23691101"
+      },
+      {
+        "group": "former smoker",
+        "beta": 0.5227,
+        "stat": "median",
+        "tissue": "whole blood",
+        "array": "450k",
+        "n": 782,
+        "pmid": "23691101"
+      },
+      {
+        "group": "current smoker",
+        "beta": 0.3988,
+        "stat": "median",
+        "tissue": "whole blood",
+        "array": "450k",
+        "n": 262,
+        "pmid": "23691101"
+      }
+    ]
+  },
+  "cg06690548": {
+    "gene": "SLC7A11",
+    "references": [
+      {
+        "group": "alcohol use disorder cases",
+        "beta": 0.75,
+        "stat": "adjusted mean",
+        "tissue": "whole blood",
+        "array": "EPIC",
+        "n": 372,
+        "pmid": "34857913"
+      },
+      {
+        "group": "healthy controls",
+        "beta": 0.81,
+        "stat": "adjusted mean",
+        "tissue": "whole blood",
+        "array": "EPIC",
+        "n": 243,
+        "pmid": "34857913"
+      }
+    ]
+  },
+  "cg17860381": {
+    "gene": "NR3C1",
+    "references": [
+      {
+        "group": "healthy control women (Cushing's-study control group)",
+        "beta": 0.0336,
+        "stat": "mean",
+        "tissue": "whole blood",
+        "array": "450k",
+        "n": 16,
+        "pmid": "28300138"
+      }
+    ]
+  },
+  "cg03546163": {
+    "gene": "FKBP5",
+    "references": [
+      {
+        "group": "population birth-cohort infants",
+        "beta": 0.79,
+        "sd": 0.06,
+        "stat": "mean",
+        "tissue": "cord blood",
+        "array": "450k",
+        "n": 298,
+        "pmid": "28401840"
+      }
+    ]
+  }
+}

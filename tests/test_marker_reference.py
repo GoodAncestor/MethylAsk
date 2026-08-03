@@ -48,6 +48,34 @@ def test_position_states_the_gap_and_cites_the_source(table):
     assert pos.delta == pytest.approx(-0.14)
 
 
+def test_position_carries_the_statistic_type_so_copy_cannot_say_average(table):
+    # most published values are medians or adjusted means; calling a median an
+    # "average" in report copy misdescribes the source
+    ref = dict(reference_for(table, "cg05575921")[0], stat="median")
+    pos = describe_position(sample_beta=0.71, ref=ref)
+    assert pos.stat == "median"
+
+
+def test_position_carries_tissue_and_n_for_caveating(table):
+    # a cord-blood or n=16 reference must be surfaceable at the point of display
+    ref = reference_for(table, "cg05575921")[0]
+    pos = describe_position(sample_beta=0.71, ref=ref)
+    assert pos.tissue == "whole blood"
+    assert pos.n == 1793
+
+
+def test_beta_outside_zero_to_one_is_rejected_on_load(tmp_path):
+    # a value like 85 is a percentage and -0.17 is an effect size; either pasted
+    # into a beta field is a silent, large error
+    p = tmp_path / "bad.json"
+    p.write_text(json.dumps({
+        "cg00000001": {"gene": "X", "references": [
+            {"group": "cohort", "beta": 85.0, "tissue": "whole blood",
+             "array": "450k", "n": 100, "pmid": "1"}]}}))
+    with pytest.raises(ValueError, match="cg00000001"):
+        load_reference_table(p)
+
+
 def test_position_without_a_published_sd_has_no_sigma(table):
     # a sigma figure invented without a published SD would be a fabricated statistic
     ref = dict(reference_for(table, "cg05575921")[0])
