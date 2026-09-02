@@ -11,79 +11,71 @@ from biocore.providers.base import Finding, Interpretation, ChainLink
 from .traits import _copy_table
 
 
+_SHORT = {"age": "Epigenetic age", "bmi": "Body mass index", "crp": "C-reactive protein (inflammation marker)",
+          "smoking": "Smoking", "sex": "Sex", "copd": "COPD", "eosinophilia": "Eosinophil count",
+          "atopy": "Allergic sensitisation", "hdl_cholesterol": "HDL cholesterol",
+          "total_cholesterol": "Total cholesterol", "body_fat": "Body fat", "waist_hip_ratio": "Waist-hip ratio",
+          "gestational_age": "Gestational age at birth", "alcohol_consumption": "Alcohol consumption",
+          "type_2_diabetes": "Type 2 diabetes", "chronic_pain": "Chronic pain", "hiv_infection": "HIV infection",
+          "rheumatoid_arthritis": "Rheumatoid arthritis", "schizophrenia": "Schizophrenia"}
+
+
+def short_label(d: dict, copy: dict) -> str:
+    """A label a person can scan: the protein's name for a protein-level row,
+    a short form for a known trait, else the trait with any parenthetical cut."""
+    key = d.get("copy_key") or ""
+    if key == "_protein_level" or d.get("protein"):
+        subject = str(d.get("subject") or "")
+        name = subject.replace("blood level of protein", "").strip() or str(d.get("protein") or "a protein")
+        return f"{name} (a blood protein)"
+    if key in _SHORT:
+        return _SHORT[key]
+    label = str(copy.get("label") or d.get("trait") or "this trait")
+    return label.split(" (")[0].strip() or label
+
+
+def _num(v):
+    try:
+        return None if v in (None, "") else float(v)
+    except (TypeError, ValueError):
+        return None
+
+
 def _ewas(f: Finding) -> Interpretation:
     d = f.detail or {}
     copy = _copy_table().get(d.get("copy_key") or "", {}) or {}
-    # The subject names the protein ("blood level of protein Alpha-2-macroglobulin");
-    # the humanised trait alone reads "Blood level of a protein" on every row.
-    trait = copy.get("label") or d.get("subject") or d.get("trait") or "this trait"
-    reading = d.get("your reading")
-    found = f"Studies link methylation at {f.marker} to {trait}."
-    if reading is not None:
-        found += f" Your reading at this site is {float(reading):.2f} on a 0 to 1 scale."
-    # One sentence, not the trait's paragraph: the paragraph lives once in the
-    # glossary the card links to. Inlined per finding it repeated 379 times for
-    # one protein trait on the combined demo.
-    can = (f"Groups of people with different {trait} readings showed different methylation "
-           f"here on average. It is not a measurement of your {trait} and not a prediction.")
-    how = []
-    if d.get("n_studies") is not None:
-        try:
-            how.append(f"{int(d['n_studies']):,} studies report this association.")
-        except (TypeError, ValueError):
-            pass
-        if d.get("n_participants") is not None:
-            try:
-                how.append(
-                    f"The studies include {int(d['n_participants']):,} people."
-                )
-            except (TypeError, ValueError):
-                pass
-        if d.get("direction") in {"consistent", "mixed"}:
-            how.append(f"The reported direction is {d['direction']}.")
-        tissues = [str(tissue) for tissue in (d.get("tissues") or []) if tissue]
-        if tissues:
-            how.append(f"The studies use {', '.join(tissues)}.")
-        if d.get("tissue_supported") is True:
-            how.append("Your sample tissue is among them.")
-        elif d.get("tissue_supported") is False:
-            how.append("None of them is your sample tissue.")
+    label = short_label(d, copy)
+    d["short_label"] = label
+    # The one clause worth a sentence: which way methylation moves with the
+    # trait, when the studies say. Counts, tissues and p-values become chips.
+    direction = d.get("direction")
+    beta = _num(d.get("beta"))
+    if direction == "mixed":
+        clause = f"methylation here differs with {label.lower() if label[:1].isupper() and ' (' not in label else label}, but the studies disagree on which way"
+    elif beta is not None and beta > 0:
+        clause = "methylation here rises with it"
+    elif beta is not None and beta < 0:
+        clause = "methylation here falls with it"
     else:
-        p = d.get("p")
-        if p not in (None, ""):
-            try:
-                how.append(f"The association reached p = {float(p):.0e}.")
-            except (TypeError, ValueError):
-                pass
-        n = d.get("n")
-        if n not in (None, ""):
-            try:
-                how.append(f"The study read {int(float(n)):,} people.")
-            except (TypeError, ValueError):
-                pass
-        if d.get("tissue"):
-            how.append(f"Tissue: {d['tissue']}.")
+        clause = "methylation here differs with it"
+    found = f"{label} — {clause}."
+    can = ("Group patterns at this site. Not a measurement of you and not a prediction.")
     cites = [ChainLink(kind="paper", label=f"PMID {pm}", id=f"PMID:{pm}",
                        url=f"https://pubmed.ncbi.nlm.nih.gov/{pm}/") for pm in (f.pmids or [])]
-    return Interpretation(found=found, can_mean=str(can), how_sure=" ".join(how), next_step="",
+    return Interpretation(found=found, can_mean=can, how_sure="", next_step="",
                           condition=None, condition_ids=[], zygosity=None, citations=cites,
                           copy_version="trait_copy" if copy else "inline", reviewed_by=[])
 
 
 def _gdc(f: Finding) -> Interpretation:
     d = f.detail or {}
-    proj = d.get("project") or "a TCGA project"
-    delta = d.get("delta_beta")
-    found = f"In {proj}, methylation at {f.marker} differed between tumour tissue and normal tissue"
-    found += f" by {float(delta):+.2f}." if delta is not None else "."
-    can = ("This describes tumour tissue from other people. It is not a cancer test, "
-           "and your reading was not compared with any diagnostic threshold.")
-    nt, nn = int(d.get("n_tumor") or 0), int(d.get("n_normal") or 0)
-    how = f"Tumour samples: {nt:,}. Normal samples: {nn:,}. Summary values, not individual cases."
-    if d.get("sampling"):
-        how += f" {d['sampling']}"
+    proj = str(d.get("project") or "a TCGA project")
+    delta = _num(d.get("delta_beta"))
+    d["short_label"] = proj.replace("TCGA-", "")
+    found = f"Differs in {proj} tumour tissue" + (f" ({delta:+.2f})." if delta is not None else ".")
+    can = "Tumour tissue from other people. Not a cancer test."
     url = f.link or f"https://portal.gdc.cancer.gov/projects/{proj}"
-    return Interpretation(found=found, can_mean=can, how_sure=how, next_step="",
+    return Interpretation(found=found, can_mean=can, how_sure="", next_step="",
                           condition=None, condition_ids=[], zygosity=None,
                           citations=[ChainLink(kind="assertion", label=f"GDC {proj}", url=url)],
                           copy_version="inline", reviewed_by=[])
