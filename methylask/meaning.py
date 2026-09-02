@@ -19,9 +19,11 @@ def _ewas(f: Finding) -> Interpretation:
     found = f"Studies link methylation at {f.marker} to {trait}."
     if reading is not None:
         found += f" Your reading at this site is {float(reading):.2f} on a 0 to 1 scale."
-    can = copy.get("what_it_is_not") or (
-        "This is a pattern seen across groups of people in research. "
-        "It is not a measurement of your trait and not a prediction.")
+    # One sentence, not the trait's paragraph: the paragraph lives once in the
+    # glossary the card links to. Inlined per finding it repeated 379 times for
+    # one protein trait on the combined demo.
+    can = (f"Groups of people with different {trait} readings showed different methylation "
+           f"here on average. It is not a measurement of your {trait} and not a prediction.")
     how = []
     p = d.get("p")
     if p not in (None, ""):
@@ -37,8 +39,6 @@ def _ewas(f: Finding) -> Interpretation:
             pass
     if d.get("tissue"):
         how.append(f"Tissue: {d['tissue']}.")
-    if copy.get("typical_evidence"):
-        how.append(str(copy["typical_evidence"]))
     cites = [ChainLink(kind="paper", label=f"PMID {pm}", id=f"PMID:{pm}",
                        url=f"https://pubmed.ncbi.nlm.nih.gov/{pm}/") for pm in (f.pmids or [])]
     return Interpretation(found=found, can_mean=str(can), how_sure=" ".join(how), next_step="",

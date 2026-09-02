@@ -12,7 +12,8 @@ def test_ewas_uses_the_trait_copy_and_the_reading():
     assert interpret([f]) == 1
     ip = f.interpretation
     assert "BMI" in ip.found and "0.41" in ip.found
-    assert "not a measurement of the reader" in ip.can_mean.lower()
+    assert "not a measurement of your BMI" in ip.can_mean
+    assert len(ip.can_mean) < 220
     assert "5,387" in ip.how_sure and "whole blood" in ip.how_sure
     assert ip.next_step == "" and ip.copy_version == "trait_copy"
     assert [c.kind for c in f.evidence_chain][:2] == ["variant", "trait"]
@@ -22,7 +23,7 @@ def test_ewas_without_copy_falls_back_to_the_generic_sentence():
     f = Finding(marker="cg1", source="ewas_catalog", description="x", tier=Tier.MODERATE,
                 categories=[Category.TRAIT], detail={"trait": "Height", "p": "bad", "n": None})
     interpret([f])
-    assert "not a measurement of your trait" in f.interpretation.can_mean
+    assert "not a measurement of your Height" in f.interpretation.can_mean
     assert f.interpretation.how_sure == "" and f.interpretation.copy_version == "inline"
 
 
