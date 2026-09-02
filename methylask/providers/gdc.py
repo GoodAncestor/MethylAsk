@@ -122,7 +122,10 @@ class GdcProvider(Provider):
                 marker=marker, source=self.name,
                 description=f"{direction} in {r['project']} tumour vs normal "
                             f"(Δβ={d:+.2f})",
-                tier=tier, categories=[Category.CLINICAL],
+                # Reference biology: a tumour-vs-normal summary from other people's
+                # tissue is not a finding about the reader, so it never sits under
+                # "Clinical relevance".
+                tier=tier, categories=[Category.REFERENCE],
                 detail={"topic": "cancer", "modality": "methylome",
                         "project": r["project"], "delta_beta": round(d, 4),
                         "n_tumor": r["n_tumor"], "n_normal": r["n_normal"],
