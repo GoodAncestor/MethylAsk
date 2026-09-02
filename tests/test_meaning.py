@@ -52,3 +52,31 @@ def test_protein_rows_name_the_protein_not_a_protein():
     interpret([f])
     assert "Alpha-2-macroglobulin" in f.interpretation.found
     assert "a protein" not in f.interpretation.found
+
+
+def test_aggregated_row_says_the_replication():
+    f = Finding(
+        marker="cg1",
+        source="ewas_catalog",
+        description="x",
+        tier=Tier.ROBUST,
+        categories=[Category.CLINICAL],
+        detail={
+            "trait": "Body mass index",
+            "copy_key": "bmi",
+            "p": 1e-12,
+            "n": 9587,
+            "n_studies": 3,
+            "n_participants": 9587,
+            "direction": "consistent",
+            "tissues": ["cord blood", "whole blood"],
+            "tissue_supported": True,
+            "your reading": 0.41,
+        },
+    )
+    interpret([f])
+    interpretation = f.interpretation
+    assert "3 studies" in interpretation.how_sure
+    assert "9,587 people" in interpretation.how_sure
+    assert "consistent" in interpretation.how_sure
+    assert "among them" in interpretation.how_sure

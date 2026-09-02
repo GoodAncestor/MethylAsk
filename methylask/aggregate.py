@@ -76,7 +76,9 @@ def aggregate_by_trait(
                 "n_participants": context.n_participants,
                 "direction": context.direction,
                 "tissues": context.tissues,
-                "tissue_supported": context.tissue_supported,
+                "tissue_supported": (
+                    context.tissue_supported if sample_tissue else None
+                ),
                 "rows": rows,
                 "p": min(
                     (row["p"] for row in rows if row["p"] is not None),

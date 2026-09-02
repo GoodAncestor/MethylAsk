@@ -27,20 +27,42 @@ def _ewas(f: Finding) -> Interpretation:
     can = (f"Groups of people with different {trait} readings showed different methylation "
            f"here on average. It is not a measurement of your {trait} and not a prediction.")
     how = []
-    p = d.get("p")
-    if p not in (None, ""):
+    if d.get("n_studies") is not None:
         try:
-            how.append(f"The association reached p = {float(p):.0e}.")
+            how.append(f"{int(d['n_studies']):,} studies report this association.")
         except (TypeError, ValueError):
             pass
-    n = d.get("n")
-    if n not in (None, ""):
-        try:
-            how.append(f"The study read {int(float(n)):,} people.")
-        except (TypeError, ValueError):
-            pass
-    if d.get("tissue"):
-        how.append(f"Tissue: {d['tissue']}.")
+        if d.get("n_participants") is not None:
+            try:
+                how.append(
+                    f"The studies include {int(d['n_participants']):,} people."
+                )
+            except (TypeError, ValueError):
+                pass
+        if d.get("direction") in {"consistent", "mixed"}:
+            how.append(f"The reported direction is {d['direction']}.")
+        tissues = [str(tissue) for tissue in (d.get("tissues") or []) if tissue]
+        if tissues:
+            how.append(f"The studies use {', '.join(tissues)}.")
+        if d.get("tissue_supported") is True:
+            how.append("Your sample tissue is among them.")
+        elif d.get("tissue_supported") is False:
+            how.append("None of them is your sample tissue.")
+    else:
+        p = d.get("p")
+        if p not in (None, ""):
+            try:
+                how.append(f"The association reached p = {float(p):.0e}.")
+            except (TypeError, ValueError):
+                pass
+        n = d.get("n")
+        if n not in (None, ""):
+            try:
+                how.append(f"The study read {int(float(n)):,} people.")
+            except (TypeError, ValueError):
+                pass
+        if d.get("tissue"):
+            how.append(f"Tissue: {d['tissue']}.")
     cites = [ChainLink(kind="paper", label=f"PMID {pm}", id=f"PMID:{pm}",
                        url=f"https://pubmed.ncbi.nlm.nih.gov/{pm}/") for pm in (f.pmids or [])]
     return Interpretation(found=found, can_mean=str(can), how_sure=" ".join(how), next_step="",
