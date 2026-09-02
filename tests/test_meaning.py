@@ -42,3 +42,13 @@ def test_gdc_is_reference_biology_not_a_screen():
 def test_other_sources_are_left_alone():
     f = Finding(marker="cg1", source="clocks", description="x", tier=Tier.UNKNOWN, categories=[Category.AGING])
     assert interpret([f]) == 0 and f.interpretation is None
+
+
+def test_protein_rows_name_the_protein_not_a_protein():
+    f = Finding(marker="cg1", source="ewas_catalog", description="x", tier=Tier.ROBUST,
+                categories=[Category.TRAIT],
+                detail={"trait": "Blood level of a protein", "protein": "P02748",
+                        "subject": "blood level of protein Alpha-2-macroglobulin", "p": 1e-9, "n": 100})
+    interpret([f])
+    assert "Alpha-2-macroglobulin" in f.interpretation.found
+    assert "a protein" not in f.interpretation.found

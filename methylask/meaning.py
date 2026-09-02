@@ -14,7 +14,9 @@ from .traits import _copy_table
 def _ewas(f: Finding) -> Interpretation:
     d = f.detail or {}
     copy = _copy_table().get(d.get("copy_key") or "", {}) or {}
-    trait = copy.get("label") or d.get("trait") or "this trait"
+    # The subject names the protein ("blood level of protein Alpha-2-macroglobulin");
+    # the humanised trait alone reads "Blood level of a protein" on every row.
+    trait = copy.get("label") or d.get("subject") or d.get("trait") or "this trait"
     reading = d.get("your reading")
     found = f"Studies link methylation at {f.marker} to {trait}."
     if reading is not None:
