@@ -14,7 +14,7 @@ rather than silently biased.
 """
 from __future__ import annotations
 import csv, math
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 _CLOCK_DIR = Path(__file__).parent / "data" / "reference" / "clocks"
@@ -63,6 +63,8 @@ class ClockResult:
     trained_tissue: str = "blood"   # tissue the clock was trained on ("pan" = any)
     tissue_mismatch: bool = False    # sample tissue differs from a non-pan clock's
     implausible: bool = False        # predicted age outside the human-plausible range
+    acceleration: float | None = None
+    contributions: list = field(default_factory=list)
 
     @property
     def valid(self) -> bool:
@@ -110,7 +112,8 @@ class Clock:
     def n_cpg(self) -> int:
         return len(self.weights)
 
-    def predict(self, betas: dict[str, float], tissue: str | None = None) -> ClockResult:
+    def predict(self, betas: dict[str, float], tissue: str | None = None,
+                age: float | None = None) -> ClockResult:
         """betas keyed by BASE probe id (suffix-stripped, see normalize.base_probe).
 
         tissue: the sample's tissue (e.g. 'blood', 'saliva', 'buccal'). When given,
@@ -121,29 +124,56 @@ class Clock:
         mismatch = bool(tissue and trained != "pan"
                         and tissue.lower() in _NONBLOOD and trained == "blood")
         acc, found = self.intercept, 0
+        raw_contributions = []
         for probe, w in self.weights.items():
             b = betas.get(probe)
             if b is not None:
-                acc += w * b
+                value = w * b
+                acc += value
                 found += 1
+                raw_contributions.append((probe, w, b, value))
         coverage = found / self.n_cpg if self.n_cpg else 0.0
         low = coverage < self.min_coverage
         if found == 0:
             return ClockResult(self.name, None, self.n_cpg, 0, 0.0, True,
                                trained_tissue=trained, tissue_mismatch=mismatch)
-        age = _anti_trafo(acc, self.adult_age) if self.transform == "anti_log_linear" else acc
-        implausible = not (_PLAUSIBLE_AGE[0] <= age <= _PLAUSIBLE_AGE[1])
-        return ClockResult(self.name, age, self.n_cpg, found, coverage, low,
-                           trained_tissue=trained, tissue_mismatch=mismatch,
-                           implausible=implausible)
+        predicted_age = (_anti_trafo(acc, self.adult_age)
+                         if self.transform == "anti_log_linear" else acc)
+        implausible = not (_PLAUSIBLE_AGE[0] <= predicted_age <= _PLAUSIBLE_AGE[1])
+        if self.transform == "anti_log_linear":
+            slope = ((1.0 + self.adult_age) * math.exp(acc)
+                     if acc < 0 else (1.0 + self.adult_age))
+        else:
+            slope = 1.0
+        contributions = [(*item, item[3] * slope) for item in raw_contributions]
+        result = ClockResult(
+            self.name,
+            predicted_age,
+            self.n_cpg,
+            found,
+            coverage,
+            low,
+            trained_tissue=trained,
+            tissue_mismatch=mismatch,
+            implausible=implausible,
+            contributions=contributions,
+        )
+        if age is not None and result.valid:
+            result.acceleration = predicted_age - float(age)
+        return result
 
 
 def available() -> list[str]:
     return list(_CLOCKS)
 
 
+def top_contributions(result: ClockResult, n: int = 8) -> list[tuple]:
+    """Return the largest signed contribution values in clock-year units."""
+    return sorted(result.contributions, key=lambda item: abs(item[4]), reverse=True)[:n]
+
+
 def run_all(betas: dict[str, float], min_coverage: float = 0.80,
-            tissue: str | None = None) -> list[ClockResult]:
+            tissue: str | None = None, age: float | None = None) -> list[ClockResult]:
     """Run every clock. Pass `tissue` (e.g. 'blood','saliva','buccal') so clocks
     trained on a different tissue are flagged rather than trusted blindly."""
-    return [Clock(n, min_coverage).predict(betas, tissue=tissue) for n in _CLOCKS]
+    return [Clock(n, min_coverage).predict(betas, tissue=tissue, age=age) for n in _CLOCKS]
