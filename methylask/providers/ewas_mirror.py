@@ -106,3 +106,27 @@ def mirror_lookup(cpg: str, db_path: Path | None = None) -> list[dict] | None:
     finally:
         con.close()
     return [dict(r) for r in rows]
+
+
+def mirror_lookup_many(cpgs, db_path: Path | None = None) -> dict[str, list[dict]] | None:
+    """Batch a whole profile through one read-only connection; no web fallback."""
+    db_path = Path(db_path or MIRROR_DB)
+    if not db_path.exists():
+        return None
+    markers = list(dict.fromkeys(cpgs))
+    out = {cpg: [] for cpg in markers}
+    try:
+        con = sqlite3.connect(db_path.resolve().as_uri() + "?mode=ro", uri=True)
+        con.row_factory = sqlite3.Row
+        try:
+            for start in range(0, len(markers), 500):
+                batch = markers[start:start + 500]
+                query = "SELECT * FROM findings WHERE cpg IN (" + ",".join("?" for _ in batch) + ")"
+                for row in con.execute(query, batch):
+                    data = dict(row)
+                    out[data.pop("cpg")].append(data)
+        finally:
+            con.close()
+    except sqlite3.Error:
+        return None
+    return out

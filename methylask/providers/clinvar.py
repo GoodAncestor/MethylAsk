@@ -35,11 +35,14 @@ def _tier_from_review(status: str) -> Tier:
 class ClinVarProvider(Provider):
     name = "clinvar"
 
-    def __init__(self, timeout: int = 30, email: str | None = None):
+    def __init__(self, timeout: int = 30, email: str | None = None, *, offline_only: bool = False):
         self._timeout = timeout
         self._email = email  # supplied via config; NCBI asks for a contact
+        self.offline_only = offline_only
 
     def _eutils(self, endpoint: str, params: dict) -> dict:
+        if self.offline_only:
+            raise RuntimeError("No local ClinVar backend in this methylation provider")
         if self._email:
             params = {**params, "email": self._email, "tool": "methylask"}
         url = _EUTILS + endpoint + "?" + urllib.parse.urlencode(params)
@@ -48,6 +51,8 @@ class ClinVarProvider(Provider):
             return json.loads(r.read().decode("utf-8", "replace"))
 
     def get(self, marker: str) -> list[Finding]:
+        if self.offline_only:
+            return []
         # marker is an rsID for the SNP probes on the array
         rsid = marker[2:] if marker.lower().startswith("rs") else None
         if not rsid:
@@ -86,6 +91,9 @@ class ClinVarProvider(Provider):
         return self.status()
 
     def status(self) -> ProviderStatus:
+        if self.offline_only:
+            return ProviderStatus(self.name, Health.UNAVAILABLE,
+                                  note="methylation ClinVar provider has no local mirror; no network fallback")
         try:
             self._eutils("esearch.fcgi",
                         {"db": "clinvar", "term": "rs328", "retmode": "json", "retmax": 1})
