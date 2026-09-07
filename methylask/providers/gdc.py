@@ -64,7 +64,7 @@ class GdcProvider(Provider):
     # READ path must resolve it identically or the two disagree.
     _SUMMARY_ENV = "GDC_SUMMARY_DB"
 
-    def __init__(self, summary_path: str | None = None, timeout: int = 60):
+    def __init__(self, summary_path: str | None = None, timeout: int = 60, *, offline_only: bool = False):
         # Fall back to the environment. Every production call site constructs a
         # bare GdcProvider() (dnareport/orchestrate.py, methylask/cli.py), so
         # while only refresh() read GDC_SUMMARY_DB, get() returned [] no matter
@@ -73,8 +73,11 @@ class GdcProvider(Provider):
         self._summary_path = Path(resolved) if resolved else None
         self._timeout = timeout
         self._meta_cache: dict | None = None
+        self.offline_only = offline_only
 
     def _api(self, endpoint: str, params: dict) -> dict:
+        if self.offline_only:
+            raise RuntimeError("Offline-only GDC provider cannot call the API")
         url = _API + endpoint + "?" + urllib.parse.urlencode(params)
         req = urllib.request.Request(url, headers={"User-Agent": "methylask"})
         with urllib.request.urlopen(req, timeout=self._timeout) as r:
@@ -350,6 +353,10 @@ class GdcProvider(Provider):
         return self._meta_cache
 
     def status(self) -> ProviderStatus:
+        if self.offline_only:
+            return ProviderStatus(self.name, Health.OK if self._summary_ready() else Health.UNAVAILABLE,
+                                  note="local GDC summary available (offline only)" if self._summary_ready()
+                                  else "local GDC summary unavailable; no network fallback")
         try:
             st = self._api("status", {})
             rel = st.get("data_release", "?")

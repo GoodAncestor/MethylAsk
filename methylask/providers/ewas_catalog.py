@@ -13,7 +13,7 @@ import json, ssl, os, hashlib, time, urllib.request, urllib.error
 from pathlib import Path
 from biocore.providers.base import Provider, Finding, Tier, Category, ProviderStatus, Health
 from ..traits import classify_topic, humanize_trait, trait_class, trait_copy_key
-from .ewas_mirror import mirror_lookup, build_mirror
+from .ewas_mirror import mirror_lookup, mirror_lookup_many, build_mirror
 
 # per-CpG response cache on disk. Live EWAS lookups are ~1 HTTP call per marker
 # (slow: 10-13s for a 40-marker report). The API response for a given CpG is
@@ -66,15 +66,18 @@ def _tier_from(row: dict) -> Tier:
 class EwasCatalogProvider(Provider):
     name = "ewas_catalog"
 
-    def __init__(self, insecure: bool = _INSECURE, timeout: int = 30):
+    def __init__(self, insecure: bool = _INSECURE, timeout: int = 30, *, offline_only: bool = False):
         self._ctx = ssl._create_unverified_context() if insecure else None
         self._timeout = timeout
+        self.offline_only = offline_only
 
     def _cache_file(self, cpg: str) -> Path:
         h = hashlib.sha1(cpg.encode()).hexdigest()[:16]
         return _CACHE_DIR / f"{h}.json"
 
     def _fetch(self, cpg: str) -> dict:
+        if self.offline_only:
+            raise RuntimeError("Offline-only provider requires the local EWAS mirror")
         # disk cache: return a fresh cached response if present
         cf = self._cache_file(cpg)
         try:
@@ -101,6 +104,8 @@ class EwasCatalogProvider(Provider):
         rows = mirror_lookup(marker)
         if rows is not None:
             return rows  # mirror exists (may be empty list = no associations)
+        if self.offline_only:
+            return []
         try:
             payload = self._fetch(marker)
         except Exception:
@@ -164,10 +169,22 @@ class EwasCatalogProvider(Provider):
     def get(self, marker: str) -> list[Finding]:
         return [self._finding(marker, row) for row in self._rows_for(marker)]
 
+    def get_many(self, markers) -> dict[str, list[Finding]]:
+        markers = list(markers)
+        rows = mirror_lookup_many(markers)
+        if rows is not None:
+            return {marker: [self._finding(marker, row) for row in records]
+                    for marker, records in rows.items()}
+        if self.offline_only:
+            return {marker: [] for marker in markers}
+        return super().get_many(markers)
+
     def refresh(self) -> ProviderStatus:
         """Build the local mirror from the EWAS Catalog bulk downloads so lookups
         are instant and offline. Heavy (174 MB download + SQLite build) — meant to
         run on a worker/refresh box, not inline in a request."""
+        if self.offline_only:
+            return self.status()
         try:
             summary = build_mirror()
             return ProviderStatus(self.name, Health.OK,
@@ -178,6 +195,11 @@ class EwasCatalogProvider(Provider):
                                   note=f"mirror build failed: {e}")
 
     def status(self) -> ProviderStatus:
+        if self.offline_only:
+            ready = mirror_lookup_many(["cg00000029"]) is not None
+            return ProviderStatus(self.name, Health.OK if ready else Health.UNAVAILABLE,
+                                  note="local EWAS mirror ready (offline only)" if ready
+                                  else "local EWAS mirror unavailable; no network fallback")
         try:
             self._fetch("cg00000029")
             return ProviderStatus(self.name, Health.OK, note="live API reachable")
