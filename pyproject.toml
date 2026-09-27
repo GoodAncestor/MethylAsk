@@ -9,7 +9,7 @@ dependencies = [
     # GoodAncestor/bio-core — shared provider/report/fetch mechanism (private repo).
     # git-source spec so a clean install resolves from GitHub, not a same-named PyPI package.
     # Private-repo access uses the installer's git credentials; see README "Install".
-    "biocore @ git+https://github.com/GoodAncestor/bio-core.git@f3b20f1b0c26f2155fb497e39997cbd344075d93",
+    "biocore @ git+https://github.com/GoodAncestor/bio-core.git@c94d4f8899e37f3d37cd9fbc2037469ab53539ea",
 ]
 
 [project.optional-dependencies]
