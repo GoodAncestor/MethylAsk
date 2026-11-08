@@ -20,7 +20,8 @@ _TABLE = json.loads((Path(__file__).parent.parent / "methylask" / "data" / "refe
 
 # What catalogue text looks like. A rendered outcome label must match none.
 CATALOGUE_PATTERNS = {
-    "covariate operator": re.compile(r"\*"),
+    # "age*sex"; a trailing "*" on a Metabolon compound name is not an operator
+    "covariate operator": re.compile(r"\S\*\S"),
     "interaction term": re.compile(r"\binteraction\b", re.I),
     "age contrast": re.compile(r"\bage \d+\s+vs\.?\s+age \d+\b", re.I),
     "lower-case raw spelling": re.compile(r"^[a-z]{2,}(?=[\s,'-]|$)"),
@@ -77,19 +78,29 @@ def test_study_design_terms_are_covariates(raw):
 def test_every_interaction_or_operator_term_in_the_table_is_a_covariate():
     for c in _TABLE:
         for v in c["variants"]:
-            if CATALOGUE_PATTERNS["covariate operator"].search(v) and not v.startswith("M"):
+            if CATALOGUE_PATTERNS["covariate operator"].search(v):
                 assert c["class"] == "covariate", v
             if CATALOGUE_PATTERNS["interaction term"].search(v):
                 assert c["class"] == "covariate", v
 
 
-@pytest.mark.parametrize("raw", ["age", "Age", "Age 4 vs age 0", "Ageing"])
-def test_age_variants_fold_into_one_age_outcome(raw):
+@pytest.mark.parametrize("raw", ["age", "Age"])
+def test_age_spellings_share_one_age_outcome(raw):
     assert display_label(raw) == "Age"
     assert trait_copy_key(raw) == "age"
 
 
+def test_age_contrast_reads_as_a_comparison_and_keeps_its_own_outcome():
+    # cord blood at birth vs whole blood at age 4 (PMID 28056824): a specific
+    # developmental comparison, not general ageing, so it neither merges into
+    # Age nor borrows the age explanation
+    assert display_label("Age 4 vs age 0") == "Age comparison: 4 years vs birth"
+    assert trait_copy_key("Age 4 vs age 0") is None
+
+
 def test_age_adjacent_concepts_do_not_fold_into_age():
+    assert display_label("Ageing") == "Ageing"
+    assert trait_copy_key("Ageing") is None
     assert display_label("Gestational age") == "Gestational age"
     assert trait_copy_key("Gestational age") == "gestational_age"
     assert trait_copy_key("Age at menarche") is None
@@ -110,14 +121,16 @@ def test_metabolon_codes_are_spelled_out():
     assert display_label("M32412_butyrylcarnitine") == \
         "Metabolite level: butyrylcarnitine (Metabolon ID M32412)"
     assert display_label("M32654_3-dehydrocarnitine*") == \
-        "Metabolite level: 3-dehydrocarnitine (tentative identification, Metabolon ID M32654)"
+        "Metabolite level: 3-dehydrocarnitine* (Metabolon ID M32654)"
     # matches the curated table's own spelling of the same kind of readout
     assert display_label("M00054_tryptophan") == "Metabolite level: tryptophan (Metabolon ID M00054)"
 
 
-def test_folded_variants_aggregate_with_age_at_the_same_site():
+def test_spelling_variants_aggregate_at_the_same_site():
     from methylask.aggregate import aggregate_by_trait
     p = EwasCatalogProvider()
-    rows = [{**_row(r), "pmid": pmid} for r, pmid in (("age", "1"), ("Age 4 vs age 0", "2"))]
+    rows = [{**_row(r), "pmid": pmid} for r, pmid in (("age", "1"), ("Age", "2"), ("Age 4 vs age 0", "3"))]
     out = aggregate_by_trait([p._finding("cg1", r) for r in rows], None)
-    assert len(out) == 1 and out[0].detail["n_studies"] == 2
+    by = {f.detail["trait"]: f for f in out}
+    assert set(by) == {"Age", "Age comparison: 4 years vs birth"}
+    assert by["Age"].detail["n_studies"] == 2

@@ -98,9 +98,11 @@ def humanize_trait(trait: str) -> tuple[str, str, str | None]:
     return (display_label(t), "trait", None)
 
 
-# Metabolon readouts arrive as "M32412_butyrylcarnitine"; a trailing "*" is
-# Metabolon's mark for a compound identified without an authentic standard.
-_METABOLON = re.compile(r"^(M\d{5})_(.+?)(\*?)$")
+# Metabolon readouts arrive as "M32412_butyrylcarnitine", spelled the way the
+# curated table already spells its four ("Metabolite level: tryptophan (Metabolon
+# ID M00054)"). A trailing "*" on some names is kept verbatim: its meaning is the
+# vendor's, and this table does not record it.
+_METABOLON = re.compile(r"^(M\d{5})_(.+)$")
 # a first word that is plain lower-case letters: a catalogue spelling, safe to
 # capitalise. Words with capitals or digits ("miR-100-5p", "eGFR", "p53") are
 # names whose case carries meaning and are left alone.
@@ -111,7 +113,8 @@ def display_label(trait: str) -> str:
     """The name a reader sees for a raw catalogue trait string.
 
     A curated concept shows its canonical label, so the catalogue's spellings
-    ("age", "body mass index", "Age 4 vs age 0") read as one named outcome. An
+    ("age", "body mass index", "Age 4 vs age 0") read as named outcomes and the
+    spelling variants of one concept share one name. An
     uncurated string keeps the study's wording, tidied: whitespace collapsed,
     Metabolon codes spelled out the way the curated table spells them, and a
     lower-case first word capitalised.
@@ -123,8 +126,7 @@ def display_label(trait: str) -> str:
     m = _METABOLON.match(t)
     if m:
         name = m.group(2).replace("comma", ",").replace("_", " ")
-        tentative = "tentative identification, " if m.group(3) else ""
-        return f"Metabolite level: {name} ({tentative}Metabolon ID {m.group(1)})"
+        return f"Metabolite level: {name} (Metabolon ID {m.group(1)})"
     if _LOWER_WORD.match(t):
         return t[0].upper() + t[1:]
     return t

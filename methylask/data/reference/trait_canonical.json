@@ -3,11 +3,9 @@
     "canonical_label": "Age",
     "variants": [
       "age",
-      "Age",
-      "Age 4 vs age 0",
-      "Ageing"
+      "Age"
     ],
-    "total_associations": 739895,
+    "total_associations": 717205,
     "class": "health_trait"
   },
   {
@@ -235,6 +233,14 @@
     ],
     "total_associations": 24114,
     "class": "health_trait"
+  },
+  {
+    "canonical_label": "Age comparison: 4 years vs birth",
+    "variants": [
+      "Age 4 vs age 0"
+    ],
+    "total_associations": 14150,
+    "class": "other"
   },
   {
     "canonical_label": "Atopy",
@@ -1340,6 +1346,14 @@
     ],
     "total_associations": 328363,
     "class": "covariate"
+  },
+  {
+    "canonical_label": "Ageing",
+    "variants": [
+      "Ageing"
+    ],
+    "total_associations": 8540,
+    "class": "health_trait"
   },
   {
     "canonical_label": "Glucose",

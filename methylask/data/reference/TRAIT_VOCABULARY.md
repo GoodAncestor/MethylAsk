@@ -50,7 +50,7 @@ The class table above is the original 2026-08-03 build; it is not recomputed.
 `other` holds concepts that could not be confidently placed — `Sex`, `Infant sex`,
 `Fetal vs adult liver`, `Age 4 vs age 0`, and four Metabolon metabolite readouts.
 (Since 2026-11-08 `Fetal vs adult liver` is a covariate — it contrasts sample tissues,
-not people — and `Age 4 vs age 0` is folded into Age; see below.)
+not people — and `Age 4 vs age 0` is labelled "Age comparison: 4 years vs birth"; see below.)
 For display purposes these behave like covariates even though the class differs.
 
 Two concepts are flagged as genuinely ambiguous and deliberately left in
@@ -73,13 +73,23 @@ and Metabolon codes (`M32412_butyrylcarnitine`) spelled out as
 "Metabolite level: … (Metabolon ID …)". `tests/test_trait_labels.py` holds the list of
 catalogue-text patterns no shown label may match.
 
-The age fold is done here, in the variant lists, not in `trait_copy_alias.json`. The
-alias maps a canonical label to a copy key; folding there would give a contrast study
-the age copy and outcome key, but the outcome would still be titled by whichever raw
-label came first. Folding the variants means one label ("Age"), which the alias already
-routes to the `age` copy. Folded into Age on 2026-11-08: `Age 4 vs age 0` (14,150) and
-`Ageing` (8,540, GO_0007568). Not folded: `Gestational age`, `Age at menarche`,
-`Maternal age at delivery` and the interaction terms — different concepts.
+Age. The raw spellings `age` and `Age` are one concept and now show one label, "Age"
+(before, the outcome took whichever raw spelling came first). `trait_copy_alias.json`
+maps canonical labels to explanation keys; it already routes "Age" to the `age`
+explanation and needed no change. Deliberately NOT folded into Age, after a blind
+review (2026-11-08) judged the merge to lose meaning:
+
+- `Age 4 vs age 0` (14,150; PMID 28056824, "Whole blood and cord blood") is a
+  developmental comparison, relabelled "Age comparison: 4 years vs birth", own outcome,
+  no age explanation.
+- `Ageing` (8,540; GO_0007568) keeps its own label and outcome until its operational
+  definition is checked.
+- `Gestational age`, `Age at menarche`, `Maternal age at delivery` and the interaction
+  terms are different concepts.
+
+Because `aggregate_by_trait` groups by the shown label, rows of two spellings of one
+concept at the same CpG ("BMI", "Body mass index") now merge into one finding; the
+replication summary already counts studies by PMID.
 
 ## `protein_traits.json`
 
