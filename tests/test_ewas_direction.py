@@ -18,7 +18,7 @@ def _row(beta, trait="age", **kw):
 def test_negative_effect_reads_as_lower_methylation():
     f = EwasCatalogProvider()._finding("cg00017842", _row(-0.003))
     assert "lower methylation" in f.description
-    assert "age" in f.description
+    assert "Age" in f.description     # the curated label, not the raw "age"
 
 
 def test_positive_effect_reads_as_higher_methylation():
@@ -29,7 +29,7 @@ def test_positive_effect_reads_as_higher_methylation():
 def test_missing_effect_size_falls_back_to_the_plain_wording():
     # no published effect -> no direction claimed
     f = EwasCatalogProvider()._finding("cg00017842", _row(None))
-    assert f.description == "linked to age"
+    assert f.description == "linked to Age"
 
 
 def test_effect_size_and_sample_size_are_kept_for_display():

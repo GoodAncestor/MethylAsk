@@ -224,7 +224,7 @@
       "Fetal vs adult liver"
     ],
     "total_associations": 28901,
-    "class": "other"
+    "class": "covariate"
   },
   {
     "canonical_label": "Eosinophilia",
@@ -235,7 +235,7 @@
     "class": "health_trait"
   },
   {
-    "canonical_label": "Age 4 vs age 0",
+    "canonical_label": "Age comparison: 4 years vs birth",
     "variants": [
       "Age 4 vs age 0"
     ],
@@ -301,9 +301,26 @@
   {
     "canonical_label": "Age x Sex interaction term",
     "variants": [
-      "age*sex"
+      "age*sex",
+      "Age-by-sex interaction"
     ],
-    "total_associations": 6014,
+    "total_associations": 6036,
+    "class": "covariate"
+  },
+  {
+    "canonical_label": "Gestational age x Sex interaction term",
+    "variants": [
+      "Interaction between gestational age and sex"
+    ],
+    "total_associations": 59,
+    "class": "covariate"
+  },
+  {
+    "canonical_label": "Sex x Braak stage interaction term",
+    "variants": [
+      "sex-Braak stage interaction"
+    ],
+    "total_associations": 13,
     "class": "covariate"
   },
   {

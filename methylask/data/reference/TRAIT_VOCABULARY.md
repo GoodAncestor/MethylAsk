@@ -15,7 +15,9 @@ that maps to it), `total_associations`, `class`.
 
 Verified: variant counts sum to each concept total, every raw string maps exactly
 once, and the file totals 2,549,800 — matching the true top-400 sum computed
-independently from the catalog.
+independently from the catalog. (As of the 2026-11-08 label pass, three interaction-term
+strings from outside the top 400 were added as covariates, so the file now totals
+2,549,894; see "Display labels and the age fold" below.)
 
 ### Classes, and why `covariate` matters
 
@@ -35,12 +37,20 @@ and should not be presented as findings about the reader:
 | Age × Sex interaction term | 6,014 |
 | Maternal education at time of pregnancy | 2,390 |
 | Ethnicity | 427 |
+| Fetal vs adult liver (reclassified from `other`, 2026-11-08) | 28,901 |
+| Gestational age × Sex interaction term (added 2026-11-08) | 59 |
+| Sex × Braak stage interaction term (added 2026-11-08) | 13 |
+
+The Age × Sex concept also gained the mirror spelling `Age-by-sex interaction` (22).
+The class table above is the original 2026-08-03 build; it is not recomputed.
 
 `Tissue` alone is the second-largest trait in the entire catalog. Rendering it as
 "Tissue — associated with lower methylation at this site" is meaningless to a reader.
 
 `other` holds concepts that could not be confidently placed — `Sex`, `Infant sex`,
 `Fetal vs adult liver`, `Age 4 vs age 0`, and four Metabolon metabolite readouts.
+(Since 2026-11-08 `Fetal vs adult liver` is a covariate — it contrasts sample tissues,
+not people — and `Age 4 vs age 0` is labelled "Age comparison: 4 years vs birth"; see below.)
 For display purposes these behave like covariates even though the class differs.
 
 Two concepts are flagged as genuinely ambiguous and deliberately left in
@@ -52,6 +62,34 @@ no way to tell which role dominates. Do not resolve this silently.
 Merge policy was conservative. Case, spacing and typo variants were merged;
 `Incident X` / `Prevalent X (Self-report)` / bare `X` were kept separate across
 ~13 diseases, as were maternal/paternal variants of the same measure.
+
+## Display labels and the age fold
+
+A report titles each outcome with its findings' trait label, so `canonical_label` is
+reader-facing text. `methylask.traits.display_label` shows the canonical label for any
+curated variant ("age" → "Age", "body mass index" → "BMI (Body mass index)"); an
+uncurated string keeps the study's wording with a lower-case first word capitalised
+and Metabolon codes (`M32412_butyrylcarnitine`) spelled out as
+"Metabolite level: … (Metabolon ID …)". `tests/test_trait_labels.py` holds the list of
+catalogue-text patterns no shown label may match.
+
+Age. The raw spellings `age` and `Age` are one concept and now show one label, "Age"
+(before, the outcome took whichever raw spelling came first). `trait_copy_alias.json`
+maps canonical labels to explanation keys; it already routes "Age" to the `age`
+explanation and needed no change. Deliberately NOT folded into Age, after a blind
+review (2026-11-08) judged the merge to lose meaning:
+
+- `Age 4 vs age 0` (14,150; PMID 28056824, "Whole blood and cord blood") is a
+  developmental comparison, relabelled "Age comparison: 4 years vs birth", own outcome,
+  no age explanation.
+- `Ageing` (8,540; GO_0007568) keeps its own label and outcome until its operational
+  definition is checked.
+- `Gestational age`, `Age at menarche`, `Maternal age at delivery` and the interaction
+  terms are different concepts.
+
+Because `aggregate_by_trait` groups by the shown label, rows of two spellings of one
+concept at the same CpG ("BMI", "Body mass index") now merge into one finding; the
+replication summary already counts studies by PMID.
 
 ## `protein_traits.json`
 
