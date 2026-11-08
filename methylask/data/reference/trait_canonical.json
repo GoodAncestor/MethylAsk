@@ -3,9 +3,11 @@
     "canonical_label": "Age",
     "variants": [
       "age",
-      "Age"
+      "Age",
+      "Age 4 vs age 0",
+      "Ageing"
     ],
-    "total_associations": 717205,
+    "total_associations": 739895,
     "class": "health_trait"
   },
   {
@@ -224,7 +226,7 @@
       "Fetal vs adult liver"
     ],
     "total_associations": 28901,
-    "class": "other"
+    "class": "covariate"
   },
   {
     "canonical_label": "Eosinophilia",
@@ -233,14 +235,6 @@
     ],
     "total_associations": 24114,
     "class": "health_trait"
-  },
-  {
-    "canonical_label": "Age 4 vs age 0",
-    "variants": [
-      "Age 4 vs age 0"
-    ],
-    "total_associations": 14150,
-    "class": "other"
   },
   {
     "canonical_label": "Atopy",
@@ -301,9 +295,26 @@
   {
     "canonical_label": "Age x Sex interaction term",
     "variants": [
-      "age*sex"
+      "age*sex",
+      "Age-by-sex interaction"
     ],
-    "total_associations": 6014,
+    "total_associations": 6036,
+    "class": "covariate"
+  },
+  {
+    "canonical_label": "Gestational age x Sex interaction term",
+    "variants": [
+      "Interaction between gestational age and sex"
+    ],
+    "total_associations": 59,
+    "class": "covariate"
+  },
+  {
+    "canonical_label": "Sex x Braak stage interaction term",
+    "variants": [
+      "sex-Braak stage interaction"
+    ],
+    "total_associations": 13,
     "class": "covariate"
   },
   {
@@ -1329,14 +1340,6 @@
     ],
     "total_associations": 328363,
     "class": "covariate"
-  },
-  {
-    "canonical_label": "Ageing",
-    "variants": [
-      "Ageing"
-    ],
-    "total_associations": 8540,
-    "class": "health_trait"
   },
   {
     "canonical_label": "Glucose",

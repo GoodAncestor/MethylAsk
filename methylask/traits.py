@@ -95,8 +95,39 @@ def humanize_trait(trait: str) -> tuple[str, str, str | None]:
         # accession is still returned so the renderer can link out to UniProt
         name = protein_name(t)
         return (name or t, "protein", t)
-    # light tidy: collapse whitespace, keep the study's wording otherwise
-    return (re.sub(r"\s+", " ", t), "trait", None)
+    return (display_label(t), "trait", None)
+
+
+# Metabolon readouts arrive as "M32412_butyrylcarnitine"; a trailing "*" is
+# Metabolon's mark for a compound identified without an authentic standard.
+_METABOLON = re.compile(r"^(M\d{5})_(.+?)(\*?)$")
+# a first word that is plain lower-case letters: a catalogue spelling, safe to
+# capitalise. Words with capitals or digits ("miR-100-5p", "eGFR", "p53") are
+# names whose case carries meaning and are left alone.
+_LOWER_WORD = re.compile(r"^[a-z]{2,}(?=[\s,'-]|$)")
+
+
+def display_label(trait: str) -> str:
+    """The name a reader sees for a raw catalogue trait string.
+
+    A curated concept shows its canonical label, so the catalogue's spellings
+    ("age", "body mass index", "Age 4 vs age 0") read as one named outcome. An
+    uncurated string keeps the study's wording, tidied: whitespace collapsed,
+    Metabolon codes spelled out the way the curated table spells them, and a
+    lower-case first word capitalised.
+    """
+    t = re.sub(r"\s+", " ", (trait or "").strip())
+    label = _canonical_label_by_variant().get(t.lower())
+    if label:
+        return label
+    m = _METABOLON.match(t)
+    if m:
+        name = m.group(2).replace("comma", ",").replace("_", " ")
+        tentative = "tentative identification, " if m.group(3) else ""
+        return f"Metabolite level: {name} ({tentative}Metabolon ID {m.group(1)})"
+    if _LOWER_WORD.match(t):
+        return t[0].upper() + t[1:]
+    return t
 
 
 _CANONICAL = Path(__file__).parent / "data" / "reference" / "trait_canonical.json"
